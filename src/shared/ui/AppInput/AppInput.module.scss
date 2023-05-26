@@ -1,0 +1,19 @@
+.appInput {
+   border-radius: 6px;
+   width: 100%;
+   padding: var(--font-size-s) 0;
+   padding-left: var(--font-size-s);
+
+   &.mb20 {
+      margin-bottom: 20px;
+   }
+
+   &.mb40 {
+      margin-bottom: 40px;
+   }
+}
+
+.background {
+   background-color: var(--fields-color);
+}
+

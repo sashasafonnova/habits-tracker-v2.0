@@ -1,0 +1,30 @@
+@import './reset';
+@import './variables/global';
+@import './theme/light';
+@import './theme/dark';
+
+
+body {
+   font-size: var(--font-size-m);
+   line-height: var(--font-line-m);
+   font-family: var(--font-family-main);
+   color: var(--text-color);
+   min-height: 100%;
+}
+
+.app {
+   background-color: var(--bg-color);
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+
+.container {
+   max-width: 1130px;
+   margin: 0 auto;
+   padding: 0 20px;
+}
+
+.dsp-none {
+   display: none;
+}

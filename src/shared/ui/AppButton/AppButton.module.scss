@@ -1,0 +1,31 @@
+.appButton{
+   display: inline-block;
+   border-radius: 6px; 
+   
+   &.mb20 {
+      margin-bottom: 20px;
+   }
+
+   &.mb40 {
+      margin-bottom: 40px;
+   }
+}
+
+.clear {
+   color: var(--text-colot);
+   background: transparent;
+}
+
+.background {
+   background-color: var(--primary-color);
+   padding: var(--font-size-m) calc(var(--font-size-m) * 2);
+   color: var(--inverted-text-color);
+}
+
+.mt20 {
+   margin-top: 20px;
+}
+
+
+
+
