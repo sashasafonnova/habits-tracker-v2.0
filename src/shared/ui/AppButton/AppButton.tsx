@@ -1,7 +1,7 @@
 
 import { ButtonHTMLAttributes } from 'react';
 import styles from './AppButton.module.scss';
-import { classMaker } from 'shared/lib/classMaker';
+import { classMaker } from 'shared/lib/classMaker/classMaker';
 
 
 export enum AppButtonVariant {
@@ -17,19 +17,19 @@ interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const AppButton: React.FC<AppButtonProps> = (props) => {
 
-    const { children, variant, mb, ...otherProps } = props;
+   const { children, variant, mb, ...otherProps } = props;
 
-    const mods = {
-        [styles[`mb${mb}`]]: mb,
-    };
+   const mods = {
+      [styles[`mb${mb}`]]: mb,
+   };
 
-    return (
-        <button
-            type="button"
-            className={classMaker(styles['appButton'], mods, [styles[variant]])}
-            {...otherProps}     
-        >
-            {children}
-        </button>
-    );
+   return (
+      <button
+         type="button"
+         className={classMaker(styles.appButton, mods, [styles[variant]])}
+         {...otherProps}     
+      >
+         {children}
+      </button>
+   );
 };

@@ -1,3 +1,26 @@
+.appLink {
+   &.mb20 {
+      margin-bottom: 20px;
+   }
+
+   &.mb30 {
+      margin-bottom: 30px;
+   }
+}
+
 .clear {
    color: var(--primary-color);
+}
+
+.underline {
+   color: var(--primary-color);
+   border-bottom: 1px solid;
+   border-color: inherit;
+}
+
+.button {
+   padding: var(--font-size-m) calc(var(--font-size-m) * 2);
+   background-color: var(--primary-color);
+   border-radius: var(--border-radius-elems);
+   color: var(--white-text-color);
 }

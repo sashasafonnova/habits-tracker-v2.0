@@ -1,19 +1,26 @@
 .appInput {
-   border-radius: 6px;
+   border-radius: var(--border-radius-elems);
    width: 100%;
-   padding: var(--font-size-s) 0;
-   padding-left: var(--font-size-s);
 
    &.mb20 {
       margin-bottom: 20px;
    }
 
-   &.mb40 {
-      margin-bottom: 40px;
+   &.mb30 {
+      margin-bottom: 30px;
    }
+}
+
+.standart {
+   height: var(--input-size-m);
+   padding: var(--font-size-s);
 }
 
 .background {
    background-color: var(--fields-color);
+
+   &:focus{
+      border: 1px solid var(--line-color);
+   }
 }
 

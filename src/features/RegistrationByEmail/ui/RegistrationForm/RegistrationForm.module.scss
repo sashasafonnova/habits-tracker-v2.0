@@ -2,7 +2,7 @@
    font-size: var(--font-size-xl);
    line-height: var(--font-line-xl);
    margin-bottom: 10px;
-   font-weight: 600;
+   font-weight: var(--text-weight-extrabold);
    color: var(--primary-color);
 }
 
@@ -19,7 +19,7 @@
 
 .account {
    display: flex;
-   align-items: center;
+   align-items: flex-start;
    padding: 20px 0;
 }
 

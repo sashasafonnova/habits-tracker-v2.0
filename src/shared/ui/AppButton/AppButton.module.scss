@@ -1,9 +1,13 @@
 .appButton{
    display: inline-block;
-   border-radius: 6px; 
+   border-radius: var(--border-radius-elems);
    
    &.mb20 {
       margin-bottom: 20px;
+   }
+
+   &.mb30 {
+      margin-bottom: 30px;
    }
 
    &.mb40 {
@@ -12,7 +16,7 @@
 }
 
 .clear {
-   color: var(--text-colot);
+   color: var(--text-color);
    background: transparent;
 }
 

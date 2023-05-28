@@ -4,14 +4,15 @@ import { Header } from 'widgets/Header';
 
 
 const App = () => {
-    return (
-        <div className='app app_light_theme'>
-            <Header/>
+   return (
+      <div className='app app_light_theme'>
+         <Header/>
+         <div className='appContent'>
             <AppRouter />
-            <Footer/>
-        </div>
-    );
+         </div>
+         <Footer/>    
+      </div>
+   );
 };
-
 
 export default App;

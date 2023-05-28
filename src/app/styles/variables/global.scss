@@ -1,5 +1,6 @@
 :root {
   --font-family-main: montserrat, "Times New Roman", serif;
+  --text-weight-extrabold: 700;
   --font-size-s: 14px;
   --font-line-s: 28px;
   --font-size-m: 16px;
@@ -12,5 +13,9 @@
   --font-line-xxl: 48px;
   --primary-color: #6F78CE;
   --dark-primary-color: #0A112B;
-  --footer-text-color: #fff;
+  --white-text-color: #fff;
+  --border-radius-elems: 6px;
+  --input-size-m: 44px;
+  --z-index-1: 10;
 }
+
