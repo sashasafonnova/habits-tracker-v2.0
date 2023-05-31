@@ -18,9 +18,14 @@
 
 .background {
    background-color: var(--fields-color);
+   font-size: var(--font-size-s);
 
    &:focus{
       border: 1px solid var(--line-color);
+   }
+
+   &::placeholder {
+      color: var(--text-color);
    }
 }
 

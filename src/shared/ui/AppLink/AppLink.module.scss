@@ -1,4 +1,6 @@
 .appLink {
+   font-size: var(--font-size-m);
+
    &.mb20 {
       margin-bottom: 20px;
    }
@@ -14,13 +16,13 @@
 
 .underline {
    color: var(--primary-color);
-   border-bottom: 1px solid;
-   border-color: inherit;
+   border-bottom: 1px solid var(--primary-color);
 }
 
 .button {
+   display: inline-block;
    padding: var(--font-size-m) calc(var(--font-size-m) * 2);
-   background-color: var(--primary-color);
+   background-color: var(--dark-primary-color);
    border-radius: var(--border-radius-elems);
-   color: var(--white-text-color);
+   color: var(--white-color);
 }

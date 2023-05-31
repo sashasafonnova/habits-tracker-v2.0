@@ -8,7 +8,7 @@ export enum AppInputVariant {
 }
 
 interface AppInputProps extends InputHTMLAttributes<HTMLInputElement>{
-   type: string,
+   type?: string,
    placeholder?: string,
    variant?: AppInputVariant,
    mb?: string,
@@ -18,10 +18,9 @@ interface AppInputProps extends InputHTMLAttributes<HTMLInputElement>{
 
 export const AppInput: React.FC<AppInputProps> = (props) => {
 
-   const { 
-      children, 
-      variant, 
-      type, 
+   const {  
+      variant = AppInputVariant.BACKGROUND, 
+      type ='text', 
       placeholder, 
       mb, 
       inputSize = 'standart', 
@@ -35,12 +34,10 @@ export const AppInput: React.FC<AppInputProps> = (props) => {
 
    return (
       <input
+         data-testid='appInput'
          type={type}
          placeholder={placeholder}
          className={classMaker(styles.appInput, mods, [styles[variant]])}
-         {...otherProps}
-      >
-         {children}
-      </input>
+         {...otherProps}/>
    );
 };
