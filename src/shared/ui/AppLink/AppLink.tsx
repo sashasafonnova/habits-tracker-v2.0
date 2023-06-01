@@ -15,7 +15,7 @@ interface AppLinkProps extends LinkProps {
 }
 
 
-export const AppLink: React.FC<AppLinkProps> = (props) => {
+export const AppLink: React.FC<AppLinkProps> = (props: AppLinkProps) => {
 
    const {children, to, variant, mb, ...otherProps} = props;
 

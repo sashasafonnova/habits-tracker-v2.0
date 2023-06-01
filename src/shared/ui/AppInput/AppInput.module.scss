@@ -14,6 +14,10 @@
 .standart {
    height: var(--input-size-m);
    padding: var(--font-size-s);
+
+   &::placeholder {
+         font-size: var(--font-size-s);
+      }
 }
 
 .background {

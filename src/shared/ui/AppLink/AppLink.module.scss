@@ -1,5 +1,5 @@
 .appLink {
-   font-size: var(--font-size-m);
+   font-size: inherit;
 
    &.mb20 {
       margin-bottom: 20px;
@@ -25,4 +25,5 @@
    background-color: var(--dark-primary-color);
    border-radius: var(--border-radius-elems);
    color: var(--white-color);
+
 }

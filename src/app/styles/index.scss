@@ -32,3 +32,11 @@ body {
 .dsp-none {
    display: none;
 }
+
+
+@media (max-width: 540px) {
+   body {
+      font-size: var(--font-size-s);
+      line-height: var(--font-line-s);
+   }
+}

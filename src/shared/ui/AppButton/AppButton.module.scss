@@ -1,7 +1,7 @@
 .appButton{
    display: inline-block;
    border-radius: var(--border-radius-elems);
-   font-size: var(--font-size-m);
+   font-size: inherit;
    
    &.mb20 {
       margin-bottom: 20px;
