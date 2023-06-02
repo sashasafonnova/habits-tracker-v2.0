@@ -4,7 +4,7 @@ import styles from './LoginPage.module.scss';
 
 const LoginPage: React.FC = () => {
    return (
-      <div className={styles.login}>
+      <div className={styles.page}>
          <LoginForm/>
       </div>
    );

@@ -1,6 +1,7 @@
 import { Link, LinkProps } from 'react-router-dom';
 import styles from './AppLink.module.scss';
 import { classMaker } from 'shared/lib/classMaker/classMaker';
+import { memo } from 'react';
 
 
 export enum AppLinkVariant {
@@ -15,7 +16,7 @@ interface AppLinkProps extends LinkProps {
 }
 
 
-export const AppLink: React.FC<AppLinkProps> = (props: AppLinkProps) => {
+export const AppLink: React.FC<AppLinkProps> = memo(function AppLink(props: AppLinkProps) {
 
    const {children, to, variant, mb, ...otherProps} = props;
 
@@ -32,4 +33,4 @@ export const AppLink: React.FC<AppLinkProps> = (props: AppLinkProps) => {
          {children}
       </Link>
    );
-};
+});

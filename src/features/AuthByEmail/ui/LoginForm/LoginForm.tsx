@@ -5,11 +5,11 @@ import { AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'app/providers/routerProvider/config/router';
 import { AppInput, AppInputVariant } from 'shared/ui/AppInput/AppInput';
 import { useSelector } from 'react-redux';
-import { getLoginEmail } from 'features/AuthByEmail/model/selectors/getLoginEmail';
-import { getLoginPassword } from 'features/AuthByEmail/model/selectors/getLoginPassword';
+import { getLoginEmail } from '../../model/selectors/getLoginEmail/getLoginEmail';
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { useCallback } from 'react';
-import { loginActions } from 'features/AuthByEmail/model/slice/loginSlice';
-import { loginByEmail } from 'features/AuthByEmail/model/services/loginByEmail';
+import { loginActions } from '../../model/slice/loginSlice';
+import { loginByEmail } from '../../model/services/loginByEmail';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 
 

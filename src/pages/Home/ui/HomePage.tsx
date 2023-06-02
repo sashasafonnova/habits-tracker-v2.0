@@ -4,7 +4,7 @@ import { Home } from 'widgets/Home';
 
 export const HomePage: React.FC = () => {
    return (
-      <div className={styles.home}>
+      <div className={styles.page}>
          <Home/>
       </div>
    );

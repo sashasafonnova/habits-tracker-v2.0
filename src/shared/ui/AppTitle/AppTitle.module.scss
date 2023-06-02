@@ -1,0 +1,40 @@
+.appTitle {
+   color: var(--title-color);
+   font-weight: var(--text-weight-extrabold);
+
+   &.mb20 {
+      margin-bottom: 20px;
+   }
+
+   &.mb30 {
+      margin-bottom: 30px;
+   }
+
+   &.mb40 {
+      margin-bottom: 40px;
+   }
+}
+
+.small {
+   font-size: var(--font-size-s);
+   line-height: var(--font-line-s);
+}
+
+.standart {
+   font-size: var(--font-size-m);
+   line-height: var(--font-line-m);
+}
+
+.big {
+   font-size: var(--font-size-l);
+   line-height: var(--font-line-l);
+}
+
+.large {
+   font-size: var(--font-size-xl);
+   line-height: var(--font-line-xl);
+}
+
+.primary {
+   color: var(--primary-color);
+}
