@@ -14,21 +14,25 @@ export const RegistrationForm: React.FC = () => {
             <p className={styles.subtitle}>Введите e-mail и пароль</p>
             <form className={styles.form}>
                <label className='dsp-none'>E-mail</label>
-               <AppInput 
+               <AppInput
+                  marginBottom={'20'}
                   type={'email'} 
                   placeholder={'e-mail'} 
                   variant={AppInputVariant.BACKGROUND} 
-                  mb={'20'}
                   inputSize={'standart'}
                />
                <label className='dsp-none'>Пароль</label>
-               <AppInput 
+               <AppInput
+                  marginBottom={'20'} 
                   type={'password'} 
                   placeholder={'пароль'} 
                   variant={AppInputVariant.BACKGROUND} 
-                  mb={'20'}
                />
-               <AppButton variant={AppButtonVariant.BACKGROUND} mb={'30'}>Зарегистрироваться</AppButton>
+               <AppButton 
+                  variant={AppButtonVariant.BACKGROUND}
+                  marginBottom={'30'}>
+                     Зарегистрироваться
+               </AppButton>
             </form>
             <div className={styles.account}>
                <span className={styles.text}>Уже есть аккаунт?</span>

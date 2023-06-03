@@ -35,8 +35,18 @@ export const Underline: Story = {
    render: () => <AppLink variant={AppLinkVariant.UNDERLINE} to='/'>Ссылка</AppLink>,
 };
 
-export const UnderlineDark: Story = {
+export const UnderlineDarkTheme: Story = {
    render: () => <AppLink variant={AppLinkVariant.UNDERLINE} to={'/'}>Ссылка</AppLink>,
+   decorators: [ThemeDecorator(Theme.DARK)]
+};
+
+
+export const White: Story = {
+   render: () => <AppLink variant={AppLinkVariant.WHITE} to='/'>Ссылка</AppLink>,
+};
+
+export const WhiteDarkTheme: Story = {
+   render: () => <AppLink variant={AppLinkVariant.WHITE} to={'/'}>Ссылка</AppLink>,
    decorators: [ThemeDecorator(Theme.DARK)]
 };
 

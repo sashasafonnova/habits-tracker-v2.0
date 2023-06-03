@@ -1,18 +1,5 @@
 .appTitle {
-   color: var(--title-color);
    font-weight: var(--text-weight-extrabold);
-
-   &.mb20 {
-      margin-bottom: 20px;
-   }
-
-   &.mb30 {
-      margin-bottom: 30px;
-   }
-
-   &.mb40 {
-      margin-bottom: 40px;
-   }
 }
 
 .small {
@@ -33,6 +20,10 @@
 .large {
    font-size: var(--font-size-xl);
    line-height: var(--font-line-xl);
+}
+
+.main {
+   color: var(--title-color);
 }
 
 .primary {

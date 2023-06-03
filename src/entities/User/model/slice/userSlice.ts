@@ -13,6 +13,9 @@ export const userSlice = createSlice({
          state.authData = action.payload;
       },
 
+      logOut: (state) => {
+         state.authData = undefined;
+      },
    },
 });
 

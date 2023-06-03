@@ -40,3 +40,12 @@ export const BackgroundDarkTheme: Story = {
    render: () => <AppButton variant={AppButtonVariant.BACKGROUND}>Test</AppButton>,
    decorators: [ThemeDecorator(Theme.DARK)]
 };
+
+export const Underline: Story = {
+   render: () => <AppButton variant={AppButtonVariant.UNDERLINE}>Test</AppButton>,
+};
+
+export const UnderlineDarkTheme: Story = {
+   render: () => <AppButton variant={AppButtonVariant.UNDERLINE}>Test</AppButton>,
+   decorators: [ThemeDecorator(Theme.DARK)]
+};

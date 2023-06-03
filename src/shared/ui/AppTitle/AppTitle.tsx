@@ -9,24 +9,35 @@ export enum AppTitleVariant {
    LARGE = 'large'
 }
 
+export enum AppTitleColor {
+  MAIN = 'main',
+  PRIMARY = 'primary'
+}
+
 interface AppTitleProps {
    variant?: string;
-   primary?: boolean;
-   mb?: string;
+   color?: AppTitleColor;
    children: string;
+   marginBottom?: string;
 }
 
 
 export const AppTitle: React.FC<AppTitleProps> = memo(function AppTitle(props: AppTitleProps) {
-   const { variant, children, primary, mb} = props;
+   const { 
+      variant, 
+      children, 
+      color = AppTitleColor.MAIN,
+      marginBottom 
+   } = props;
 
-   const mods = {
-      [styles['primary']]: primary,
-      [styles[`mb${mb}`]]: mb,
-   };
+   const additional = [
+      styles[color],
+      styles[variant],
+      `marginBottom${marginBottom}`
+   ];
 
    return (
-      <div className={classMaker(styles.appTitle, mods, [styles[variant]])}>
+      <div className={classMaker(styles.appTitle, additional)}>
          {children}
       </div>
    );

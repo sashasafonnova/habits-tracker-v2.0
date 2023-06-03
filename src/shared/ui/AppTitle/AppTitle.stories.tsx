@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { AppTitle, AppTitleVariant } from './AppTitle';
+import { AppTitle, AppTitleColor, AppTitleVariant } from './AppTitle';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 
@@ -50,10 +50,10 @@ export const LargeDarkTheme: Story = {
 };
 
 export const Primary: Story = {
-   render: () => <AppTitle variant={AppTitleVariant.LARGE} primary={true}>Page Title</AppTitle>,
+   render: () => <AppTitle variant={AppTitleVariant.LARGE} color={AppTitleColor.PRIMARY}>Page Title</AppTitle>,
 };
 
 export const PrimaryDarkTheme: Story = {
-   render: () => <AppTitle variant={AppTitleVariant.LARGE} primary={true}>Page Title</AppTitle>,
+   render: () => <AppTitle variant={AppTitleVariant.LARGE} color={AppTitleColor.PRIMARY}>Page Title</AppTitle>,
    decorators: [ThemeDecorator(Theme.DARK)]
 };

@@ -3,7 +3,8 @@ import { BuildOptions } from './types/config';
 import { buildDevServer } from './buildDevServer';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import { buildWebpackLoaders } from './buildWebpackLoaders';
-import miniCssExtractPlugin from 'mini-css-extract-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import DotenvWebpack from 'dotenv-webpack';
 
 
 export function buildWebpackConfig (options: BuildOptions): webpack.Configuration {
@@ -27,7 +28,10 @@ export function buildWebpackConfig (options: BuildOptions): webpack.Configuratio
             template: paths.html
          }),
          new webpack.ProgressPlugin(),
-         new miniCssExtractPlugin()
+         new MiniCssExtractPlugin(),
+         new DotenvWebpack(),
+         new webpack.HotModuleReplacementPlugin()
+
       ],
       resolve: {
          extensions: ['.tsx', '.ts', '.js'],

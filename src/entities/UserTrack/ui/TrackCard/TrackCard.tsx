@@ -2,7 +2,7 @@ import styles from './TrackCard.module.scss';
 import { UserTrack } from '../../model/types/userTrack';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
-import { trackCategories } from 'shared/lib/lists/trackCategories/trackCategories';
+import { trackCategories } from 'shared/lists/trackCategories/trackCategories';
 import ProgressIcon from './assets/icons/progress-icon.svg';
 import { AppTitle, AppTitleVariant } from 'shared/ui/AppTitle/AppTitle';
 
@@ -32,7 +32,7 @@ export const TrackCard: React.FC<TrackCardProps> = ({ track }: TrackCardProps) =
             }
          })}
          <AppLink to={`/habits/${track._id}`} variant={AppLinkVariant.CLEAR}>
-            <AppTitle variant={AppTitleVariant.BIG} mb={'30'}>
+            <AppTitle variant={AppTitleVariant.BIG} marginBottom={'20'}>
                {track.title}
             </AppTitle>  
          </AppLink>

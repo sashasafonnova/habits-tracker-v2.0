@@ -7,26 +7,28 @@ import { memo } from 'react';
 export enum AppLinkVariant {
    CLEAR = 'clear',
    BUTTON = 'button',
-   UNDERLINE = 'underline'
+   UNDERLINE = 'underline',
+   WHITE = 'white'
 }
 
 interface AppLinkProps extends LinkProps {
    variant?: AppLinkVariant,
-   mb?: string,
+   marginBottom?: string,
 }
 
 
 export const AppLink: React.FC<AppLinkProps> = memo(function AppLink(props: AppLinkProps) {
 
-   const {children, to, variant, mb, ...otherProps} = props;
+   const { children, to, variant, marginBottom, ...otherProps} = props;
 
-   const mods = {
-      [styles[`mb${mb}`]]: mb,
-   };
+   const additional = [
+      styles[variant],
+      `marginBottom${marginBottom}` 
+   ];
 
    return (
       <Link 
-         className={classMaker(styles.appLink, mods, [styles[variant]])}
+         className={classMaker(styles.appLink, additional)}
          to={to}
          {...otherProps}
       >

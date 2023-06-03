@@ -7,29 +7,31 @@ import { classMaker } from 'shared/lib/classMaker/classMaker';
 export enum AppButtonVariant {
    CLEAR = 'clear',
    CLEAR_WHITE = 'clearWhite',
-   BACKGROUND = 'background'
+   BACKGROUND = 'background',
+   UNDERLINE = 'underline'
 }
 
 interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    children: string | ReactNode,
    variant?: AppButtonVariant,
-   mb?: string,
+   marginBottom?: string;
 }
 
 
 export const AppButton: React.FC<AppButtonProps> = memo(function AppButton(props: AppButtonProps) {
 
-   const { children, variant, mb, ...otherProps } = props;
+   const { children, variant, marginBottom, ...otherProps } = props;
 
-   const mods = {
-      [styles[`mb${mb}`]]: mb,
-   };
+   const additional = [
+      styles[variant],
+      `marginBottom${marginBottom}`
+   ];
 
    return (
       <button
          data-testid = 'appButton'
          type="button"
-         className={classMaker(styles.appButton, mods, [styles[variant]])}
+         className={classMaker(styles.appButton, additional)}
          {...otherProps}     
       >
          {children}

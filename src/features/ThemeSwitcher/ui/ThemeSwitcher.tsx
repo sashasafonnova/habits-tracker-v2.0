@@ -5,12 +5,14 @@ import SwitcherImg from '../assets/themeSwitcher.svg';
 import { useTheme } from 'app/providers/ThemeProvider';
 
 
-
 export const ThemeSwitcher: React.FC = () => {
    const { toggleTheme } = useTheme();
 
    return (
-      <AppButton variant={AppButtonVariant.CLEAR_WHITE} onClick={toggleTheme} mb={'40'}>
+      <AppButton 
+         variant={AppButtonVariant.CLEAR_WHITE} 
+         onClick={toggleTheme} 
+         marginBottom={'40'}>
          <div className={styles.btn}>
             <div className={styles.icon}>
                {<SwitcherImg />}

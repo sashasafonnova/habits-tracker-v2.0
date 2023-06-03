@@ -1,0 +1,50 @@
+import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
+import styles from './Menu.module.scss';
+import { useSelector } from 'react-redux';
+import { getAuthData, userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localStorage';
+import { RoutePath } from 'app/providers/routerProvider/config/router';
+
+
+interface MenuProps {
+   closeMenu: () => void;
+}
+
+export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
+   const { closeMenu } = props;
+
+   const authData = useSelector(getAuthData);
+   const dispatch = useAppDispatch();
+
+   const onClickLogOut = () => {
+      dispatch(userActions.logOut);
+      localStorage.removeItem(USER_LOCALSTORAGE_KEY);
+      closeMenu();
+   };
+
+   return (
+      <div className={styles.menu} onClick={closeMenu}>
+         <div className={styles.content} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.close} onClick={closeMenu}>X</button>
+            <AppLink to={RoutePath.account} className={styles.data}>
+               <p className={styles.name}>{authData.firstName}</p>
+               <p className={styles.email}>{authData.email}</p>
+            </AppLink>
+            <nav className={styles.nav}>
+               <ul className={styles.actions}>
+                  <li className={styles.action}>
+                     <AppLink to={'./create'} variant={AppLinkVariant.WHITE} onClick={closeMenu}>Создать привычку</AppLink>
+                  </li>
+                  <li className={styles.action}>
+                     <AppLink to={RoutePath.account} variant={AppLinkVariant.WHITE} onClick={closeMenu}>Мои треки</AppLink>
+                  </li>
+               </ul>
+               <div className={styles.logOut}>
+                  <AppLink to={RoutePath.login} variant={AppLinkVariant.WHITE} onClick={onClickLogOut}>Выйти</AppLink>
+               </div>
+            </nav>
+         </div>   
+      </div>
+   );
+};

@@ -10,7 +10,12 @@ export const Home: React.FC = () => {
             <div className={styles.content}>
                <h1 className={styles.title}>HabitsTracker <span>- приложение <br />для отслеживания привычек</span></h1>
                <p className={styles.subtitle}>Выбирайте готовые треки привычек или создавайте свои и отслеживайте их выполнение каждый день.</p>
-               <AppLink to={RoutePath.registration} variant={AppLinkVariant.BUTTON} mb={'20'}>Присоединиться</AppLink>
+               <AppLink 
+                  to={RoutePath.registration} 
+                  variant={AppLinkVariant.BUTTON} 
+                  marginBottom={'20'}>
+                  Присоединиться
+               </AppLink>
                <div className={styles.account}>
                   <span className={styles.text}>Уже есть аккаунт?</span>
                   <AppLink to={RoutePath.login} variant={AppLinkVariant.UNDERLINE}>Войти</AppLink>

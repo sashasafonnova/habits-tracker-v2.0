@@ -9,12 +9,11 @@ export enum AppInputVariant {
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
 
-
 interface AppInputProps extends HTMLInputProps {
    type?: string,
+   marginBottom?: string,
    placeholder?: string,
    variant?: AppInputVariant,
-   mb?: string,
    inputSize?: string,
    onChange?: (value: string) => void,
    value?: string
@@ -25,22 +24,22 @@ export const AppInput: React.FC<AppInputProps> = memo(function AppInput(props: A
 
    const {
       variant = AppInputVariant.BACKGROUND,
+      marginBottom,
       type = 'text',
       placeholder,
-      mb,
       inputSize = 'standart',
       onChange,
       value,
       ...otherProps } = props;
 
-   const mods = {
-      [styles[`mb${mb}`]]: mb,
-      [styles[inputSize]]: inputSize,
-
-   };
+   const additional = [
+      styles[variant], 
+      styles[inputSize],
+      `marginBottom${marginBottom}`
+   ];
 
    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-      onChange(e.target.value);
+      onChange?.(e.target.value);
    };
 
    return (
@@ -48,7 +47,7 @@ export const AppInput: React.FC<AppInputProps> = memo(function AppInput(props: A
          data-testid='appInput'
          type={type}
          placeholder={placeholder}
-         className={classMaker(styles.appInput, mods, [styles[variant]])}
+         className={classMaker(styles.appInput, additional)}
          onChange={onChangeHandler}
          value={value}
          {...otherProps} />

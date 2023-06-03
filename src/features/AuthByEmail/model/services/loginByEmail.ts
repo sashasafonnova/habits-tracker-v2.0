@@ -11,7 +11,7 @@ export const loginByEmail = createAsyncThunk<User, LoginByEmailProps, { rejectVa
    'login/loginByEmail',
    async (authData, thunkAPI) => {
       try {
-         const response = await axios.post<User>('/login', authData);
+         const response = await axios.post<User>(`${process.env.FETCH_URL}/login`, authData);
 
          if (!response.data) {
             throw new Error();
