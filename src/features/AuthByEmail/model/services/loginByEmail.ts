@@ -8,7 +8,7 @@ interface LoginByEmailProps {
 }
 
 export const loginByEmail = createAsyncThunk<User, LoginByEmailProps, { rejectValue: string }>(
-   'login/loginByEmail',
+   'auth/loginByEmail',
    async (authData, thunkAPI) => {
       try {
          const response = await axios.post<User>(`${process.env.FETCH_URL}/login`, authData);

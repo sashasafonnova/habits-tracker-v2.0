@@ -1,20 +1,20 @@
 import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
-import { getLoginEmail } from './getLoginEmail';
 import { DeepPartial } from '@reduxjs/toolkit';
+import { tracksIsLoadingSelector } from './tracksIsLoadingSelector';
 
 
-describe('getLoginEmail', () => {
+describe('tracksIsLoadingSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
-         login: {
-            email: 'test@test.com'
+         fetchTracks: {
+            isLoading: true
          }
       };
-      expect(getLoginEmail(state as StateSchema)).toEqual('test@test.com');
+      expect(tracksIsLoadingSelector(state as StateSchema)).toBe(true);
    });
 
    test('with empty state', () => {
       const state: DeepPartial<StateSchema> = {};
-      expect(getLoginEmail(state as StateSchema)).toEqual('');
+      expect(tracksIsLoadingSelector(state as StateSchema)).toEqual(false);
    });
 });

@@ -7,7 +7,7 @@ import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
 export const StoreDecorator = (state: DeepPartial<StateSchema>) => {
 
    const StrDecorator: Decorator = (Story) => (
-      <StoreProvider initialState={state}>
+      <StoreProvider initialState={state as StateSchema}>
          <Story />
       </StoreProvider>
    );

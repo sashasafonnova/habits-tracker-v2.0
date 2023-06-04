@@ -1,4 +1,4 @@
 export interface TrackListSchema {
-   isLiading: boolean;
+   isLoading: boolean;
    error?: string
 }

@@ -1,19 +1,19 @@
 import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
+import { loginPasswordSelector } from './loginPasswordSelector';
 import { DeepPartial } from '@reduxjs/toolkit';
-import { getLoginIsLoading } from './getLoginIsLoading';
 
-describe('getLoginIsLoading', () => {
+describe('loginPasswordSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
          login: {
-            isLoading: true,
+            password: '123123'
          }
       };
-      expect(getLoginIsLoading(state as StateSchema)).toEqual(true);
+      expect(loginPasswordSelector(state as StateSchema)).toBe('123123');
    });
 
    test('with empty state', () => {
       const state: DeepPartial<StateSchema> = {};
-      expect(getLoginIsLoading(state as StateSchema)).toEqual(false);
+      expect(loginPasswordSelector(state as StateSchema)).toEqual('');
    });
 });

@@ -19,6 +19,10 @@ export const loginSlice = createSlice({
       setPassword: (state, action: PayloadAction<string>) => {
          state.password = action.payload;
       },
+      clearForm: (state) => {
+         state.email = '';
+         state.password = '';
+      },
    },
    extraReducers: (builder) => {
       builder
@@ -29,9 +33,9 @@ export const loginSlice = createSlice({
          .addCase(loginByEmail.fulfilled, (state) => {
             state.isLoading = false;
          })
-         .addCase(loginByEmail.rejected, (state, action) => {
+         .addCase(loginByEmail.rejected, (state) => {
             state.isLoading = false;
-            state.error = action.payload;
+            state.error = 'Неверный логин или пароль';
          });
    },
 });

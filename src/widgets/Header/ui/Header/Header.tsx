@@ -1,20 +1,20 @@
 import styles from './Header.module.scss';
-
 import LogoLight from '../../assets/icons/logo-light.svg';
 import LogoDark from '../../assets/icons/logo-dark.svg';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
 import { useSelector } from 'react-redux';
-import { getAuthData } from 'entities/User';
+import { authDataSelector } from 'entities/User';
 import { useCallback, useState } from 'react';
 import { Menu } from 'widgets/Menu';
+import UserIcon from '../../assets/icons/user-icon.svg';
 
 
 export const Header = () => {
 
    const {theme} = useTheme();
-   const authData = useSelector(getAuthData);
+   const authData = useSelector(authDataSelector);
 
    const [menuOpen, setMenuOpen] = useState(false);
 
@@ -22,9 +22,19 @@ export const Header = () => {
       setMenuOpen(false);
    }, [setMenuOpen]);
 
+
    const openMenu = () => {
       setMenuOpen(true);
    };
+
+
+   const userMenuBtn = (
+      <AppButton variant={AppButtonVariant.CLEAR_TITLE} onClick={openMenu}>
+         <UserIcon className={styles.btnIcon}/>
+         <span className={styles.btnText}>Мой аккаунт</span>
+      </AppButton>
+   );
+
 
    return (
       <header className={styles.header}>
@@ -33,7 +43,7 @@ export const Header = () => {
                <AppLink to={'/'} variant={AppLinkVariant.CLEAR}>
                   {theme === Theme.LIGHT ? <LogoLight /> : <LogoDark />}
                </AppLink>
-               {authData && <AppButton variant={AppButtonVariant.CLEAR} onClick={openMenu}>Мой аккаунт</AppButton>}
+               {authData && userMenuBtn} 
                {menuOpen && <Menu closeMenu={closeMenu}/>}
             </div>
          </div>

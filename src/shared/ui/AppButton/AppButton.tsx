@@ -5,7 +5,8 @@ import { classMaker } from 'shared/lib/classMaker/classMaker';
 
 
 export enum AppButtonVariant {
-   CLEAR = 'clear',
+   CLEAR_TEXT = 'clearText',
+   CLEAR_TITLE = 'clearTitle',
    CLEAR_WHITE = 'clearWhite',
    BACKGROUND = 'background',
    UNDERLINE = 'underline'

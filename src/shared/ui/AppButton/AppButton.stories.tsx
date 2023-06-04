@@ -14,12 +14,21 @@ export default meta;
 type Story = StoryObj<typeof AppButton>;
 
 
-export const Clear: Story = {
-   render: () => <AppButton variant={ AppButtonVariant.CLEAR }>Test</AppButton>,
+export const ClearText: Story = {
+   render: () => <AppButton variant={ AppButtonVariant.CLEAR_TEXT }>Test</AppButton>,
 };
 
-export const ClearDarkTheme: Story = {
-   render: () => <AppButton variant={AppButtonVariant.CLEAR}>Test</AppButton>,
+export const ClearTextDarkTheme: Story = {
+   render: () => <AppButton variant={AppButtonVariant.CLEAR_TITLE}>Test</AppButton>,
+   decorators: [ThemeDecorator(Theme.DARK)]
+};
+
+export const ClearTitle: Story = {
+   render: () => <AppButton variant={AppButtonVariant.CLEAR_TITLE}>Test</AppButton>,
+};
+
+export const ClearTitleDarkTheme: Story = {
+   render: () => <AppButton variant={AppButtonVariant.CLEAR_TITLE}>Test</AppButton>,
    decorators: [ThemeDecorator(Theme.DARK)]
 };
 

@@ -13,6 +13,10 @@ export const userTrackSlice = createSlice({
          state.userTrackData = [...action.payload];
       },
 
+      clearAuthData: (state) => {
+         state.userTrackData = undefined;
+      },
+
    },
 });
 

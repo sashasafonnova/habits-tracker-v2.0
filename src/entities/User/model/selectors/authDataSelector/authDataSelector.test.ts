@@ -1,9 +1,9 @@
 import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
 import { DeepPartial } from '@reduxjs/toolkit';
-import { getAuthData } from './getAuthData';
+import { authDataSelector } from './authDataSelector';
 
 
-describe('getAuthData', () => {
+describe('authDataSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
          user: {
@@ -15,7 +15,7 @@ describe('getAuthData', () => {
             }
          }
       };
-      expect(getAuthData(state as StateSchema)).toEqual({
+      expect(authDataSelector(state as StateSchema)).toEqual({
          id: '123',
          firstName: 'Alex',
          email: 'alex@test.com',
@@ -25,6 +25,6 @@ describe('getAuthData', () => {
 
    test('with empty state', () => {
       const state: DeepPartial<StateSchema> = {};
-      expect(getAuthData(state as StateSchema)).toEqual(undefined);
+      expect(authDataSelector(state as StateSchema)).toEqual(undefined);
    });
 });

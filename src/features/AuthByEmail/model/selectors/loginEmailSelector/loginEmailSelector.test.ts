@@ -1,19 +1,20 @@
 import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
+import { loginEmailSelector } from './loginEmailSelector';
 import { DeepPartial } from '@reduxjs/toolkit';
-import { getLoginError } from './getLoginError';
 
-describe('getLoginError', () => {
+
+describe('loginEmailSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
          login: {
-            error: 'error',
+            email: 'test@test.com'
          }
       };
-      expect(getLoginError(state as StateSchema)).toEqual('error');
+      expect(loginEmailSelector(state as StateSchema)).toEqual('test@test.com');
    });
 
    test('with empty state', () => {
       const state: DeepPartial<StateSchema> = {};
-      expect(getLoginError(state as StateSchema)).toEqual(undefined);
+      expect(loginEmailSelector(state as StateSchema)).toEqual('');
    });
 });

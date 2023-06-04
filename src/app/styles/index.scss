@@ -1,6 +1,6 @@
 @import './reset';
 @import './variables/global';
-@import './margins/margins.scss';
+@import './margins/margins';
 @import './theme/light';
 @import './theme/dark';
 
@@ -35,7 +35,7 @@ body {
 }
 
 
-@media (max-width: 540px) {
+@media (width <= 540px) {
    body {
       font-size: var(--font-size-s);
       line-height: var(--font-line-s);

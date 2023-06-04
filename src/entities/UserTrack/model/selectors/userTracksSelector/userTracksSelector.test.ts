@@ -1,9 +1,9 @@
 import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
 import { DeepPartial } from '@reduxjs/toolkit';
-import { getUserTracks } from './getUserTracks';
+import { userTracksSelector } from './userTracksSelector';
 
 
-describe('getUserTracks', () => {
+describe('userTracksSelector', () => {
    test('return value', () => {
       
       const testTrack = {
@@ -26,7 +26,7 @@ describe('getUserTracks', () => {
             ]
          }
       };
-      expect(getUserTracks(state as StateSchema)).toEqual([
+      expect(userTracksSelector(state as StateSchema)).toEqual([
          testTrack,
          testTrack
       ]);
@@ -34,6 +34,6 @@ describe('getUserTracks', () => {
 
    test('with empty state', () => {
       const state: DeepPartial<StateSchema> = {};
-      expect(getUserTracks(state as StateSchema)).toEqual([]);
+      expect(userTracksSelector(state as StateSchema)).toEqual([]);
    });
 });

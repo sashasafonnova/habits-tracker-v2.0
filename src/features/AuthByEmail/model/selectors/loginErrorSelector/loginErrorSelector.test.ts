@@ -1,19 +1,19 @@
 import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
-import { getLoginPassword } from './getLoginPassword';
 import { DeepPartial } from '@reduxjs/toolkit';
+import { loginErrorSelector } from './loginErrorSelector';
 
-describe('getLoginPassword', () => {
+describe('loginErrorSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
          login: {
-            password: '123123'
+            error: 'error',
          }
       };
-      expect(getLoginPassword(state as StateSchema)).toEqual('123123');
+      expect(loginErrorSelector(state as StateSchema)).toBe('error');
    });
 
    test('with empty state', () => {
       const state: DeepPartial<StateSchema> = {};
-      expect(getLoginPassword(state as StateSchema)).toEqual('');
+      expect(loginErrorSelector(state as StateSchema)).toEqual(undefined);
    });
 });

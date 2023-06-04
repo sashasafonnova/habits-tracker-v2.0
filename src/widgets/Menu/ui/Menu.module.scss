@@ -1,11 +1,8 @@
 .menu {
    position: fixed;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
+   inset: 0;
    z-index: var(--z-index-1);
-   background-color: rgba(var(--bg-color-rgb), 0.8);
+   background-color: rgb(var(--bg-color-rgb) 0.8);
    display: flex;
    justify-content: flex-end;
 }
@@ -53,7 +50,7 @@
 
 .logOut {
    position: absolute;
-   bottom: 0px;
+   bottom: 0;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -61,7 +58,7 @@
 }
 
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
    .content {
       flex: 1 1 300px;
    }

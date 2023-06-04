@@ -1,12 +1,17 @@
 .appButton {
-   display: inline-block;
    border-radius: var(--border-radius-elems);
    font-size: inherit;
    background: transparent;
+   display: flex;
+   align-items: center;
 }
 
-.clear {
+.clearText {
    color: var(--text-color);
+}
+
+.clearTitle {
+   color: var(--title-color);
 }
 
 .clearWhite {
@@ -25,7 +30,7 @@
    &::after {
       content: "";
       position: absolute;
-      left: 0px;
+      left: 0;
       bottom: -2px;
       background-color: var(--text-color);
       width: 100%;

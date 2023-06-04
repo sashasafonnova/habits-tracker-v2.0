@@ -5,25 +5,6 @@
    font-size: var(--font-size-s);
 }
 
-.content {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-}
-
-.btn {
-   background: transparent;
-   font-size: inherit;
-}
-
-
-@media (width <= 480px) {
-   .content {
-         flex-direction: column-reverse;
-         align-items: flex-start;
-      }
-
-   .btn {
-      margin-bottom: 10px;
-   }
+.copyRight {
+   margin-bottom: 10px;
 }

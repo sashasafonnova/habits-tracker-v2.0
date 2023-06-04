@@ -8,3 +8,19 @@
    align-items: center;
    justify-content: space-between;
 }
+
+.btnIcon {
+   margin-right: 10px;
+   width: auto;
+   height: 20px;
+}
+
+.btnText {
+   @media(width <= 480px){
+      display: none;
+   }
+}
+
+[data-rect] {
+   fill: var(--title-color);
+}
