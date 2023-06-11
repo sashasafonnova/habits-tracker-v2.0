@@ -10,9 +10,9 @@ interface StoreProviderProps {
 }
 
 export const StoreProvider: React.FC<StoreProviderProps> = (props: StoreProviderProps) => {
-   const { children } = props;
+   const { children, initialState } = props;
 
-   const store = createReduxStore();
+   const store = createReduxStore(initialState);
 
    return (
       <Provider store={store}>

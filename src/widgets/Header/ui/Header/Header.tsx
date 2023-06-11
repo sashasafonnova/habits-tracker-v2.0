@@ -1,6 +1,7 @@
 import styles from './Header.module.scss';
 import LogoLight from '../../assets/icons/logo-light.svg';
 import LogoDark from '../../assets/icons/logo-dark.svg';
+import UserIcon from '../../assets/icons/user-icon.svg';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
@@ -8,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { authDataSelector } from 'entities/User';
 import { useCallback, useState } from 'react';
 import { Menu } from 'widgets/Menu';
-import UserIcon from '../../assets/icons/user-icon.svg';
+
 
 
 export const Header = () => {

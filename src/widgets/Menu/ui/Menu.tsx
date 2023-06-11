@@ -26,10 +26,10 @@ export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
    };
 
    return (
-      <div className={styles.menu} onClick={closeMenu}>
+      <section className={styles.menu} onClick={closeMenu}>
          <div className={styles.content} onClick={(e) => e.stopPropagation()}>
             <button className={styles.close} onClick={closeMenu}>X</button>
-            <AppLink to={RoutePath.account} className={styles.data}>
+            <AppLink to={RoutePath.account} className={styles.data} onClick={closeMenu}>
                <p className={styles.name}>{authData.firstName}</p>
                <p className={styles.email}>{authData.email}</p>
             </AppLink>
@@ -39,7 +39,7 @@ export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
                      <AppLink to={'./create'} variant={AppLinkVariant.WHITE} onClick={closeMenu}>Создать привычку</AppLink>
                   </li>
                   <li className={styles.action}>
-                     <AppLink to={RoutePath.account} variant={AppLinkVariant.WHITE} onClick={closeMenu}>Мои треки</AppLink>
+                     <AppLink to={RoutePath.tracks} variant={AppLinkVariant.WHITE} onClick={closeMenu}>Мои треки</AppLink>
                   </li>
                </ul>
                <div className={styles.logOut}>
@@ -47,6 +47,6 @@ export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
                </div>
             </nav>
          </div>   
-      </div>
+      </section>
    );
 };

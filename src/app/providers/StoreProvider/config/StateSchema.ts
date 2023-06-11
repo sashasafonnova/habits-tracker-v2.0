@@ -2,14 +2,16 @@ import { AxiosInstance } from 'axios';
 import { UserSchema } from 'entities/User';
 import { UserTrackSchema } from 'entities/UserTrack';
 import { LoginSchema } from 'features/AuthByEmail';
-import { TrackListSchema } from 'widgets/TrackList';
+import { TrackProfileSchema } from 'entities/TrackProfile';
+import { RemoveTrackSchema } from 'features/RemoveTrack';
 
 
 export interface StateSchema {
-   login: LoginSchema,
+   login?: LoginSchema,
    user: UserSchema,
-   userTrack: UserTrackSchema,
-   fetchTracks: TrackListSchema
+   userTrack?: UserTrackSchema,
+   trackProfile?: TrackProfileSchema,
+   removeTrack?: RemoveTrackSchema
 }
 
 export interface ThunkExtraArg {

@@ -1,15 +1,16 @@
-import { TrackList } from 'widgets/TrackList';
-import styles from './AccountPage.module.scss';
-import { AppTitle, AppTitleColor, AppTitleVariant } from 'shared/ui/AppTitle/AppTitle';
+import { AppTitle, AppTitleVariant } from 'shared/ui/AppTitle/AppTitle';
+import { useSelector } from 'react-redux';
+import { authDataSelector } from 'entities/User';
 
 
 const AccountPage: React.FC = () => {
 
+   const { firstName } = useSelector(authDataSelector);
+   
    return (
-      <div className={styles.page}>
+      <div className='page'>
          <div className='container'>
-            <AppTitle variant={AppTitleVariant.LARGE} color={AppTitleColor.PRIMARY} marginBottom={'40'}>Мои треки</AppTitle>
-            <TrackList />
+            <AppTitle variant={AppTitleVariant.STANDART}>{`Привет, ${firstName}`}</AppTitle>
          </div>
       </div>
    );

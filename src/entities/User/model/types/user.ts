@@ -5,7 +5,6 @@ export interface User {
    token: string;
 }
 
-
 export interface UserSchema {
    authData?: User;
 }

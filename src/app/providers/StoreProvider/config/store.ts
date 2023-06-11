@@ -1,11 +1,12 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 import { ThunkExtraArg, StateSchema } from './StateSchema';
+import { $api } from 'shared/api/api';
 import { loginReducer } from 'features/AuthByEmail';
 import { userReducer } from 'entities/User';
 import { userTrackReducer } from 'entities/UserTrack';
-import { $api } from 'shared/api/api';
-import { trackListReducer } from 'widgets/TrackList';
+import { trackProfileReducer } from 'entities/TrackProfile';
+import { removeTrackReducer } from 'features/RemoveTrack';
 
 
 export const createReduxStore = (initialState?: StateSchema) => {
@@ -19,9 +20,10 @@ export const createReduxStore = (initialState?: StateSchema) => {
          login: loginReducer,
          user: userReducer,
          userTrack: userTrackReducer,
-         fetchTracks: trackListReducer
+         trackProfile: trackProfileReducer,
+         removeTrack: removeTrackReducer,
       },
-      devTools: true,
+      devTools: __IS_DEV__,
       preloadedState: initialState,
       middleware: (getDefaultMiddleware) => getDefaultMiddleware({
          thunk: {

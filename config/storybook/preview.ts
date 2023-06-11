@@ -2,6 +2,7 @@ import type { Preview } from '@storybook/react';
 import { StyleDecorator } from '../../src/shared/config/storybook/decorators/StyleDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/decorators/RouterDecorator';
 import { ThemeDecorator } from '../../src/shared/config/storybook/decorators/ThemeDecorator';
+
 import { Theme } from '../../src/app/providers/ThemeProvider';
 
 

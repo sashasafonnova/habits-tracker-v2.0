@@ -1,0 +1,12 @@
+.removeForm {
+   background-color: var(--bg-color);
+   box-shadow: rgb(var(--elem-shadow-color)) var(--elem-shadow-blur);
+   padding: 20px;
+}
+
+.btns {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 160px;
+}

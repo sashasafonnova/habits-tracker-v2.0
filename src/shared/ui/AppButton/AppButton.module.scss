@@ -18,6 +18,10 @@
    color: var(--white-color);
 }
 
+.clearRed {
+   color: red;
+}
+
 .background {
    background: var(--dark-primary-color);
    padding: var(--font-size-m) calc(var(--font-size-m) * 2);

@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import webpack, { DefinePlugin } from 'webpack';
 import { BuildOptions } from './types/config';
 import { buildDevServer } from './buildDevServer';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
@@ -9,7 +9,7 @@ import DotenvWebpack from 'dotenv-webpack';
 
 export function buildWebpackConfig (options: BuildOptions): webpack.Configuration {
 
-   const {paths, mode, isDev} = options;
+   const {paths, mode, isDev, project} = options;
 
    return {
       mode,
@@ -18,6 +18,7 @@ export function buildWebpackConfig (options: BuildOptions): webpack.Configuratio
          filename: '[name].[contenthash].js',
          path: paths.build,
          clean: true,
+         publicPath: '/',
       },
       devtool: isDev ? 'inline-source-map': undefined,
       module: {
@@ -30,8 +31,11 @@ export function buildWebpackConfig (options: BuildOptions): webpack.Configuratio
          new webpack.ProgressPlugin(),
          new MiniCssExtractPlugin(),
          new DotenvWebpack(),
-         new webpack.HotModuleReplacementPlugin()
-
+         new webpack.HotModuleReplacementPlugin(),
+         new DefinePlugin({
+            __IS_DEV__: JSON.stringify(isDev),
+            __PROJECT__: JSON.stringify(project),
+         })
       ],
       resolve: {
          extensions: ['.tsx', '.ts', '.js'],

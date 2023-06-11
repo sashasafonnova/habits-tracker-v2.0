@@ -40,7 +40,6 @@ export const UnderlineDarkTheme: Story = {
    decorators: [ThemeDecorator(Theme.DARK)]
 };
 
-
 export const White: Story = {
    render: () => <AppLink variant={AppLinkVariant.WHITE} to='/'>Ссылка</AppLink>,
 };

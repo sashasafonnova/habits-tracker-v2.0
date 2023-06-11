@@ -8,7 +8,7 @@ import { AppInput, AppInputVariant } from 'shared/ui/AppInput/AppInput';
 
 export const RegistrationForm: React.FC = () => {
    return (
-      <div>
+      <section>
          <div className="container">
             <h1 className={styles.title}>Регистрация</h1>
             <p className={styles.subtitle}>Введите e-mail и пароль</p>
@@ -39,6 +39,6 @@ export const RegistrationForm: React.FC = () => {
                <AppLink to={RoutePath.login} variant={AppLinkVariant.UNDERLINE}>Войти</AppLink>
             </div>
          </div>
-      </div>
+      </section>
    );
 };

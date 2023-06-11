@@ -4,7 +4,7 @@ import styles from './RegistrationPage.module.scss';
 
 const RegistrationPage: React.FC = () => {
    return (
-      <div className={styles.page}>
+      <div className={`page ${styles.page}`}>
          <RegistrationForm/>
       </div>
    );

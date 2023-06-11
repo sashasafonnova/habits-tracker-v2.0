@@ -2,46 +2,41 @@ import styles from './TrackCard.module.scss';
 import { UserTrack } from '../../model/types/userTrack';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
-import { trackCategories } from 'shared/lists/trackCategories/trackCategories';
-import ProgressIcon from './assets/icons/progress-icon.svg';
 import { AppTitle, AppTitleVariant } from 'shared/ui/AppTitle/AppTitle';
+import { TrackProgress } from 'entities/TrackProgress';
+import { TrackCategory } from 'entities/TrackCategory';
+import { ProgressIndicator } from '../ProgressIndicator/ProgressIndicator';
+import { memo } from 'react';
 
 
 interface TrackCardProps {
    track: UserTrack;
+   short?: boolean
 }
 
 
-export const TrackCard: React.FC<TrackCardProps> = ({ track }: TrackCardProps) => {
+export const TrackCard: React.FC<TrackCardProps> = memo(function TrackCard(props: TrackCardProps){
 
-   const progressCalc = (length: number, progress: number) => {
-      const res = progress / length * 100;
-      return Math.round(res);
-   };
+   const { 
+      track,
+      short = false
+   } = props;
 
    return (
-      <div className={styles.item}>
-         {trackCategories.map(item => {
-            if (item.name === track.category) {
-               return (
-                  <div className={styles.category} key={item.name}>
-                     {<item.icon className={styles.categoryIcon} />}
-                     <span className={styles.categoryName}>{item.name}</span>
-                  </div>
-               );
-            }
-         })}
-         <AppLink to={`/habits/${track._id}`} variant={AppLinkVariant.CLEAR}>
+      <div className={styles.info}>
+         <TrackCategory category={track.category} />
+         {!short ? <AppTitle variant={AppTitleVariant.BIG} marginBottom={'20'}>
+            {track.title}
+         </AppTitle> : <AppLink to={`/tracks/${track._id}`} variant={AppLinkVariant.CLEAR}>
             <AppTitle variant={AppTitleVariant.BIG} marginBottom={'20'}>
                {track.title}
-            </AppTitle>  
-         </AppLink>
-         <div className={styles.progress}>
-            <ProgressIcon className={styles.progressIcon} />
-            <span className={styles.progressText}>{`Прогресс: ${track.progress} из ${track.habitLength} (${progressCalc(track.habitLength, track.progress)}%)`}</span>
-         </div>
-         <p className={styles.lastCheck}><span>Последняя отметка:</span><br />{track.lastUpdated}</p>
-         <AppButton variant={AppButtonVariant.BACKGROUND}>Сделать отметку</AppButton>
-      </div>
+            </AppTitle>
+         </AppLink>}
+         <p className={styles.start}><span>Начато: </span>{track.dateCreated}</p>
+         <TrackProgress progress={track.progress} trackLength={track.habitLength} />
+         {!short && <ProgressIndicator progress={track.progress} trackLength={track.habitLength} />}
+         <AppButton variant={AppButtonVariant.BACKGROUND} marginBottom={short ? '' : '40'}>Сделать отметку</AppButton>
+         {!short &&<p className={styles.lastCheck}><span>Последняя отметка:</span><br />{track.lastUpdated}</p>}
+      </div>  
    );
-};
+});

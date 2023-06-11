@@ -11,7 +11,8 @@ export enum AppTitleVariant {
 
 export enum AppTitleColor {
   MAIN = 'main',
-  PRIMARY = 'primary'
+  PRIMARY = 'primary',
+  WHITE = 'white'
 }
 
 interface AppTitleProps {

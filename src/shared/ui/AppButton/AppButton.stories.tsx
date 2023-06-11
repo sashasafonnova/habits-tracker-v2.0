@@ -41,6 +41,15 @@ export const ClearWhiteDarkTheme: Story = {
    decorators: [ThemeDecorator(Theme.DARK)]
 };
 
+export const ClearRed: Story = {
+   render: () => <AppButton variant={AppButtonVariant.CLEAR_RED}>Test</AppButton>,
+};
+
+export const ClearRedDarkTheme: Story = {
+   render: () => <AppButton variant={AppButtonVariant.CLEAR_RED}>Test</AppButton>,
+   decorators: [ThemeDecorator(Theme.DARK)]
+};
+
 export const Background: Story = {
    render: () => <AppButton variant={AppButtonVariant.BACKGROUND}>Test</AppButton>,
 };

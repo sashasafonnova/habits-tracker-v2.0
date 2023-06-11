@@ -3,9 +3,10 @@ import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
 
 import SwitcherImg from '../assets/themeSwitcher.svg';
 import { useTheme } from 'app/providers/ThemeProvider';
+import { memo } from 'react';
 
 
-export const ThemeSwitcher: React.FC = () => {
+export const ThemeSwitcher: React.FC = memo(function ThemeSwitcher() {
    const { toggleTheme } = useTheme();
 
    return (
@@ -21,4 +22,4 @@ export const ThemeSwitcher: React.FC = () => {
          </div>
       </AppButton>
    );
-};
+});

@@ -1,14 +1,14 @@
+import { AppTitle, AppTitleColor, AppTitleVariant } from 'shared/ui/AppTitle/AppTitle';
 import styles from './NotFoundPage.module.scss';
 
 
 export const NotFoundPage: React.FC = () => {
 
    return (
-      <div className={styles.page}>
+      <div className={`page ${styles.page}`}>
          <div className='container'>
-            <h1 className={styles.title}>Страница не найдена</h1>
+            <AppTitle variant={AppTitleVariant.LARGE} color={AppTitleColor.PRIMARY}>Страница не найдена</AppTitle>
          </div>
-         
       </div>
    );
 };

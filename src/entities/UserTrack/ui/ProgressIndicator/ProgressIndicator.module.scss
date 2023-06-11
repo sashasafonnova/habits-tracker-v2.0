@@ -1,0 +1,33 @@
+.indicator {
+   display: inline-grid;
+   grid-template-columns: repeat(10, 1fr);
+   gap: 5px;
+   margin-bottom: 40px;
+}
+
+.iconDone {
+   fill: var(--primary-color);
+   stroke: var(--primary-color);
+   width: var(--progress-indicator-width);
+   height: var(--progress-indicator-height);
+}
+
+.icon {
+   fill: var(--bg-color);
+   stroke: var(--primary-color);
+   width: var(--progress-indicator-width);
+   height: var(--progress-indicator-height);
+}
+
+
+@media (max-width: 360px) {
+   .indicator {
+      grid-template-columns: repeat(8, 1fr);
+   }
+}
+
+@media (max-width: 320px) {
+   .indicator {
+      grid-template-columns: repeat(6, 1fr);
+   }
+}

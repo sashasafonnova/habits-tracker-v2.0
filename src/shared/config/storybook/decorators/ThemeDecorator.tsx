@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import { Decorator } from '@storybook/react';
 import { Theme, ThemeProvider } from 'app/providers/ThemeProvider';
 

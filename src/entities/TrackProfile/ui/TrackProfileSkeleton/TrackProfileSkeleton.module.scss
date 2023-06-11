@@ -1,0 +1,134 @@
+.info {
+   padding: 40px;
+   box-shadow: rgba(var(--elem-shadow-color)) 2px 4px 14px -4px;
+}
+
+.category {
+   display: flex;
+   align-items: center;
+   margin-bottom: 30px;
+}
+
+.categoryIcon {
+   width: var(--category-icon-weight);
+   height: var(--category-icon-height);
+   border-radius: 50%;
+   margin-right: 10px;
+}
+
+.categoryText {
+   border-radius: 2px;
+   width: 120px;
+   height: 16px;
+}
+
+.title {
+   width: 100%;
+   max-width: 400px;
+   height: 32px;
+   margin-bottom: 20px;
+   border-radius: 2px;
+}
+
+.start {
+   border-radius: 2px;
+   width: 200px;
+   height: 20px;
+   margin-bottom: 30px;
+}
+
+.progress {
+   border-radius: 2px;
+   width: 200px;
+   height: 24px;
+   margin-bottom: 20px;
+}
+
+.progressTrek {
+   display: inline-grid;
+   grid-template-columns: repeat(10, 1fr);
+   gap: 5px;
+   margin-bottom: 40px;
+}
+
+.progressIcon {
+   width: var(--progress-indicator-weight);
+   height: var(--progress-indicator-height);
+   border-radius: 50%;
+}
+
+.lastCheckTitle {
+   width: 180px;
+   height: 20px;
+   border-radius: 2px;
+   margin-bottom: 10px;
+}
+
+.lastCheck {
+   width: 100px;
+   height: 20px;
+   border-radius: 2px;
+}
+
+.btnCheck {
+   display: block;
+   width: 180px;
+   height: 50px;
+   border-radius: 2px;
+   margin-bottom: 40px;
+}
+
+.categoryIcon,
+.categoryText,
+.start,
+.progress,
+.progressIcon,
+.title,
+.lastCheckTitle,
+.lastCheck,
+.btnCheck {
+   opacity: .5;
+   animation: skeleton-loading 1s linear infinite alternate;
+}
+
+
+@media (max-width: 380px) {
+   .btns {
+      flex-direction: column;
+      align-items: flex-start;
+   }
+
+   .info {
+      padding: 40px 30px;
+   }
+}
+
+@media (max-width: 360px) {
+   .progressTrek {
+      grid-template-columns: repeat(8, 1fr);
+   }
+}
+
+@media (max-width: 320px) {
+   .info {
+      padding: 40px 20px;
+   }
+
+   .progressTrek {
+      grid-template-columns: repeat(6, 1fr);
+   }
+}
+
+
+
+
+
+@keyframes skeleton-loading {
+   0% {
+      background-color: hsl(200, 20%, 70%);
+   }
+
+   100% {
+      background-color: hsl(200, 20%, 95%);
+   }
+}

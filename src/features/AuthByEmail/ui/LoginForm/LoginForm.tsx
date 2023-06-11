@@ -1,23 +1,23 @@
-import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
 import styles from './LoginForm.module.scss';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { AppLinkVariant } from 'shared/ui/AppLink/AppLink';
-import { RoutePath } from 'app/providers/routerProvider/config/router';
-import { AppInput, AppInputVariant } from 'shared/ui/AppInput/AppInput';
-import { useSelector } from 'react-redux';
-import { loginEmailSelector } from '../../model/selectors/loginEmailSelector/loginEmailSelector';
-import { loginPasswordSelector } from '../../model/selectors/loginPasswordSelector/loginPasswordSelector';
-import { useCallback, useEffect } from 'react';
-import { loginActions } from '../../model/slice/loginSlice';
-import { loginByEmail } from '../../model/services/loginByEmail';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useNavigate } from 'react-router-dom';
-import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localStorage';
-import { authDataSelector } from 'entities/User';
-import { loginIsLoadingSelector } from '../../model/selectors/loginIsLoadingSelector/loginIsLoadingSelector';
+import { useSelector } from 'react-redux';
+import { useCallback, useEffect } from 'react';
+import { RoutePath } from 'app/providers/routerProvider/config/router';
 import { Modal } from 'shared/ui/Modal/Modal';
 import { Loader } from 'shared/ui/Loader/Loader';
+import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { AppLinkVariant } from 'shared/ui/AppLink/AppLink';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localStorage';
+import { AppInput, AppInputVariant } from 'shared/ui/AppInput/AppInput';
+import { loginEmailSelector } from '../../model/selectors/loginEmailSelector/loginEmailSelector';
+import { loginPasswordSelector } from '../../model/selectors/loginPasswordSelector/loginPasswordSelector';
 import { loginErrorSelector } from '../../model/selectors/loginErrorSelector/loginErrorSelector';
+import { loginIsLoadingSelector } from '../../model/selectors/loginIsLoadingSelector/loginIsLoadingSelector';
+import { loginActions } from '../../model/slice/loginSlice';
+import { loginByEmail } from '../../model/services/loginByEmail';
+import { authDataSelector } from 'entities/User';
 
 
 export const LoginForm: React.FC = () => {
@@ -56,7 +56,7 @@ export const LoginForm: React.FC = () => {
 
 
    return (
-      <div>
+      <section>
          <div className="container">
             <h1 className={styles.title}>Войти</h1>
             <p className={error ? styles.error : styles.subtitle}>{error ? error : 'Введите e-mail и пароль'}</p>
@@ -94,6 +94,6 @@ export const LoginForm: React.FC = () => {
             </div>         
          </div>
          {isLoading && <Modal><Loader/></Modal>}
-      </div>
+      </section>
    );
 };

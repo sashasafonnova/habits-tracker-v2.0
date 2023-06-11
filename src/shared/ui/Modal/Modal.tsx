@@ -23,13 +23,13 @@ export const Modal: React.FC<ModalProps> = (props: ModalProps) => {
 
    return (
       <Portal>
-         <div className={classMaker(styles.modal, additional)}>
+         <section className={classMaker(styles.modal, additional)}>
             <div className={styles.overlay}>
                <div className={styles.content}>
                   {children}
                </div>
             </div>
-         </div>
+         </section>
       </Portal>
    );
 };

@@ -3,8 +3,9 @@ import { Home } from 'widgets/Home';
 
 
 export const HomePage: React.FC = () => {
+
    return (
-      <div className={styles.page}>
+      <div className={`page ${styles.page}`}>
          <Home/>
       </div>
    );

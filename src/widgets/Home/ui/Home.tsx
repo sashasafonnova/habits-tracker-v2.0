@@ -5,7 +5,7 @@ import { RoutePath } from 'app/providers/routerProvider/config/router';
 
 export const Home: React.FC = () => {
    return (
-      <div>
+      <section>
          <div className='container'>
             <div className={styles.content}>
                <h1 className={styles.title}>HabitsTracker <span>- приложение <br />для отслеживания привычек</span></h1>
@@ -23,6 +23,6 @@ export const Home: React.FC = () => {
             </div>
          </div>
            
-      </div>
+      </section>
    );
 };

@@ -49,11 +49,29 @@ export const LargeDarkTheme: Story = {
    decorators: [ThemeDecorator(Theme.DARK)]
 };
 
+export const Main: Story = {
+   render: () => <AppTitle variant={AppTitleVariant.LARGE} color={AppTitleColor.MAIN}>Page Title</AppTitle>,
+};
+
+export const MainDarkTheme: Story = {
+   render: () => <AppTitle variant={AppTitleVariant.LARGE} color={AppTitleColor.MAIN}>Page Title</AppTitle>,
+   decorators: [ThemeDecorator(Theme.DARK)]
+};
+
 export const Primary: Story = {
    render: () => <AppTitle variant={AppTitleVariant.LARGE} color={AppTitleColor.PRIMARY}>Page Title</AppTitle>,
 };
 
 export const PrimaryDarkTheme: Story = {
    render: () => <AppTitle variant={AppTitleVariant.LARGE} color={AppTitleColor.PRIMARY}>Page Title</AppTitle>,
+   decorators: [ThemeDecorator(Theme.DARK)]
+};
+
+export const White: Story = {
+   render: () => <AppTitle variant={AppTitleVariant.LARGE} color={AppTitleColor.WHITE}>Page Title</AppTitle>,
+};
+
+export const WhiheDarkTheme: Story = {
+   render: () => <AppTitle variant={AppTitleVariant.LARGE} color={AppTitleColor.WHITE}>Page Title</AppTitle>,
    decorators: [ThemeDecorator(Theme.DARK)]
 };

@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { AppRoutes } from '../config/router';
 import { Suspense } from 'react';
-import { PageLoader } from 'widgets/PageLoader';
+import { FetchLoader } from 'shared/ui/FetchLoader/FetchLoader';
 
 export const AppRouter = () => {
    return (
@@ -11,7 +11,7 @@ export const AppRouter = () => {
                key={route.path}
                path={route.path}
                element={
-                  <Suspense fallback={<PageLoader/>}>
+                  <Suspense fallback={<FetchLoader loader={true}/>}>
                      {route.element}
                   </Suspense>
                }

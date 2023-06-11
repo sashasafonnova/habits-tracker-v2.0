@@ -8,8 +8,9 @@ export enum AppButtonVariant {
    CLEAR_TEXT = 'clearText',
    CLEAR_TITLE = 'clearTitle',
    CLEAR_WHITE = 'clearWhite',
+   CLEAR_RED = 'clearRed',
    BACKGROUND = 'background',
-   UNDERLINE = 'underline'
+   UNDERLINE = 'underline',
 }
 
 interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
