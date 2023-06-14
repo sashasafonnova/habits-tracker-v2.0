@@ -4,12 +4,16 @@ import { TrackList } from './TrackList';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
-import { UserTrack } from 'entities/UserTrack';
+import { UserTrack, userTrackReducer } from 'entities/UserTrack';
 
 
 const meta: Meta<typeof TrackList> = {
    title: 'entities/TrackList',
    component: TrackList,
+};
+
+const asyncReducers = {
+   userTrack: userTrackReducer
 };
 
 const trackData: UserTrack = {
@@ -34,7 +38,7 @@ export const IsLoading: Story = {
       userTrack: {
          isLoading: true
       }
-   })]
+   }, asyncReducers)]
 };
 
 export const IsLoadingDarkTheme: Story = {
@@ -43,7 +47,7 @@ export const IsLoadingDarkTheme: Story = {
       userTrack: {
          isLoading: true
       }
-   })]
+   }, asyncReducers)]
 };
 
 export const Error: Story = {
@@ -53,7 +57,7 @@ export const Error: Story = {
          isLoading: false,
          error: 'Не удалось получить треки'
       }
-   })]
+   }, asyncReducers)]
 };
 
 export const ErrorDarkTheme: Story = {
@@ -63,25 +67,25 @@ export const ErrorDarkTheme: Story = {
          isLoading: false,
          error: 'Не удалось получить треки'
       }
-   })]
+   }, asyncReducers)]
 };
 
 export const List: Story = {
    render: () => <TrackList />,
    decorators: [StoreDecorator({
       userTrack: {
-         userTrackData: [trackData],
+         userTrackData: [trackData, trackData, trackData],
          isLoading: false
       }
-   })]
+   }, asyncReducers)]
 };
 
 export const ListDarkTheme: Story = {
    render: () => <TrackList />,
    decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
       userTrack: {
-         userTrackData: [trackData],
+         userTrackData: [trackData, trackData, trackData],
          isLoading: false
       }
-   })]
+   }, asyncReducers)]
 };

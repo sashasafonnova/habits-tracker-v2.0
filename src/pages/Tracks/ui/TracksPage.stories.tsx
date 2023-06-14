@@ -4,11 +4,16 @@ import TracksPage from './TracksPage';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
+import { userTrackReducer } from 'entities/UserTrack';
 
 
 const meta: Meta<typeof TracksPage> = {
    title: 'pages/TracksPage',
    component: TracksPage,
+};
+
+const asyncReducers = {
+   userTrack: userTrackReducer
 };
 
 const trackData = {
@@ -35,7 +40,7 @@ export const Main: Story = {
       userTrack: {
          userTrackData: [trackData, trackData],
       }
-   })],
+   }, asyncReducers)],
 };
 
 export const DarkTheme: Story = {
@@ -44,5 +49,5 @@ export const DarkTheme: Story = {
       userTrack: {
          userTrackData: [trackData, trackData],
       }
-   })]
+   }, asyncReducers)]
 };

@@ -6,6 +6,7 @@ import { NotFoundPage } from 'pages/NotFound';
 import { RegistrationPage } from 'pages/Registration';
 import { TrackPage } from 'pages/Track';
 import { TracksPage } from 'pages/Tracks';
+import { RouteProps } from 'react-router-dom';
 
 
 export enum RouteName {
@@ -19,7 +20,7 @@ export enum RouteName {
 }
 
 
-export const RoutePath = {
+export const RoutePath: Record<RouteName, string> = {
    [RouteName.MAIN]: '/',
    [RouteName.LOGIN]: '/login',
    [RouteName.REGISTRATION]: '/registration',
@@ -29,34 +30,44 @@ export const RoutePath = {
    [RouteName.NOT_FOUND]: '*'
 };
 
+export type AppRoutesProps = RouteProps & {
+   visible: 'public' | 'private';
+}
 
-export const AppRoutes = {
+export const AppRoutes: Record<RouteName, AppRoutesProps> = {
    [RouteName.MAIN]: {
       path: RoutePath.main,
+      visible: 'public',
       element: <HomePage />,
    },
    [RouteName.LOGIN]: {
       path: RoutePath.login,
+      visible: 'public',
       element: <LoginPage/>,
    },
    [RouteName.REGISTRATION]: {
       path: RoutePath.registration,
+      visible: 'public',
       element: <RegistrationPage />,
    },
    [RouteName.ACCOUNT]: {
       path: RoutePath.account,
+      visible: 'private',
       element: <AccountPage />,
    },
    [RouteName.TRACKS]: {
       path: RoutePath.tracks,
+      visible: 'private',
       element: <TracksPage />,
    },
    [RouteName.TRACK]: {
       path: RoutePath.track,
+      visible: 'private',
       element: <TrackPage/>,
    },
    [RouteName.NOT_FOUND]: {
       path: RoutePath.not_found,
+      visible: 'private',
       element: <NotFoundPage />,
    },
 };

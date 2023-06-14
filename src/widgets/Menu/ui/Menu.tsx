@@ -1,11 +1,11 @@
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import styles from './Menu.module.scss';
-import { useSelector } from 'react-redux';
-import { authDataSelector, userActions } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localStorage';
 import { RoutePath } from 'app/providers/routerProvider/config/router';
 import { userTrackActions } from 'entities/UserTrack';
+import { useAuth } from 'shared/lib/hooks/useAuth';
+import { userActions } from 'entities/User';
 
 
 interface MenuProps {
@@ -15,12 +15,12 @@ interface MenuProps {
 export const Menu: React.FC<MenuProps> = (props: MenuProps) => {
    const { closeMenu } = props;
 
-   const authData = useSelector(authDataSelector);
+   const { authData } = useAuth();
    const dispatch = useAppDispatch();
 
    const onClickLogOut = () => {
       dispatch(userActions.logOut());
-      dispatch(userTrackActions.clearAuthData());
+      dispatch(userTrackActions.clearUserTrackData());
       localStorage.removeItem(USER_LOCALSTORAGE_KEY);
       closeMenu();
    };

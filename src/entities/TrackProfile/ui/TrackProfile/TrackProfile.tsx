@@ -1,5 +1,4 @@
-import { memo, useEffect } from 'react'; 
-// import styles from './TrackProfileCard.module.scss';
+import { useEffect } from 'react'; 
 import { useParams } from 'react-router-dom';
 import { fetchTrackProfile } from '../../model/services/fetchTrackProfile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -10,16 +9,21 @@ import { profileIsLoadingSelector } from '../../model/selectors/profileIsLoading
 import { profileErrorSelector } from '../../model/selectors/profileErrorSelector';
 import { TrackCard } from 'entities/UserTrack';
 import { FetchLoader } from 'shared/ui/FetchLoader/FetchLoader';
+import { trackProfileReducer } from '../../model/slice/trackProfileSlice';
+import { useStateCreator } from 'shared/lib/hooks/useStateCreator';
+import { profileExistStatusSelector } from '../../model/selectors/profileExistStatusSelector';
 
 
+export const TrackProfile: React.FC = () => {
 
-export const TrackProfile: React.FC = memo(function TrackProfileCard() {
+   useStateCreator({ trackProfile: trackProfileReducer }, true);
 
    const dispatch = useAppDispatch();
    const { id } = useParams();
-   const track = useSelector(profileDataSelector);
+   const profileData = useSelector(profileDataSelector);
    const isLoading = useSelector(profileIsLoadingSelector);
    const error = useSelector(profileErrorSelector);
+   const existStatus = useSelector(profileExistStatusSelector);
 
 
    useEffect(() => {
@@ -37,7 +41,11 @@ export const TrackProfile: React.FC = memo(function TrackProfileCard() {
       return <FetchLoader title={error} action={'Вернуться к списку'} link={'/tracks'} />;
    }
 
+   if (existStatus === 'deleted') {
+      return <FetchLoader title={'Трек успешно удален'} action={'Вернуться к списку'} link={'/tracks'} />;
+   }
+
    return (
-      <TrackCard track={track}/>
+      <TrackCard track={profileData}/>
    );
-});
+};

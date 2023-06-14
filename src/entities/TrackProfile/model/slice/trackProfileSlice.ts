@@ -5,7 +5,8 @@ import { fetchTrackProfile } from '../services/fetchTrackProfile';
 
 
 const initialState: TrackProfileSchema = {
-   isLoading: false
+   isLoading: false,
+   existStatus: 'exist'
 };
 
 export const trackProfileSlice = createSlice({
@@ -17,6 +18,12 @@ export const trackProfileSlice = createSlice({
       },
       clearProfileData: (state) => {
          state.profileData = undefined;
+      },
+      changeExistStatus: (state, action) => {
+         if (action.payload === 'deleted') {
+            state.profileData = undefined;
+            state.existStatus = action.payload;
+         }
       },
    },
    

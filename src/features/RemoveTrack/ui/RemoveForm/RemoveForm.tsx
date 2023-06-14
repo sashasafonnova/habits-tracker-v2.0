@@ -4,17 +4,19 @@ import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { fetchRemoveTrack } from '../../model/services/fetchRemoveTrack';
 import { memo } from 'react';
+import { useParams } from 'react-router-dom';
+
 
 interface RemoveFormProps {
-   id: string;
    onClose: () => void
 }
 
 export const RemoveForm: React.FC<RemoveFormProps> = memo(function RemoveForm(props: RemoveFormProps){
 
-   const { id, onClose } = props;
+   const { onClose } = props;
 
    const dispatch = useAppDispatch();
+   const { id } = useParams();
    
    const onCLickRemove = () => {
       dispatch(fetchRemoveTrack({trackId: id}));
@@ -26,7 +28,7 @@ export const RemoveForm: React.FC<RemoveFormProps> = memo(function RemoveForm(pr
 
    return (
       <div className={styles.removeForm}>
-         <AppTitle variant={AppTitleVariant.BIG} color={AppTitleColor.PRIMARY} marginBottom={'20'}>Вы действительно хотите удалить трек?</AppTitle>         
+         <AppTitle variant={AppTitleVariant.BIG} color={AppTitleColor.MAIN} marginBottom={'20'}>Вы действительно хотите удалить трек?</AppTitle>         
          <div className={styles.btns}>
             <AppButton variant={AppButtonVariant.CLEAR_RED} onClick={onCLickRemove}>Удалить</AppButton>
             <AppButton variant={AppButtonVariant.CLEAR_TEXT} onClick={onClickCancel}>Отменить</AppButton>

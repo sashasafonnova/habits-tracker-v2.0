@@ -22,7 +22,7 @@ const App = () => {
 
       if (authData){
          dispatch(userActions.setAuthData(authData));
-         navigate(location.pathname);
+         navigate(location);
       }
    }, []);
 

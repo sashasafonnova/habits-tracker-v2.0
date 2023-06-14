@@ -13,7 +13,7 @@ export const fetchUserTracks = createAsyncThunk<UserTrack, undefined, ThunkConfi
             throw new Error();
          }
 
-         thunkAPI.dispatch(userTrackActions.setAuthData(response.data));
+         thunkAPI.dispatch(userTrackActions.setUserTrackData(response.data));
 
          return response.data;
       } catch (e) {

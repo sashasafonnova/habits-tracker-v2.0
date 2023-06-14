@@ -1,24 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { RemoveSwitcher } from './RemoveSwitcher';
+import { RemoveErrorFetch } from './RemoveErrorFetch';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 
 
-const meta: Meta<typeof RemoveSwitcher> = {
-   title: 'features/RemoveTrack/RemoveSwitcher',
-   component: RemoveSwitcher,
+const meta: Meta<typeof RemoveErrorFetch> = {
+   title: 'features/RemoveTrack/RemoveErrorFetch',
+   component: RemoveErrorFetch,
 };
 
 
 export default meta;
-type Story = StoryObj<typeof RemoveSwitcher>;
+type Story = StoryObj<typeof RemoveErrorFetch>;
 
 
 export const Main: Story = {
-   render: () => <RemoveSwitcher/>
+   render: () => <RemoveErrorFetch />
 };
 
 export const DarkTheme: Story = {
-   render: () => <RemoveSwitcher/>,
+   render: () => <RemoveErrorFetch />,
    decorators: [ThemeDecorator(Theme.DARK)]
 };

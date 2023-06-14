@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
+import { trackProfileActions } from 'entities/TrackProfile';
 
 interface fetchTrackProfileProps {
    trackId: string
@@ -16,6 +17,8 @@ export const fetchRemoveTrack = createAsyncThunk<null, fetchTrackProfileProps, T
          if (!response.data) {
             throw new Error();
          }
+
+         thunkAPI.dispatch(trackProfileActions.changeExistStatus('deleted'));
 
          return response.data;
       } catch (e) {

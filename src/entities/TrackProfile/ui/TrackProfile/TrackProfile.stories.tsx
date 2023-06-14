@@ -3,13 +3,17 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { TrackProfile } from './TrackProfile';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
+import { trackProfileReducer } from '../../model/slice/trackProfileSlice';
 
 
 const meta: Meta<typeof TrackProfile> = {
    title: 'entities/TrackProfile',
    component: TrackProfile,
+};
+
+const asyncReducers = {
+   trackProfile: trackProfileReducer
 };
 
 
@@ -36,7 +40,7 @@ export const IsLoading: Story = {
       trackProfile: {
          isLoading: true
       }
-   })]
+   }, asyncReducers)]
 };
 
 export const IsLoadingDarkTheme: Story = {
@@ -45,7 +49,7 @@ export const IsLoadingDarkTheme: Story = {
       trackProfile: {
          isLoading: true,
       }
-   })]
+   }, asyncReducers)]
 };
 
 export const Error: Story = {
@@ -55,7 +59,7 @@ export const Error: Story = {
          isLoading: false,
          error: 'Не удалось получить данные'
       }
-   })]
+   }, asyncReducers)]
 };
 
 export const ErrorDarkTheme: Story = {
@@ -65,7 +69,7 @@ export const ErrorDarkTheme: Story = {
          isLoading: false,
          error: 'Не удалось получить данные'
       }
-   })]
+   }, asyncReducers)]
 };
 
 export const ProfileCard: Story = {
@@ -74,7 +78,7 @@ export const ProfileCard: Story = {
       trackProfile: {
          profileData
       }
-   })]
+   }, asyncReducers)]
 };
 
 export const ProfileCardDarkTheme: Story = {
@@ -83,5 +87,23 @@ export const ProfileCardDarkTheme: Story = {
       trackProfile: {
          profileData
       }
-   })]
+   }, asyncReducers)]
+};
+
+export const Deleted: Story = {
+   render: () => <TrackProfile />,
+   decorators: [StoreDecorator({
+      trackProfile: {
+         existStatus: 'deleted'
+      }
+   }, asyncReducers)]
+};
+
+export const DeletedDarkTheme: Story = {
+   render: () => <TrackProfile />,
+   decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
+      trackProfile: {
+         existStatus: 'deleted'
+      }
+   }, asyncReducers)]
 };

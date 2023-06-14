@@ -1,6 +1,6 @@
 import styles from './LoginForm.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useStore } from 'react-redux';
 import { useCallback, useEffect } from 'react';
 import { RoutePath } from 'app/providers/routerProvider/config/router';
 import { Modal } from 'shared/ui/Modal/Modal';
@@ -15,13 +15,16 @@ import { loginEmailSelector } from '../../model/selectors/loginEmailSelector/log
 import { loginPasswordSelector } from '../../model/selectors/loginPasswordSelector/loginPasswordSelector';
 import { loginErrorSelector } from '../../model/selectors/loginErrorSelector/loginErrorSelector';
 import { loginIsLoadingSelector } from '../../model/selectors/loginIsLoadingSelector/loginIsLoadingSelector';
-import { loginActions } from '../../model/slice/loginSlice';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByEmail } from '../../model/services/loginByEmail';
 import { authDataSelector } from 'entities/User';
+import { useStateCreator } from 'shared/lib/hooks/useStateCreator';
 
 
 export const LoginForm: React.FC = () => {
 
+   useStateCreator({ login: loginReducer }, true);
+   
    const dispatch = useAppDispatch();
    const authData = useSelector(authDataSelector);
    const isLoading = useSelector(loginIsLoadingSelector);
@@ -29,7 +32,6 @@ export const LoginForm: React.FC = () => {
    const email = useSelector(loginEmailSelector);
    const password = useSelector(loginPasswordSelector);
    const navigate = useNavigate();
-
 
    const onChangeEmail = useCallback((value:string) => {
       dispatch(loginActions.setEmail(value));
@@ -53,7 +55,7 @@ export const LoginForm: React.FC = () => {
          return navigate('/account');
       }
    }, [authData]);
-
+   
 
    return (
       <section>
@@ -85,15 +87,15 @@ export const LoginForm: React.FC = () => {
                   variant={AppButtonVariant.BACKGROUND}
                   marginBottom={'30'}
                   onClick={onCLickLogin}>
-                  Войти
+                     Войти
                </AppButton>
             </form>
             <div className={styles.account}>
                <span className={styles.text}>Нет аккаунта?</span>
                <AppLink to={RoutePath.registration} variant={AppLinkVariant.UNDERLINE}>Создать</AppLink>
-            </div>         
+            </div>
          </div>
-         {isLoading && <Modal><Loader/></Modal>}
-      </section>
+         {isLoading && <Modal><Loader /></Modal>}
+      </section>      
    );
 };

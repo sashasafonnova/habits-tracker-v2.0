@@ -12,11 +12,11 @@ export const userTrackSlice = createSlice({
    initialState,
    reducers: {
 
-      setAuthData: (state, action: PayloadAction<UserTrack[]>) => {
+      setUserTrackData: (state, action: PayloadAction<UserTrack[]>) => {
          state.userTrackData = [...action.payload];
       },
 
-      clearAuthData: (state) => {
+      clearUserTrackData: (state) => {
          state.userTrackData = undefined;
       },
    },

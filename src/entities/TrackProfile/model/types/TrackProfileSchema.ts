@@ -1,7 +1,8 @@
 import { UserTrack } from 'entities/UserTrack';
 
 export interface TrackProfileSchema {
-   profileData?: UserTrack
+   profileData?: UserTrack,
+   existStatus: 'exist' | 'deleted',
    isLoading: boolean,
    error?: string
 }

@@ -3,12 +3,16 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { TrackSettings } from './TrackSettings';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
-import { RemoveTrackStatuses } from 'features/RemoveTrack/model/types/RemoveTrackSchema';
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
+import { trackProfileReducer } from 'entities/TrackProfile';
 
 const meta: Meta<typeof TrackSettings> = {
    title: 'widgets/TrackSettings',
    component: TrackSettings,
+};
+
+const asyncReducers = {
+   trackProfile: trackProfileReducer
 };
 
 const profileData = {
@@ -27,69 +31,13 @@ export default meta;
 type Story = StoryObj<typeof TrackSettings>;
 
 
-export const IsDeleting: Story = {
-   render: () => <TrackSettings />,
-   decorators: [StoreDecorator({
-      removeTrack: {
-         removeStatus: RemoveTrackStatuses.IS_DELETING
-      },
-   })]
-};
-
-export const IsDeletingDarkTheme: Story = {
-   render: () => <TrackSettings />,
-   decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
-      removeTrack: {
-         removeStatus: RemoveTrackStatuses.IS_DELETING
-      },
-   })]
-};
-
-export const Deleted: Story = {
-   render: () => <TrackSettings />,
-   decorators: [StoreDecorator({
-      removeTrack: {
-         removeStatus: RemoveTrackStatuses.DELETED
-      },
-   })]
-};
-
-export const DeletedDarkTheme: Story = {
-   render: () => <TrackSettings />,
-   decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
-      removeTrack: {
-         removeStatus: RemoveTrackStatuses.DELETED
-      },
-   })]
-};
-
-
-export const Error: Story = {
-   render: () => <TrackSettings />,
-   decorators: [StoreDecorator({
-      removeTrack: {
-         removeStatus: RemoveTrackStatuses.ERROR
-      },
-   })]
-};
-
-export const ErrorDarkTheme: Story = {
-   render: () => <TrackSettings />,
-   decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
-      removeTrack: {
-         removeStatus: RemoveTrackStatuses.ERROR
-      },
-   })]
-};
-
-
 export const Main: Story = {
    render: () => <TrackSettings />,
    decorators: [StoreDecorator({
       trackProfile: {
          profileData
       },
-   })]
+   }, asyncReducers)]
 };
 
 export const MainDarkTheme: Story = {
@@ -98,5 +46,5 @@ export const MainDarkTheme: Story = {
       trackProfile: {
          profileData
       },
-   })]
+   }, asyncReducers)]
 };

@@ -3,7 +3,6 @@ import { RemoveTrackSchema, RemoveTrackStatuses } from '../types/RemoveTrackSche
 import { fetchRemoveTrack } from '../services/fetchRemoveTrack';
 
 
-
 const initialState: RemoveTrackSchema = {
    removeStatus: RemoveTrackStatuses.NOT_ACTIVE,
 };
@@ -11,13 +10,7 @@ const initialState: RemoveTrackSchema = {
 export const removeTrackSlice = createSlice({
    name: 'removeTrack',
    initialState,
-   reducers: {
-
-      clearRemoveStatus: (state) => {
-         state.removeStatus = RemoveTrackStatuses.NOT_ACTIVE;
-         delete state.error;
-      }
-   },
+   reducers: {},
 
    extraReducers: (builder) => {
       builder

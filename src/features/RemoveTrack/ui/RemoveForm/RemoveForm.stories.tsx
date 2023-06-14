@@ -6,23 +6,25 @@ import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorato
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
 import { RemoveTrackStatuses } from '../../model/types/RemoveTrackSchema';
 
+
 const meta: Meta<typeof RemoveForm> = {
-   title: 'features/RemoveForm',
+   title: 'features/RemoveTrack/RemoveForm',
    component: RemoveForm,
 };
 
 const removeTrackState = {removeTrack: {removeStatus: RemoveTrackStatuses.NOT_ACTIVE}};
+
 
 export default meta;
 type Story = StoryObj<typeof RemoveForm>;
 
 
 export const Main: Story = {
-   render: () => <RemoveForm id={'111'} onClose={() => {''}}/>,
+   render: () => <RemoveForm onClose={() => {''}}/>,
    decorators: [StoreDecorator(removeTrackState)]
 };
 
 export const DarkTheme: Story = {
-   render: () => <RemoveForm id={'111'} onClose={() => {''}} />,
+   render: () => <RemoveForm onClose={() => {''}} />,
    decorators: [ThemeDecorator(Theme.DARK), StoreDecorator(removeTrackState)]
 };
