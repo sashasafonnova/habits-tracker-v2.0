@@ -16,6 +16,7 @@ export enum AppTitleColor {
 }
 
 interface AppTitleProps {
+   className?: string;
    variant?: string;
    color?: AppTitleColor;
    children: string;
@@ -25,6 +26,7 @@ interface AppTitleProps {
 
 export const AppTitle: React.FC<AppTitleProps> = memo(function AppTitle(props: AppTitleProps) {
    const { 
+      className,
       variant, 
       children, 
       color = AppTitleColor.MAIN,
@@ -32,6 +34,7 @@ export const AppTitle: React.FC<AppTitleProps> = memo(function AppTitle(props: A
    } = props;
 
    const additional = [
+      className,
       styles[color],
       styles[variant],
       `marginBottom${marginBottom}`

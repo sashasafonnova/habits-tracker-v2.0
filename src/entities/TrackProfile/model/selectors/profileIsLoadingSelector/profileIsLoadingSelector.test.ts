@@ -1,19 +1,20 @@
 import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
 import { DeepPartial } from '@reduxjs/toolkit';
-import { loginErrorSelector } from './loginErrorSelector';
+import { profileIsLoadingSelector } from './profileIsLoadingSelector';
 
-describe('loginErrorSelector', () => {
+
+describe('profileIsLoadingSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
-         login: {
-            error: 'error',
+         trackProfile: {
+            isLoading: true
          }
       };
-      expect(loginErrorSelector(state as StateSchema)).toBe('error');
+      expect(profileIsLoadingSelector(state as StateSchema)).toBe(true);
    });
 
    test('with empty state', () => {
       const state: DeepPartial<StateSchema> = {};
-      expect(loginErrorSelector(state as StateSchema)).toEqual(undefined);
+      expect(profileIsLoadingSelector(state as StateSchema)).toEqual(false);
    });
 });

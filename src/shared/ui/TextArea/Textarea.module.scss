@@ -1,0 +1,15 @@
+.textarea {
+   width: 100%;
+   padding: 20px;
+   font-size: inherit;
+}
+
+.outline {
+   background: transparent;
+   border: 1px solid var(--line-color);
+   border-radius: var(--border-radius-elems);
+
+   &::placeholder {
+      color: inherit;
+   }
+}

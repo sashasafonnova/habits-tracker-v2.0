@@ -5,6 +5,7 @@ import { LoginSchema } from 'features/AuthByEmail';
 import { TrackProfileSchema } from 'entities/TrackProfile';
 import { RemoveTrackSchema } from 'features/RemoveTrack';
 import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import { CreateTrackSchema } from 'features/CreateTrack';
 
 
 export interface StateSchema {
@@ -12,7 +13,8 @@ export interface StateSchema {
    user: UserSchema,
    userTrack?: UserTrackSchema,
    trackProfile?: TrackProfileSchema,
-   removeTrack?: RemoveTrackSchema
+   removeTrack?: RemoveTrackSchema,
+   createTrack?: CreateTrackSchema,
 }
 
 export type StateSchemaKey = keyof StateSchema;

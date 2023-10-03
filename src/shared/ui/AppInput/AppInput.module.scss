@@ -6,7 +6,6 @@
 .standart {
    height: var(--input-size-m);
    padding: var(--font-size-s);
-
    &::placeholder {
          font-size: var(--font-size-s);
       }
@@ -15,13 +14,18 @@
 .background {
    background-color: var(--fields-color);
    font-size: var(--font-size-s);
-
    &:focus{
       border: 1px solid var(--line-color);
    }
-
    &::placeholder {
       color: var(--text-color);
+   }
+}
+
+.error {
+   border: 1px solid red;
+   &:focus {
+      border: 1px solid var(--line-color);
    }
 }
 

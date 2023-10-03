@@ -7,13 +7,13 @@ import { TrackProgress } from 'entities/TrackProgress';
 import { TrackCategory } from 'entities/TrackCategory';
 import { ProgressIndicator } from '../ProgressIndicator/ProgressIndicator';
 import { memo } from 'react';
+import { TrackStatus } from '../TrackStatus/TrackStatus';
 
 
 interface TrackCardProps {
    track: UserTrack;
    short?: boolean
 }
-
 
 export const TrackCard: React.FC<TrackCardProps> = memo(function TrackCard(props: TrackCardProps){
 
@@ -24,7 +24,8 @@ export const TrackCard: React.FC<TrackCardProps> = memo(function TrackCard(props
 
    return (
       <div className={styles.info}>
-         <TrackCategory category={track.category} />
+         <TrackCategory category={track.category} marginBottom={'20'}/>
+         <TrackStatus status={track.status}/>
          {!short ? <AppTitle variant={AppTitleVariant.BIG} marginBottom={'20'}>
             {track.title}
          </AppTitle> : <AppLink to={`/tracks/${track._id}`} variant={AppLinkVariant.CLEAR}>

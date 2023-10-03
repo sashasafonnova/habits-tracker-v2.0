@@ -13,7 +13,17 @@
    max-width: 400px;
 }
 
+.inputWrapper {
+   position: relative;
+   width: 100%;
+}
+
 .subtitle {
+   margin-bottom: 40px;
+}
+
+.errorSubtitle {
+   color: red;
    margin-bottom: 40px;
 }
 
@@ -27,7 +37,9 @@
    margin-right: 10px;
 }
 
-.error {
-   margin-bottom: 40px;
+.errorInput {
+   font-size: var(--font-size-xs);
+   position: absolute;
+   top: -26px;
    color: red;
 }

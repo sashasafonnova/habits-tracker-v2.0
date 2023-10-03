@@ -14,41 +14,53 @@ export interface Category {
    icon: React.VFC<React.SVGProps<SVGSVGElement>>
 }
 
+export enum CategoryNames {
+   HEALTH = 'Здоровье',
+   FAMILY = 'Семья',
+   SELF_DEV = 'Саморазвитие',
+   ENTERTAIMENT = 'Развлечения',
+   HOME = 'Дом',
+   FINANCE = 'Финансы',
+   STUDY = 'Учеба',
+   WORK = 'Работа',
+   OTHERS = 'Другое'
+}
+
 export const categories: Category[] = [
    {
-      name: 'Здоровье',
+      name: CategoryNames.HEALTH,
       icon: healthIcon,
    },
    {
-      name: 'Семья',
+      name: CategoryNames.FAMILY,
       icon: familyIcon,
    },
    {
-      name: 'Саморазвитие',
+      name: CategoryNames.SELF_DEV,
       icon: growIcon,
    },
    {
-      name: 'Развлечения',
+      name: CategoryNames.ENTERTAIMENT,
       icon: holidaysIcon,
    },
    {
-      name: 'Дом',
+      name: CategoryNames.HOME,
       icon: homeIcon,
    },
    {
-      name: 'Финансы',
+      name: CategoryNames.FINANCE,
       icon: moneyIcon,
    },
    {
-      name: 'Учеба',
+      name: CategoryNames.STUDY,
       icon: studyIcon,
    },
    {
-      name: 'Работа',
+      name: CategoryNames.WORK,
       icon: workIcon,
    },
    {
-      name: 'Другое',
+      name: CategoryNames.OTHERS,
       icon: anotherIcon,
    }
 ];

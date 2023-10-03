@@ -1,7 +1,8 @@
 .info {
    padding: 40px;
-   box-shadow: rgba(var(--elem-shadow-color)) 2px 4px 24px -4px;
+   background-color: var(--card-color);
    margin-bottom: 20px;
+   border-radius: var(--border-radius-cards);
 }
 
 .start {

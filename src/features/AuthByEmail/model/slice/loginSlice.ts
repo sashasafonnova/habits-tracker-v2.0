@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { LoginSchema } from '../types/loginSchema';
+import { LoginSchema, LoginValidateErrors } from '../types/login';
 import { loginByEmail } from '../services/loginByEmail';
 
 
@@ -19,6 +19,9 @@ export const loginSlice = createSlice({
       setPassword: (state, action: PayloadAction<string>) => {
          state.password = action.payload;
       },
+      setValidateErrors: (state, action:PayloadAction<LoginValidateErrors>) => {
+         state.validateErrors = action.payload;
+      },
       clearForm: (state) => {
          state.email = '';
          state.password = '';
@@ -26,16 +29,23 @@ export const loginSlice = createSlice({
    },
    extraReducers: (builder) => {
       builder
-         .addCase(loginByEmail.pending, (state) => {
-            state.error = undefined;
+         .addCase(loginByEmail.pending, (state, action) => {
+            console.log(action);
+
+            state.validateErrors = {};
             state.isLoading = true;
          })
          .addCase(loginByEmail.fulfilled, (state) => {
             state.isLoading = false;
          })
-         .addCase(loginByEmail.rejected, (state) => {
+         .addCase(loginByEmail.rejected, (state, action) => {
             state.isLoading = false;
-            state.error = 'Неверный логин или пароль';
+
+            if (typeof action.payload === 'object'){
+               state.validateErrors = action.payload;
+            } else {
+               state.validateErrors.others = action.payload;
+            }
          });
    },
 });

@@ -1,17 +1,17 @@
 import { useEffect } from 'react'; 
 import { useParams } from 'react-router-dom';
-import { fetchTrackProfile } from '../../model/services/fetchTrackProfile';
+import { fetchTrackProfile } from '../../model/services/fetchTrackProfile/fetchTrackProfile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { TrackProfileSkeleton } from '../TrackProfileSkeleton/TrackProfileSkeleton';
 import { useSelector } from 'react-redux';
-import { profileDataSelector } from '../../model/selectors/profileDataSelector';
-import { profileIsLoadingSelector } from '../../model/selectors/profileIsLoadingSelector';
-import { profileErrorSelector } from '../../model/selectors/profileErrorSelector';
+import { profileDataSelector } from '../../model/selectors/profileDataSelector/profileDataSelector';
+import { profileIsLoadingSelector } from '../../model/selectors/profileIsLoadingSelector/profileIsLoadingSelector';
+import { profileErrorSelector } from '../../model/selectors/profileErrorSelector/profileErrorSelector';
 import { TrackCard } from 'entities/UserTrack';
 import { FetchLoader } from 'shared/ui/FetchLoader/FetchLoader';
 import { trackProfileReducer } from '../../model/slice/trackProfileSlice';
 import { useStateCreator } from 'shared/lib/hooks/useStateCreator';
-import { profileExistStatusSelector } from '../../model/selectors/profileExistStatusSelector';
+import { profileExistStatusSelector } from '../../model/selectors/profileExistStatusSelector/profileExistStatusSelector';
 
 
 export const TrackProfile: React.FC = () => {

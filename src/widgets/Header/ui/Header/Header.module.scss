@@ -1,6 +1,7 @@
 .header {
    padding: 40px 0;
-   background-color: var(--bg-color);
+   background-color: var(--header-color);
+   box-shadow: rgba(var(--elem-shadow-color)) 2px 2px 8px 0px;
 }
 
 .content {

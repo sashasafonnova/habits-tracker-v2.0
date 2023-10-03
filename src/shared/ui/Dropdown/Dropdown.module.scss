@@ -1,0 +1,29 @@
+.dropdown {
+   width: 100%;
+   padding: 20px;
+
+   li:not(:last-child) {
+      margin-bottom: 10px;
+   }
+}
+
+.option {
+   display: inline-flex;
+   align-items: center;
+}
+
+.icon {
+   margin-right: 10px;
+   width: var(--icon-size-s);
+   height: var(--icon-size-s);
+}
+
+.background {
+   border-radius: var(--border-radius-elems);
+   background-color: var(--fields-color);
+}
+
+.short {
+   max-height: 170px;
+   overflow-y: scroll;
+}

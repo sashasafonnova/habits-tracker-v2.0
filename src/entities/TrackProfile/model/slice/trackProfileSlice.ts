@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { TrackProfileSchema } from '../types/TrackProfileSchema';
 import { UserTrack } from 'entities/UserTrack';
-import { fetchTrackProfile } from '../services/fetchTrackProfile';
+import { fetchTrackProfile } from '../services/fetchTrackProfile/fetchTrackProfile';
 
 
 const initialState: TrackProfileSchema = {

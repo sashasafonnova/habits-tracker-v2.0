@@ -26,6 +26,11 @@
    background: var(--dark-primary-color);
    padding: var(--font-size-m) calc(var(--font-size-m) * 2);
    color: var(--white-color);
+
+   &:disabled{
+      opacity: 50%;
+      pointer-events: none;
+   }
 }
 
 .underline {
@@ -40,6 +45,13 @@
       width: 100%;
       height: 1px;
    }
+}
+
+.outline {
+   height: 50px;
+   border: 1px solid var(--line-color);
+   padding: 0px 20px;
+   width: 100%;
 }
 
 

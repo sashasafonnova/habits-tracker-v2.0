@@ -1,13 +1,12 @@
 .category {
    display: flex;
    align-items: center;
-   margin-bottom: 30px;
 }
 
 .categoryIcon {
    margin-right: 10px;
-   width: 30px;
-   height: 30px;
+   width: var(--icon-size-s);
+   height: var(--icon-size-s);
 }
 
 .categoryName {

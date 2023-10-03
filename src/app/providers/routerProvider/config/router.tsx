@@ -1,5 +1,6 @@
 
 import { AccountPage } from 'pages/Account';
+import { CreateTrackPage } from 'pages/CreateTrack';
 import { HomePage } from 'pages/Home';
 import { LoginPage } from 'pages/Login';
 import { NotFoundPage } from 'pages/NotFound';
@@ -16,6 +17,7 @@ export enum RouteName {
    ACCOUNT = 'account',
    TRACKS = 'tracks',
    TRACK = 'track',
+   CREATE_TRACK = 'create_track',
    NOT_FOUND = 'not_found'
 }
 
@@ -27,6 +29,7 @@ export const RoutePath: Record<RouteName, string> = {
    [RouteName.ACCOUNT]: '/account',
    [RouteName.TRACKS]: '/tracks',
    [RouteName.TRACK]: '/tracks/:id',
+   [RouteName.CREATE_TRACK]: '/create',
    [RouteName.NOT_FOUND]: '*'
 };
 
@@ -64,6 +67,11 @@ export const AppRoutes: Record<RouteName, AppRoutesProps> = {
       path: RoutePath.track,
       visible: 'private',
       element: <TrackPage/>,
+   },
+   [RouteName.CREATE_TRACK]: {
+      path: RoutePath.create_track,
+      visible: 'private',
+      element: <CreateTrackPage/>,
    },
    [RouteName.NOT_FOUND]: {
       path: RoutePath.not_found,

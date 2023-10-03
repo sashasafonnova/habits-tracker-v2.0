@@ -1,6 +1,6 @@
 import styles from './LoginForm.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useStore } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useCallback, useEffect } from 'react';
 import { RoutePath } from 'app/providers/routerProvider/config/router';
 import { Modal } from 'shared/ui/Modal/Modal';
@@ -13,12 +13,14 @@ import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localStorage';
 import { AppInput, AppInputVariant } from 'shared/ui/AppInput/AppInput';
 import { loginEmailSelector } from '../../model/selectors/loginEmailSelector/loginEmailSelector';
 import { loginPasswordSelector } from '../../model/selectors/loginPasswordSelector/loginPasswordSelector';
-import { loginErrorSelector } from '../../model/selectors/loginErrorSelector/loginErrorSelector';
+import { loginErrorsSelector } from '../../model/selectors/loginErrorsSelector/loginErrorsSelector';
 import { loginIsLoadingSelector } from '../../model/selectors/loginIsLoadingSelector/loginIsLoadingSelector';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByEmail } from '../../model/services/loginByEmail';
 import { authDataSelector } from 'entities/User';
 import { useStateCreator } from 'shared/lib/hooks/useStateCreator';
+import { Fields, validateLoginData } from '../../model/services/validation/validateLoginData/validateLoginData';
+import { checkInputValue } from 'features/AuthByEmail/model/services/validation/checkInputValue/checkInputValue';
 
 
 export const LoginForm: React.FC = () => {
@@ -28,61 +30,91 @@ export const LoginForm: React.FC = () => {
    const dispatch = useAppDispatch();
    const authData = useSelector(authDataSelector);
    const isLoading = useSelector(loginIsLoadingSelector);
-   const error = useSelector(loginErrorSelector);
-   const email = useSelector(loginEmailSelector);
-   const password = useSelector(loginPasswordSelector);
+   const errors = useSelector(loginErrorsSelector);
+   const emailValue = useSelector(loginEmailSelector);
+   const passwordValue = useSelector(loginPasswordSelector);
    const navigate = useNavigate();
-
-   const onChangeEmail = useCallback((value:string) => {
-      dispatch(loginActions.setEmail(value));
-   }, [dispatch]);
-
-
-   const onChangePassword = useCallback((value: string) => {
-      dispatch(loginActions.setPassword(value));
-   }, [dispatch]);
-
-
-   const onCLickLogin = useCallback(async () => {
-      const res = await dispatch(loginByEmail({email, password}));
-      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(res.payload));
-      dispatch(loginActions.clearForm());
-   }, [dispatch, email, password]);
-
 
    useEffect(() => {
       if (authData) {
          return navigate('/account');
       }
    }, [authData]);
+
+
+   const onChangeEmail = useCallback((value:string) => {
+      const checkedValue = checkInputValue(value);
+      dispatch(loginActions.setEmail(checkedValue));
+   }, [dispatch]);
+
+
+   const onChangePassword = useCallback((value: string) => {
+      const checkedValue = checkInputValue(value);
+      dispatch(loginActions.setPassword(checkedValue));
+   }, [dispatch]);
+   
+
+   const onFocus = useCallback((field: string) => {
+      const errorField = field === 'email' ? { ...errors, email: '' } : { ...errors, password: '' };
+      dispatch(loginActions.setValidateErrors(errorField));
+   }, [errors]);
+
+
+   const onBlur = useCallback((field: Fields) => {
+      const validateErrors = validateLoginData({ email: emailValue, password: passwordValue }, field);
+      dispatch(loginActions.setValidateErrors({...errors, ...validateErrors }));
+   }, [errors, emailValue, passwordValue]);
+
+
+   const onCLickLogin = useCallback(async () => {
+      const res = await dispatch(loginByEmail({email: emailValue, password: passwordValue}));
+
+      if (loginByEmail.fulfilled.match(res)){
+         localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(res.payload));
+      }
+   }, [dispatch, emailValue, passwordValue]);
    
 
    return (
       <section>
          <div className="container">
             <h1 className={styles.title}>Войти</h1>
-            <p className={error ? styles.error : styles.subtitle}>{error ? error : 'Введите e-mail и пароль'}</p>
+            <p className={errors?.others ? styles.errorSubtitle : styles.subtitle}>{errors?.others ? errors.others : 'Введите e-mail и пароль'}</p>
             <form className={styles.form}>
-               <label className='dsp-none'>Логин</label>
-               <AppInput
-                  marginBottom={'20'}
-                  value={email}
-                  onChange={onChangeEmail}
-                  type={'email'}
-                  placeholder={'e-mail'}
-                  variant={AppInputVariant.BACKGROUND}
-                  inputSize={'standart'}
-               />
-               <label className='dsp-none'>Пароль</label>
-               <AppInput
-                  marginBottom={'20'}
-                  value={password}
-                  onChange={onChangePassword}
-                  type={'password'}
-                  placeholder={'пароль'}
-                  variant={AppInputVariant.BACKGROUND}
-                  inputSize={'standart'}
-               />
+               <div className={styles.inputWrapper}>
+                  {errors?.email && (
+                     <div className={styles.errorInput}>{errors?.email}</div>
+                  )}
+                  <label className='dsp-none'>Логин</label>
+                  <AppInput
+                     marginBottom={errors?.password ? '30' : '20'}
+                     value={emailValue}
+                     onChange={onChangeEmail}
+                     onFocus={() => onFocus('email')}
+                     onBlur={() => onBlur('email')}
+                     type={'email'}
+                     placeholder={'e-mail'}
+                     variant={AppInputVariant.BACKGROUND}
+                     inputSize={'standart'}
+                  />
+               </div>
+               <div className={styles.inputWrapper}>
+                  {errors?.password && (
+                     <div className={styles.errorInput}>{errors.password}</div>
+                  )}
+                  <label className='dsp-none'>Пароль</label>
+                  <AppInput
+                     marginBottom={'20'}
+                     value={passwordValue}
+                     onChange={onChangePassword}
+                     onFocus={() => onFocus('password')}
+                     onBlur={() => onBlur('password')}
+                     type={'password'}
+                     placeholder={'пароль'}
+                     variant={AppInputVariant.BACKGROUND}
+                     inputSize={'standart'}
+                  />
+               </div> 
                <AppButton
                   variant={AppButtonVariant.BACKGROUND}
                   marginBottom={'30'}

@@ -21,3 +21,12 @@ export const BackgroundStandartDarkTheme: Story = {
    render: () => <AppInput variant={AppInputVariant.BACKGROUND} placeholder={'login'} inputSize={'standart'}/>,
    decorators: [ThemeDecorator(Theme.DARK)]
 };
+
+export const ErrorStandart: Story = {
+   render: () => <AppInput variant={AppInputVariant.BACKGROUND} mods={{error: true}} placeholder={'login'} inputSize={'standart'} />,
+};
+
+export const ErrorStandartDarkTheme: Story = {
+   render: () => <AppInput variant={AppInputVariant.BACKGROUND} mods={{ error: true }} placeholder={'login'} inputSize={'standart'} />,
+   decorators: [ThemeDecorator(Theme.DARK)]
+};

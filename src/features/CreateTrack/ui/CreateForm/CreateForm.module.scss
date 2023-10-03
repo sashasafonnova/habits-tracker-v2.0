@@ -1,0 +1,52 @@
+.form {
+   max-width: 400px;
+}
+
+.fieldWrapper {
+   position: relative;
+}
+
+.category {
+   position: relative;
+}
+
+.dropdownList {
+   position: absolute;
+   top: 52px;
+   z-index: var(--z-index-1);
+}
+
+
+
+.selectOptions {
+   padding: 20px;
+}
+
+.trackLength {
+   display: inline-flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   margin-bottom: 20px;
+
+   li:not(:last-child) {
+         margin-bottom: 5px;
+      }
+}
+
+.label {
+   display: flex;
+   align-items: center; 
+   justify-content: flex-start;
+
+   input {
+      margin-right: 10px;
+   }
+}
+
+
+.errorText {
+   position: absolute;
+   top: -20px;
+   color: var(--error-color);
+}
+

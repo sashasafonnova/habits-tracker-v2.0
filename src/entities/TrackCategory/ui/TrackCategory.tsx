@@ -1,18 +1,24 @@
 import styles from './TrackCategory.module.scss';
 import { categories } from '../consts/categories';
 import { memo } from 'react';
+import { classMaker } from 'shared/lib/classMaker/classMaker';
 
 
 interface TrackCategoriesProps {
    category: string;
+   marginBottom?: string;
 }
 
 
 export const TrackCategory: React.FC<TrackCategoriesProps> = memo(function TrackCategory(props: TrackCategoriesProps){
-   const { category } = props;
+   const { category, marginBottom } = props;
+
+   const additional = [
+      `marginBottom${marginBottom}`
+   ];
 
    return (
-      <div>
+      <div className={classMaker(styles.trackCategory, additional, {})}>
          {categories.map(item => {
             if (item.name === category) {
                return (
