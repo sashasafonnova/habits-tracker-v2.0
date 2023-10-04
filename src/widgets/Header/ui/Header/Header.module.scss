@@ -4,12 +4,6 @@
    box-shadow: var(--header-boxshadow);
 }
 
-.content {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-}
-
 .btnIcon {
    margin-right: 10px;
    width: auto;
@@ -20,8 +14,4 @@
    @media(width <= 480px){
       display: none;
    }
-}
-
-[data-rect] {
-   fill: var(--title-color);
 }

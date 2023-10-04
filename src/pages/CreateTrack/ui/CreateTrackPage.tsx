@@ -1,19 +1,18 @@
 import { CreateForm } from 'features/CreateTrack';
-import styles from './CreateTrackPage.module.scss';
 import { GoBack } from 'features/GoBack';
+import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
+import { VStack } from 'shared/ui/AppStack';
 
 
 const CreateTrackPage: React.FC = () => {
 
    return (
-      <div className='page'>
-         <section className={styles.navigation}>
-            <div className='container'>
-               <GoBack />
-            </div>
-         </section>
-         <CreateForm/>
-      </div>
+      <AppBlock type='page' container>
+         <VStack gap='40' max>
+            <GoBack />
+            <CreateForm/>
+         </VStack>
+      </AppBlock>
    );
 };
 

@@ -1,12 +1,12 @@
 import { LoginForm } from 'features/AuthByEmail';
-import styles from './LoginPage.module.scss';
+import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 
 
 const LoginPage: React.FC = () => {
    return (
-      <div className={`page ${styles.page}`}>
+      <AppBlock type='page'>
          <LoginForm/>
-      </div>
+      </AppBlock>
    );
 };
 

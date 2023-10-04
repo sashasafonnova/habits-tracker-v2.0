@@ -22,7 +22,8 @@ import { trackCreateStatusSelector } from '../../model/selectors/trackCreateStat
 import { Loader } from 'shared/ui/Loader/Loader';
 import { createTrackErrorsSelector } from '../../model/selectors/createTrackErrorsSelector/createTrackErrorsSelector';
 import { FetchLoader } from 'shared/ui/FetchLoader/FetchLoader';
-
+import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
+import { VStack } from 'shared/ui/AppStack';
 
 export const CreateForm: React.FC = () => {
 
@@ -34,7 +35,6 @@ export const CreateForm: React.FC = () => {
    const trackLength = useSelector(trackLengthSelector);
    const createStatus = useSelector(trackCreateStatusSelector);
    const errors = useSelector(createTrackErrorsSelector);
-
 
    const dispatch = useAppDispatch();
 
@@ -64,13 +64,6 @@ export const CreateForm: React.FC = () => {
       dispatch(createTrackActions.setValidateErrors(errorField));
    }, [errors]);
 
-
-   // const onBlur = useCallback((field: Fields) => {
-   //    const validateErrors = validateCreateTrack({ email: emailValue, password: passwordValue }, field);
-   //    dispatch(loginActions.setValidateErrors({ ...errors, ...validateErrors }));
-   // }, [errors, category, title]);
-
-
    const onClickCreate = useCallback(() => {
       const dateCreated = dateCreator().slice(0, -3);
       const trackData: CreateTrackData = {
@@ -96,15 +89,13 @@ export const CreateForm: React.FC = () => {
       );
    }
 
-
    return (
-      <section className={styles.createForm}>
-         <div className='container'>
-            <AppTitle variant={AppTitleVariant.BIG} color={AppTitleColor.PRIMARY} marginBottom={'30'}>Новый трек</AppTitle>
-            
-            <form className={styles.form}>
+      <AppBlock>
+         <AppTitle variant={AppTitleVariant.BIG} color={AppTitleColor.PRIMARY} marginBottom={'30'}>Новый трек</AppTitle>
+         <form className={styles.form}>
+            <VStack max gap='20'>
                {errors?.others ? <AppText color={AppTextColors.ERROR}>{errors.others}</AppText> : ''}
-               <div className={styles.fieldWrapper}>
+               <VStack className={styles.fieldWrapper} max>
                   {errors?.category && <AppText className={styles.errorText} color={AppTextColors.ERROR} textSize={AppTextSizes.XS}>{errors.category}</AppText>}
                   <div className={styles.category}>
                      <AppButton 
@@ -113,75 +104,77 @@ export const CreateForm: React.FC = () => {
                         className={styles.buttonCategory}
                         onClick={onToggleDropdown}
                         focus={dropdownOpen} 
+                        max
                         onFocus={() => onFocusField('category')}>
                         {category ? <TrackCategory category={category} /> : 'Выберите категорию'}
                      </AppButton>
                      {dropdownOpen && <Dropdown className={styles.dropdownList} list={categories} onChoose={onChooseCategory} variant={DropdownVariant.BACKGROUND} mods={{short: true }} />}
                   </div>
-               </div >
-               <div className={styles.fieldWrapper}>
+               </VStack >
+               <VStack className={styles.fieldWrapper} max>
                   {errors?.title && <AppText className={styles.errorText} color={AppTextColors.ERROR} textSize={AppTextSizes.XS}>{errors.title}</AppText>}
                   <Textarea rows={3} 
                      variant={TextareaVariant.OUTLINE} 
                      placeholder={'Что будем делать?'} 
                      value={title} 
                      onChange={onChangeName} 
-                     marginBottom={'20'}
                      onFocus={() => onFocusField('title')}
                   />
-               </div>
-               <AppText textSize={AppTextSizes.M} marginBottom={'10'}>Количество дней:</AppText>
-               <ul className={styles.trackLength}>
-                  <li className={styles.lengthItem}>
-                     <label className={styles.label}>
-                        <AppInput 
-                           checked={trackLength === '10' ? true : false} 
-                           type={'radio'} value={'10'} 
-                           inputSize={'small'} 
-                           name='trackLength'
-                           onChange={onChangeLength}/>
+               </VStack>
+               <VStack gap='10'>
+                  <AppText textSize={AppTextSizes.M}>Количество дней:</AppText>
+                  <ul className={styles.trackLength}>
+                     <li className={styles.lengthItem}>
+                        <label className={styles.label}>
+                           <AppInput 
+                              checked={trackLength === '10' ? true : false} 
+                              type={'radio'} value={'10'} 
+                              inputSize={'small'} 
+                              name='trackLength'
+                              onChange={onChangeLength}/>
                         10
-                     </label>
-                  </li>
-                  <li className={styles.lengthItem}>
-                     <label className={styles.label}>
-                        <AppInput 
-                           checked={trackLength === '20' ? true : false} 
-                           type={'radio'} value={'20'} 
-                           inputSize={'small'} 
-                           name='trackLength' 
-                           onChange={onChangeLength} />
+                        </label>
+                     </li>
+                     <li className={styles.lengthItem}>
+                        <label className={styles.label}>
+                           <AppInput 
+                              checked={trackLength === '20' ? true : false} 
+                              type={'radio'} value={'20'} 
+                              inputSize={'small'} 
+                              name='trackLength' 
+                              onChange={onChangeLength} />
                         20
-                     </label>
-                  </li>
-                  <li className={styles.lengthItem}>
-                     <label className={styles.label}>
-                        <AppInput 
-                           checked={trackLength === '30' ? true : false} 
-                           type={'radio'} value={'30'} 
-                           inputSize={'small'} 
-                           name='trackLength' 
-                           onChange={onChangeLength} />   
+                        </label>
+                     </li>
+                     <li className={styles.lengthItem}>
+                        <label className={styles.label}>
+                           <AppInput 
+                              checked={trackLength === '30' ? true : false} 
+                              type={'radio'} value={'30'} 
+                              inputSize={'small'} 
+                              name='trackLength' 
+                              onChange={onChangeLength} />   
                         30
-                     </label>
-                  </li>
-                  <li className={styles.lengthItem}>
-                     <label className={styles.label}>
-                        <AppInput 
-                           checked={trackLength === '60' ? true : false} 
-                           type={'radio'} 
-                           value={'60'} 
-                           inputSize={'small'} 
-                           name='trackLength' 
-                           onChange={onChangeLength} />
+                        </label>
+                     </li>
+                     <li className={styles.lengthItem}>
+                        <label className={styles.label}>
+                           <AppInput 
+                              checked={trackLength === '60' ? true : false} 
+                              type={'radio'} 
+                              value={'60'} 
+                              inputSize={'small'} 
+                              name='trackLength' 
+                              onChange={onChangeLength} />
                         60
-                     </label>
-                  </li>                  
-               </ul>
+                        </label>
+                     </li>                  
+                  </ul>
+               </VStack>
                <AppButton variant='background' onClick={onClickCreate}>Создать</AppButton>
-            </form>   
-         </div>
+            </VStack>
+         </form>   
          {createStatus === CreateTrackStatuses.IS_CREATING && <Modal><Loader /></Modal>}
-      </section>
+      </AppBlock>
    );
 };

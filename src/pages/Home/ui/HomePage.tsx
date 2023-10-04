@@ -1,12 +1,12 @@
-import styles from './HomePage.module.scss';
+import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 import { Home } from 'widgets/Home';
 
 
 export const HomePage: React.FC = () => {
 
    return (
-      <div className={`page ${styles.page}`}>
+      <AppBlock type='page'>
          <Home/>
-      </div>
+      </AppBlock>
    );
 };

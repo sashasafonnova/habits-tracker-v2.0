@@ -29,9 +29,7 @@ const App = () => {
    return (
       <div className={`app ${theme}`}>
          <Header/>
-         <div className='appContent'>
-            <AppRouter />
-         </div>
+         <AppRouter />
          <Footer/> 
       </div>
    );

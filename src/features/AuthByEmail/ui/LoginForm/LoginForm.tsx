@@ -5,7 +5,7 @@ import { useCallback, useEffect } from 'react';
 import { RoutePath } from 'app/providers/routerProvider/config/router';
 import { Modal } from 'shared/ui/Modal/Modal';
 import { Loader } from 'shared/ui/Loader/Loader';
-import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
+import { AppButton } from 'shared/ui/AppButton/AppButton';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -21,6 +21,9 @@ import { authDataSelector } from 'entities/User';
 import { useStateCreator } from 'shared/lib/hooks/useStateCreator';
 import { Fields, validateLoginData } from '../../model/services/validation/validateLoginData/validateLoginData';
 import { checkInputValue } from 'features/AuthByEmail/model/services/validation/checkInputValue/checkInputValue';
+import { HStack, VStack } from 'shared/ui/AppStack';
+import { classMaker } from 'shared/lib/classMaker/classMaker';
+import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 
 
 export const LoginForm: React.FC = () => {
@@ -76,57 +79,60 @@ export const LoginForm: React.FC = () => {
    
 
    return (
-      <section>
-         <div className="container">
-            <h1 className={styles.title}>Войти</h1>
-            <p className={errors?.others ? styles.errorSubtitle : styles.subtitle}>{errors?.others ? errors.others : 'Введите e-mail и пароль'}</p>
+      <AppBlock container className={classMaker(styles.loginForm, [], {})} >
+         <VStack max maxHeight align='center' justify='center' gap='20' className={styles.content}>
+            <VStack gap='10' align='center'>
+               <h1 className={styles.title}>Войти</h1>
+               <p className={errors?.others && styles.errorSubtitle}>{errors?.others ? errors.others : 'Введите e-mail и пароль'}</p>
+            </VStack>
             <form className={styles.form}>
-               <div className={styles.inputWrapper}>
-                  {errors?.email && (
-                     <div className={styles.errorInput}>{errors?.email}</div>
-                  )}
-                  <label className='dsp-none'>Логин</label>
-                  <AppInput
-                     marginBottom={errors?.password ? '30' : '20'}
-                     value={emailValue}
-                     onChange={onChangeEmail}
-                     onFocus={() => onFocus('email')}
-                     onBlur={() => onBlur('email')}
-                     type={'email'}
-                     placeholder={'e-mail'}
-                     variant={AppInputVariant.BACKGROUND}
-                     inputSize={'standart'}
-                  />
-               </div>
-               <div className={styles.inputWrapper}>
-                  {errors?.password && (
-                     <div className={styles.errorInput}>{errors.password}</div>
-                  )}
-                  <label className='dsp-none'>Пароль</label>
-                  <AppInput
-                     marginBottom={'20'}
-                     value={passwordValue}
-                     onChange={onChangePassword}
-                     onFocus={() => onFocus('password')}
-                     onBlur={() => onBlur('password')}
-                     type={'password'}
-                     placeholder={'пароль'}
-                     variant={AppInputVariant.BACKGROUND}
-                     inputSize={'standart'}
-                  />
-               </div> 
-               <AppButton
-                  variant='background'
-                  onClick={onCLickLogin}>
+               <VStack align='center' gap='20'>
+                  <HStack className={styles.inputWrapper} max>
+                     {errors?.email && (
+                        <div className={styles.errorInput}>{errors?.email}</div>
+                     )}
+                     <label className='dsp-none'>Логин</label>
+                     <AppInput
+                        value={emailValue}
+                        onChange={onChangeEmail}
+                        onFocus={() => onFocus('email')}
+                        onBlur={() => onBlur('email')}
+                        type={'email'}
+                        placeholder={'e-mail'}
+                        variant={AppInputVariant.BACKGROUND}
+                        inputSize={'standart'}
+                     />
+                  </HStack>
+                  <HStack className={styles.inputWrapper} max>
+                     {errors?.password && (
+                        <div className={styles.errorInput}>{errors.password}</div>
+                     )}
+                     <label className='dsp-none'>Пароль</label>
+                     <AppInput
+                        value={passwordValue}
+                        onChange={onChangePassword}
+                        onFocus={() => onFocus('password')}
+                        onBlur={() => onBlur('password')}
+                        type={'password'}
+                        placeholder={'пароль'}
+                        variant={AppInputVariant.BACKGROUND}
+                        inputSize={'standart'}
+                     />
+                  </HStack> 
+                  <AppButton
+                     max
+                     variant='background'
+                     onClick={onCLickLogin}>
                      Войти
-               </AppButton>
+                  </AppButton>
+               </VStack>
             </form>
-            <div className={styles.account}>
+            <HStack className={styles.account}>
                <span className={styles.text}>Нет аккаунта?</span>
                <AppLink to={RoutePath.registration} variant={AppLinkVariant.UNDERLINE}>Создать</AppLink>
-            </div>
-         </div>
-         {isLoading && <Modal><Loader /></Modal>}
-      </section>      
+            </HStack>
+            {isLoading && <Modal><Loader /></Modal>}
+         </VStack>
+      </AppBlock>
    );
 };

@@ -1,36 +1,26 @@
 .title {
    font-size: var(--font-size-xl);
    line-height: var(--font-line-xl);
-   margin-bottom: 10px;
    font-weight: var(--text-weight-extrabold);
    color: var(--primary-color);
 }
 
+.content {
+   min-height: 90vh;
+
+}
+
 .form {
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   max-width: 400px;
+   width: 100%;
+   max-width: 320px;
 }
 
 .inputWrapper {
    position: relative;
-   width: 100%;
-}
-
-.subtitle {
-   margin-bottom: 40px;
 }
 
 .errorSubtitle {
    color: red;
-   margin-bottom: 40px;
-}
-
-.account {
-   display: flex;
-   align-items: flex-start;
-   padding: 20px 0;
 }
 
 .text {

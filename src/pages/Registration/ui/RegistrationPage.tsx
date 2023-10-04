@@ -1,12 +1,11 @@
 import { RegistrationForm } from 'features/RegistrationByEmail';
-import styles from './RegistrationPage.module.scss';
-
+import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 
 const RegistrationPage: React.FC = () => {
    return (
-      <div className={`page ${styles.page}`}>
+      <AppBlock type='page'>
          <RegistrationForm/>
-      </div>
+      </AppBlock>
    );
 };
 

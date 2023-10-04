@@ -1,19 +1,17 @@
-import styles from './TrackPage.module.scss';
 import { GoBack } from 'features/GoBack';
+import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
+import { VStack } from 'shared/ui/AppStack';
 import { TrackSettings } from 'widgets/TrackSettings';
-
 
 const TrackPage: React.FC = () => {
 
    return (
-      <div className='page'>
-         <section className={styles.navigation}>
-            <div className='container'>
-               <GoBack />
-            </div>
-         </section>
-         <TrackSettings />
-      </div>
+      <AppBlock type='page' container>
+         <VStack gap='40' max>
+            <GoBack />
+            <TrackSettings />
+         </VStack>
+      </AppBlock>
    );
 };
 

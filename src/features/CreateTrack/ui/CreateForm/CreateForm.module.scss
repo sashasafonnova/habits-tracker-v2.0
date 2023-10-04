@@ -4,10 +4,12 @@
 
 .fieldWrapper {
    position: relative;
+   width: 100%;
 }
 
 .category {
    position: relative;
+   width: 100%;
 }
 
 .dropdownList {
@@ -24,7 +26,6 @@
    display: inline-flex;
    flex-direction: column;
    justify-content: flex-start;
-   margin-bottom: 20px;
 
    li:not(:last-child) {
          margin-bottom: 5px;

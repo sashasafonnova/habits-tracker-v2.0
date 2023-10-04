@@ -9,6 +9,8 @@ import { useSelector } from 'react-redux';
 import { authDataSelector } from 'entities/User';
 import { useCallback, useState } from 'react';
 import { Menu } from 'widgets/Menu';
+import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
+import { HStack } from 'shared/ui/AppStack';
 
 
 
@@ -38,16 +40,15 @@ export const Header = () => {
 
 
    return (
-      <header className={styles.header}>
-         <div className="container">
-            <div className={styles.content}>
-               <AppLink to={'/'} variant={AppLinkVariant.CLEAR}>
-                  {theme === Theme.LIGHT ? <LogoLight /> : <LogoDark />}
-               </AppLink>
-               {authData && userMenuBtn} 
-               {menuOpen && <Menu closeMenu={closeMenu}/>}
-            </div>
-         </div>
-      </header>
+      <AppBlock container className={styles.header} Tag='header'>
+         <HStack max justify='between'>
+            <AppLink to={'/'} variant={AppLinkVariant.CLEAR}>
+               {theme === Theme.LIGHT ? <LogoLight /> : <LogoDark />}
+            </AppLink>
+            {authData && userMenuBtn} 
+            {menuOpen && <Menu closeMenu={closeMenu}/>}
+         </HStack>
+      </AppBlock>
+            
    );
 };
