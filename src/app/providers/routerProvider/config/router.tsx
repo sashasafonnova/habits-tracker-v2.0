@@ -1,5 +1,3 @@
-
-import { AccountPage } from 'pages/Account';
 import { CreateTrackPage } from 'pages/CreateTrack';
 import { HomePage } from 'pages/Home';
 import { LoginPage } from 'pages/Login';
@@ -14,7 +12,6 @@ export enum RouteName {
    MAIN = 'main',
    LOGIN = 'login',
    REGISTRATION = 'registration',
-   ACCOUNT = 'account',
    TRACKS = 'tracks',
    TRACK = 'track',
    CREATE_TRACK = 'create_track',
@@ -26,7 +23,6 @@ export const RoutePath: Record<RouteName, string> = {
    [RouteName.MAIN]: '/',
    [RouteName.LOGIN]: '/login',
    [RouteName.REGISTRATION]: '/registration',
-   [RouteName.ACCOUNT]: '/account',
    [RouteName.TRACKS]: '/tracks',
    [RouteName.TRACK]: '/tracks/:id',
    [RouteName.CREATE_TRACK]: '/create',
@@ -52,11 +48,6 @@ export const AppRoutes: Record<RouteName, AppRoutesProps> = {
       path: RoutePath.registration,
       visible: 'public',
       element: <RegistrationPage />,
-   },
-   [RouteName.ACCOUNT]: {
-      path: RoutePath.account,
-      visible: 'private',
-      element: <AccountPage />,
    },
    [RouteName.TRACKS]: {
       path: RoutePath.tracks,

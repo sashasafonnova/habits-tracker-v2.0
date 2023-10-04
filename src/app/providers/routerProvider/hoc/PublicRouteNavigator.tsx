@@ -13,7 +13,7 @@ export const PublicRouteNavigator: FC<PublicRouteNavigatorProps> = (props: Publi
    const { authData } = useAuth();
 
    if (authData) {
-      return <Navigate to={RoutePath.account} replace />;
+      return <Navigate to={RoutePath.tracks} replace />;
    }
 
    return children;
