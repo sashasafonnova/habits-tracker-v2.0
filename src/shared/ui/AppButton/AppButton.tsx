@@ -18,12 +18,13 @@ interface AppButtonProps extends ButtonProps {
    max?: boolean;
    round?: boolean;
    hover?: boolean;
+   contentPosition?: 'positionCenter' | 'positionLeft'
 }
 
 
 export const AppButton: React.FC<AppButtonProps> = memo(function AppButton(props: AppButtonProps) {
 
-   const { className, children, variant, onClick, focus, max, hover=true, round=true, ...otherProps } = props;
+   const { className, children, variant, onClick, focus, max, hover=true, contentPosition, round=true, ...otherProps } = props;
 
    const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
       onClick?.(e.currentTarget.value);
@@ -32,6 +33,7 @@ export const AppButton: React.FC<AppButtonProps> = memo(function AppButton(props
    const additional = [
       className,
       styles[variant],
+      styles[contentPosition],
    ];
 
    const mods = {

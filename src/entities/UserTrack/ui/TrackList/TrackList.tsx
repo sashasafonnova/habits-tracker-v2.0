@@ -10,13 +10,11 @@ import { TracksSkeleton } from '../TracksSkeleton/TracksSkeleton';
 import { FetchLoader } from 'shared/ui/FetchLoader/FetchLoader';
 import { useStateCreator } from 'shared/lib/hooks/useStateCreator';
 import { userTrackReducer } from '../../model/slice/userTrackSlice';
-
+import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 
 export const TrackList: React.FC = () => {
 
    useStateCreator({ userTrack: userTrackReducer }, true);
-
-
    const tracks = useSelector(userTracksSelector);
    const isLoading = useSelector(tracksIsLoadingSelector);
    const error = useSelector(tracksErrorSelector);
@@ -39,8 +37,14 @@ export const TrackList: React.FC = () => {
    }
 
    return (
-      <section className={styles.trackList}>
-         {tracks.length > 0 ? tracks.map(track => <TrackCard key={track._id} track={track} short={true} />) : 'У вас пока нет ни одного трека'}
-      </section>      
+      <AppBlock padding>
+         <ul className={styles.trackList}>
+            {tracks.length > 0 ? tracks.map(track => (
+               <li key={track._id}>
+                  <TrackCard track={track} short={true} />
+               </li>))
+               : 'У вас пока нет ни одного трека'}
+         </ul>
+      </AppBlock>      
    );
 };

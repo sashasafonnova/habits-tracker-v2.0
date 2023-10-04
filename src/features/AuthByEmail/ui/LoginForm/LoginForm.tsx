@@ -79,7 +79,7 @@ export const LoginForm: React.FC = () => {
    
 
    return (
-      <AppBlock container className={classMaker(styles.loginForm, [], {})} >
+      <AppBlock container className={classMaker(styles.loginForm, [], {})}>
          <VStack max maxHeight align='center' justify='center' gap='20' className={styles.content}>
             <VStack gap='10' align='center'>
                <h1 className={styles.title}>Войти</h1>
@@ -120,6 +120,7 @@ export const LoginForm: React.FC = () => {
                      />
                   </HStack> 
                   <AppButton
+                     contentPosition='positionCenter'
                      max
                      variant='background'
                      onClick={onCLickLogin}>

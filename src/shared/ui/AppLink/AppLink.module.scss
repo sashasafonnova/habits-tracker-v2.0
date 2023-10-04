@@ -16,9 +16,10 @@
 
 .button {
    display: inline-block;
-   padding: var(--font-size-m) calc(var(--font-size-m) * 2);
+   font-size: var(--font-size-s);
+   padding: 12px 24px;
    background-color: var(--dark-primary-color);
-   border-radius: var(--border-radius-elems);
+   border-radius: var(--appbutton-border-radius);
    color: var(--white-color);
 }
 

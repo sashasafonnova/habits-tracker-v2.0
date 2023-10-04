@@ -7,6 +7,7 @@ interface AppBlockProps {
     className?: string,
     Tag?: 'section' | 'header' | 'footer' | 'nav' | 'div',
     type?: 'page' | 'block',
+    padding?: boolean;
     container?: boolean;
 }
 
@@ -17,6 +18,7 @@ export const AppBlock: React.FC<AppBlockProps> = (props: AppBlockProps) => {
       Tag = 'div',
       container = false,
       type = 'block',
+      padding = false,
    } = props;
 
    const additional = [
@@ -24,16 +26,20 @@ export const AppBlock: React.FC<AppBlockProps> = (props: AppBlockProps) => {
       styles[type],
    ];
 
+   const mods = {
+      [styles.padding]: padding,
+   };
+
    if (!container) {
       return (
-         <Tag className={classMaker(styles.appBlock, additional, {})}>
+         <Tag className={classMaker(styles.appBlock, additional, mods)}>
             {children}
          </Tag>
       );
    }
 
    return (
-      <Tag className={classMaker(styles.appBlock, additional, {})}>
+      <Tag className={classMaker(styles.appBlock, additional,  mods)}>
          <div className={styles.container}>
             {children}
          </div>

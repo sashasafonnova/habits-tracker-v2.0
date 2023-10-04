@@ -2,7 +2,6 @@
    background: transparent;
    display: flex;
    align-items: center;
-   justify-content: center;
 }
 
 .background {
@@ -54,6 +53,15 @@
    &:hover {
       opacity: 50%;
    }
+}
+
+.positionCenter {
+   justify-content: center;
+}
+
+
+.positionLeft {
+   justify-content: flex-start;
 }
 
 

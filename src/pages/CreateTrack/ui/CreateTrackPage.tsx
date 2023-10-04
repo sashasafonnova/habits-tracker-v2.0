@@ -7,7 +7,7 @@ import { VStack } from 'shared/ui/AppStack';
 const CreateTrackPage: React.FC = () => {
 
    return (
-      <AppBlock type='page' container>
+      <AppBlock type='page' container padding>
          <VStack gap='40' max>
             <GoBack />
             <CreateForm/>

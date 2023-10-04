@@ -6,7 +6,7 @@ import { HStack, VStack } from 'shared/ui/AppStack';
 
 export const Home: React.FC = () => {
    return (
-      <AppBlock container>
+      <AppBlock container padding={false}>
          <VStack className={styles.content} align='center' justify='center'>
             <h1 className={styles.title}>HabitsTracker <span>- приложение <br />для отслеживания привычек</span></h1>
             <p className={styles.subtitle}>Выбирайте готовые треки привычек или создавайте свои и отслеживайте их выполнение каждый день.</p>

@@ -6,7 +6,7 @@ import { TrackSettings } from 'widgets/TrackSettings';
 const TrackPage: React.FC = () => {
 
    return (
-      <AppBlock type='page' container>
+      <AppBlock type='page' container padding>
          <VStack gap='40' max>
             <GoBack />
             <TrackSettings />

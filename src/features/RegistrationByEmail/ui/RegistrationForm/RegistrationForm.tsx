@@ -35,7 +35,8 @@ export const RegistrationForm: React.FC = () => {
                         variant={AppInputVariant.BACKGROUND} 
                      />
                   </HStack>
-                  <AppButton 
+                  <AppButton max
+                     contentPosition='positionCenter'
                      variant='background'>
                      Зарегистрироваться
                   </AppButton>
