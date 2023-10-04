@@ -1,4 +1,4 @@
-import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
+import { AppButton } from 'shared/ui/AppButton/AppButton';
 import styles from './AppError.module.scss';
 import { AppTitle, AppTitleColor, AppTitleVariant } from 'shared/ui/AppTitle/AppTitle';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +16,7 @@ export const AppError: React.FC = memo(function AppError(){
    return (
       <section className={styles.appError}>
          <AppTitle variant={AppTitleVariant.BIG} color={AppTitleColor.MAIN} marginBottom={'20'}>Произошла непредвиденная ошибка</AppTitle>
-         <AppButton variant={AppButtonVariant.BACKGROUND} onClick={reloadPage}>
+         <AppButton variant='background' onClick={reloadPage}>
             Обновить страницу
          </AppButton>
       </section>

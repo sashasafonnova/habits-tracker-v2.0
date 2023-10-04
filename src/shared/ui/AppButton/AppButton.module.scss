@@ -1,30 +1,14 @@
 .appButton {
-   border-radius: var(--border-radius-elems);
-   font-size: inherit;
    background: transparent;
    display: flex;
    align-items: center;
 }
 
-.clearText {
-   color: var(--text-color);
-}
-
-.clearTitle {
-   color: var(--title-color);
-}
-
-.clearWhite {
-   color: var(--white-color);
-}
-
-.clearRed {
-   color: red;
-}
-
 .background {
+   border-radius: var(--appbutton-border-radius);
+   font-size: var(--font-size-s);
    background: var(--dark-primary-color);
-   padding: var(--font-size-m) calc(var(--font-size-m) * 2);
+   padding: 12px 24px;
    color: var(--white-color);
 
    &:disabled{
@@ -48,12 +32,28 @@
 }
 
 .outline {
-   height: 50px;
-   border: 1px solid var(--line-color);
-   padding: 0px 20px;
+   padding: 12px 24px;
+   font-size: var(--font-size-s);
+   border: 1px solid var(--appbutton-line-color);
+}
+
+.focus {
+   border: 1px solid var(--appbutton-focus-color);
+}
+
+.max {
    width: 100%;
 }
 
+.round {
+   border-radius: var(--appbutton-border-radius);
+}
+
+.hover {
+   &:hover {
+      opacity: 50%;
+   }
+}
 
 
 

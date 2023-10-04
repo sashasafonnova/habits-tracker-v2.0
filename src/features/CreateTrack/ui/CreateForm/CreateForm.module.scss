@@ -16,8 +16,6 @@
    z-index: var(--z-index-1);
 }
 
-
-
 .selectOptions {
    padding: 20px;
 }
@@ -48,5 +46,9 @@
    position: absolute;
    top: -20px;
    color: var(--error-color);
+}
+
+.buttonCategory {
+   border-radius: var(--border-radius-elems);
 }
 

@@ -6,7 +6,7 @@
 
 .item {
    padding: 30px;
-   box-shadow: rgb(var(--elem-shadow-color)) 2px 4px 14px -4px;
+   box-shadow: var(--trackcard-skeleton-boxshadow);
    border-radius: var(--border-raduis-cards);
    font-size: var(--font-size-m);
    background-color: var(--bg-color);

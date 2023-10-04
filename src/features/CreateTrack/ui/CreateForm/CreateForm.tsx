@@ -108,11 +108,13 @@ export const CreateForm: React.FC = () => {
                   {errors?.category && <AppText className={styles.errorText} color={AppTextColors.ERROR} textSize={AppTextSizes.XS}>{errors.category}</AppText>}
                   <div className={styles.category}>
                      <AppButton 
-                        variant={AppButtonVariant.OUTLINE} 
-                        onClick={onToggleDropdown} 
-                        marginBottom={errors?.title ? '30' : '20'} 
+                        variant='outline' 
+                        round={false}
+                        className={styles.buttonCategory}
+                        onClick={onToggleDropdown}
+                        focus={dropdownOpen} 
                         onFocus={() => onFocusField('category')}>
-                        {category ? <TrackCategory category={category} /> : 'Выбрать категорию'}
+                        {category ? <TrackCategory category={category} /> : 'Выберите категорию'}
                      </AppButton>
                      {dropdownOpen && <Dropdown className={styles.dropdownList} list={categories} onChoose={onChooseCategory} variant={DropdownVariant.BACKGROUND} mods={{short: true }} />}
                   </div>
@@ -176,7 +178,7 @@ export const CreateForm: React.FC = () => {
                      </label>
                   </li>                  
                </ul>
-               <AppButton variant={AppButtonVariant.BACKGROUND} onClick={onClickCreate}>Создать</AppButton>
+               <AppButton variant='background' onClick={onClickCreate}>Создать</AppButton>
             </form>   
          </div>
          {createStatus === CreateTrackStatuses.IS_CREATING && <Modal><Loader /></Modal>}

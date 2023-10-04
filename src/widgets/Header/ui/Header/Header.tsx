@@ -4,7 +4,7 @@ import LogoDark from '../../assets/icons/logo-dark.svg';
 import UserIcon from '../../assets/icons/user-icon.svg';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
-import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
+import { AppButton } from 'shared/ui/AppButton/AppButton';
 import { useSelector } from 'react-redux';
 import { authDataSelector } from 'entities/User';
 import { useCallback, useState } from 'react';
@@ -30,7 +30,7 @@ export const Header = () => {
 
 
    const userMenuBtn = (
-      <AppButton variant={AppButtonVariant.CLEAR_TITLE} onClick={openMenu}>
+      <AppButton onClick={openMenu}>
          <UserIcon className={styles.btnIcon}/>
          <span className={styles.btnText}>Мой аккаунт</span>
       </AppButton>

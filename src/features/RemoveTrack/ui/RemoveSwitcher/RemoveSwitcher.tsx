@@ -18,7 +18,7 @@ export const RemoveSwitcher: React.FC = memo(function RemoveSwitcher(){
 
    return (
       <>
-         <AppButton variant={AppButtonVariant.CLEAR_RED} onClick={openRemoveModal}>Удалить трек</AppButton>
+         <AppButton onClick={openRemoveModal}>Удалить трек</AppButton>
          {removeModal && <RemoveModal onClose={closeRemoveModal} />}  
       </>
    );

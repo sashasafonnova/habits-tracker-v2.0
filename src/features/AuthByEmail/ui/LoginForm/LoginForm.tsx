@@ -116,8 +116,7 @@ export const LoginForm: React.FC = () => {
                   />
                </div> 
                <AppButton
-                  variant={AppButtonVariant.BACKGROUND}
-                  marginBottom={'30'}
+                  variant='background'
                   onClick={onCLickLogin}>
                      Войти
                </AppButton>

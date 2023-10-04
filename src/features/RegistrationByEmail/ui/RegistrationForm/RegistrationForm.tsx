@@ -1,4 +1,4 @@
-import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
+import { AppButton } from 'shared/ui/AppButton/AppButton';
 import styles from './RegistrationForm.module.scss';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { AppLinkVariant } from 'shared/ui/AppLink/AppLink';
@@ -29,8 +29,7 @@ export const RegistrationForm: React.FC = () => {
                   variant={AppInputVariant.BACKGROUND} 
                />
                <AppButton 
-                  variant={AppButtonVariant.BACKGROUND}
-                  marginBottom={'30'}>
+                  variant='background'>
                      Зарегистрироваться
                </AppButton>
             </form>

@@ -1,7 +1,7 @@
 import styles from './TrackCard.module.scss';
 import { UserTrack } from '../../model/types/userTrack';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
-import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
+import { AppButton } from 'shared/ui/AppButton/AppButton';
 import { AppTitle, AppTitleVariant } from 'shared/ui/AppTitle/AppTitle';
 import { TrackProgress } from 'entities/TrackProgress';
 import { TrackCategory } from 'entities/TrackCategory';
@@ -36,7 +36,7 @@ export const TrackCard: React.FC<TrackCardProps> = memo(function TrackCard(props
          <p className={styles.start}><span>Начато: </span>{track.dateCreated}</p>
          <TrackProgress progress={track.progress} trackLength={track.habitLength} />
          {!short && <ProgressIndicator progress={track.progress} trackLength={track.habitLength} />}
-         <AppButton variant={AppButtonVariant.BACKGROUND} marginBottom={short ? '' : '40'}>Сделать отметку</AppButton>
+         <AppButton variant='outline'>Сделать отметку</AppButton>
          {!short &&<p className={styles.lastCheck}><span>Последняя отметка:</span><br />{track.lastUpdated}</p>}
       </div>  
    );
