@@ -1,0 +1,34 @@
+.main {
+   color: var(--text-color);
+}
+
+.error {
+   color: red;
+}
+
+.primary {
+   color: var(--primary-color);
+}
+
+.done {
+   color: var(--status-done-text-color);
+}
+
+.xs {
+   font-size: var(--font-size-xs);
+   line-height: var(--font-line-xs);
+}
+
+.s {
+   font-size: var(--font-size-s);
+   line-height: var(--font-line-s);
+}
+
+.m {
+   font-size: var(--font-size-m);
+   line-height: var(--font-line-m);
+}
+
+.extraBold {
+   font-weight: var(--text-weight-extrabold);
+}

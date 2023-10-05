@@ -1,86 +1,100 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { AppText, AppTextColors, AppTextSizes } from './AppText';
-import { Theme } from 'app/providers/ThemeProvider';
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
+import { AppText } from './AppText';
 
 const meta: Meta<typeof AppText> = {
-   title: 'shared/AppText',
-   component: AppText,
+  title: 'shared/AppText',
+  component: AppText,
+  args: {
+    children: 'Пример текста',
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof AppText>;
 
-
-export const ColorMain: Story = {
-   render: () => <AppText color={AppTextColors.MAIN}>Lorem ipsum dolor</AppText>,
-};
-
-export const ColorMainDarkTheme: Story = {
-   render: () => <AppText color={AppTextColors.MAIN}>Lorem ipsum dolor</AppText>,
-   decorators: [ThemeDecorator(Theme.DARK)]
-};
-
-export const ColorError: Story = {
-   render: () => <AppText color={AppTextColors.ERROR}>Lorem ipsum dolor</AppText>,
-};
-
-export const ColorErrorDarkTheme: Story = {
-   render: () => <AppText color={AppTextColors.ERROR}>Lorem ipsum dolor</AppText>,
-   decorators: [ThemeDecorator(Theme.DARK)]
-};
-
-export const ColorPrimary: Story = {
-   render: () => <AppText color={AppTextColors.PRIMARY}>Lorem ipsum dolor</AppText>,
-};
-
-export const ColorPrimaryDarkTheme: Story = {
-   render: () => <AppText color={AppTextColors.PRIMARY}>Lorem ipsum dolor</AppText>,
-   decorators: [ThemeDecorator(Theme.DARK)]
-};
-
-export const ColorDone: Story = {
-   render: () => <AppText color={AppTextColors.DONE}>Lorem ipsum dolor</AppText>,
-};
-
-export const ColorDoneDarkTheme: Story = {
-   render: () => <AppText color={AppTextColors.DONE}>Lorem ipsum dolor</AppText>,
-   decorators: [ThemeDecorator(Theme.DARK)]
-};
-
 export const SizeXS: Story = {
-   render: () => <AppText textSize={AppTextSizes.XS}>Lorem ipsum dolor</AppText>,
-};
-
-export const SizeXSDarkTheme: Story = {
-   render: () => <AppText textSize={AppTextSizes.XS}>Lorem ipsum dolor</ AppText>,
-   decorators: [ThemeDecorator(Theme.DARK)]
+  args: {
+    size: 'xs',
+  },
 };
 
 export const SizeS: Story = {
-   render: () => <AppText textSize={AppTextSizes.S}>Lorem ipsum dolor</AppText>,
-};
-
-export const SizeSDarkTheme: Story = {
-   render: () => <AppText textSize={AppTextSizes.S}>Lorem ipsum dolor</ AppText>,
-   decorators: [ThemeDecorator(Theme.DARK)]
+  args: {
+    size: 's',
+  },
 };
 
 export const SizeM: Story = {
-   render: () => <AppText textSize={AppTextSizes.M}>Lorem ipsum dolor</AppText>,
+  args: {
+    size: 'm',
+  },
 };
 
-export const SizeMDarkTheme: Story = {
-   render: () => <AppText textSize={AppTextSizes.M}>Lorem ipsum dolor</AppText>,
-   decorators: [ThemeDecorator(Theme.DARK)]
+export const SizeL: Story = {
+  args: {
+    size: 'l',
+  },
 };
 
-export const ModsExtrabold: Story = {
-   render: () => <AppText color={AppTextColors.MAIN} textSize={AppTextSizes.S} mods={{extraBold: true}}>Lorem ipsum dolor</AppText>,
+export const SizeXL: Story = {
+  args: {
+    size: 'xl',
+  },
 };
 
-export const ModsExtraboldDarkTheme: Story = {
-   render: () => <AppText color={AppTextColors.MAIN} textSize={AppTextSizes.S} mods={{extraBold: true}}>Lorem ipsum dolor</AppText>,
-   decorators: [ThemeDecorator(Theme.DARK)]
+export const SizeXXL: Story = {
+  args: {
+    size: 'xxl',
+  },
+};
+
+export const SizeXXXL: Story = {
+  args: {
+    size: 'xxxl',
+  },
+};
+
+export const ColorMain: Story = {
+  args: {
+    color: 'main',
+  },
+};
+
+export const ColorInverted: Story = {
+  render: () => <div style={{ backgroundColor: '#000', height: 40 }}><AppText color='inverted'>Пример текста</AppText></div>,
+};
+
+export const ColorError: Story = {
+  args: {
+    color: 'error',
+  },
+};
+
+export const ColorPrimary: Story = {
+  args: {
+    color: 'primary',
+  },
+};
+
+export const WeightLight: Story = {
+  args: {
+    weight: 'light',
+  },
+};
+
+export const WeightMedium: Story = {
+  args: {
+    weight: 'medium',
+  },
+};
+
+export const WeightBold: Story = {
+  args: {
+    weight: 'bold',
+  },
+};
+
+export const NoWrapAndDots: Story = {
+  render: () => <div style={{ width: 180, height: 40, overflow: 'hidden' }}><AppText noWrap dots>Часть текста скрывается</AppText></div>,
 };

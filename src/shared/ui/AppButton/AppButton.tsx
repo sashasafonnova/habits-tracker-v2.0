@@ -20,9 +20,7 @@ export interface AppButtonProps extends ButtonProps {
    contentPosition?: 'positionCenter' | 'positionLeft'
 }
 
-
 export const AppButton: React.FC<AppButtonProps> = memo(function AppButton(props: AppButtonProps) {
-
    const { className, children, variant, onClick, focus, max, hover=true, contentPosition, round=true, ...otherProps } = props;
 
    const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {

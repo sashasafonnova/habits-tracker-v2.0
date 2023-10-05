@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { AppText, AppTextColors, AppTextSizes } from 'shared/ui/AppText/AppText';
+import { AppText, AppTextColors } from 'shared/ui/AppText/AppText';
 
 interface TrackStatusProps {
    status: string;
@@ -8,29 +8,27 @@ interface TrackStatusProps {
 export const TrackStatus: React.FC<TrackStatusProps> = memo(function TrackStatus(props: TrackStatusProps){
    const { status } = props;
 
-   let textColor;
+   let textColor: AppTextColors;
 
    switch (status) {
    case 'new': {
-      textColor = AppTextColors.PRIMARY;
+      textColor = 'primary';
       break;
    }
    case 'done': {
-      textColor = AppTextColors.DONE;
+      textColor = 'done';
       break;
    }
    case 'omitted': {
-      textColor = AppTextColors.ERROR;
+      textColor = 'error';
       break;
    }    
    }
 
    return (
       <AppText 
-         textSize={AppTextSizes.XS} 
+         size='xs'
          color={textColor} 
-         marginBottom={'5'} 
-         mods={{extraBold: true}}
       >
          {status}
       </AppText>

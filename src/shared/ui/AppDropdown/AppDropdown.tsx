@@ -11,6 +11,8 @@ interface AppDropdownProps {
    buttonProps?: AppDropdownButtonProps;
    button: ReactNode;
    short?: boolean;
+   focus?: boolean;
+   max?: boolean;
    popupPosition?: 'positionRight' | 'positionLeft';
 }
 
@@ -21,11 +23,14 @@ export function AppDropdown (props: AppDropdownProps) {
       short = false,
       button,
       buttonProps,
+      focus,
+      max,
       popupPosition = 'positionLeft',
    } = props;
    const [isOpen, setIsOpen] = useState(false);
    const popupMods = {
       [styles.short]: short,
+      [styles.max]: max,
    };
    const onTogglePopup = useCallback(() => {
       setIsOpen((prev) => !prev);
@@ -33,7 +38,7 @@ export function AppDropdown (props: AppDropdownProps) {
 
    return (
       <div className={classMaker(styles.appDropdown, [className], {})}>
-         <AppButton onClick={onTogglePopup} focus={isOpen} {...buttonProps}>
+         <AppButton onClick={onTogglePopup} focus={focus && isOpen} {...buttonProps}>
             {button}
          </AppButton>
          {isOpen && (

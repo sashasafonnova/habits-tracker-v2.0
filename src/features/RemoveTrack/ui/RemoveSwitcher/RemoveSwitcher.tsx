@@ -1,5 +1,5 @@
 import { memo, useCallback, useState } from 'react';
-import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
+import { AppButton } from 'shared/ui/AppButton/AppButton';
 import { RemoveModal } from '../RemoveModal/RemoveModal';
 
 

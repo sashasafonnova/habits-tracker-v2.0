@@ -24,6 +24,7 @@ import { checkInputValue } from 'features/AuthByEmail/model/services/validation/
 import { HStack, VStack } from 'shared/ui/AppStack';
 import { classMaker } from 'shared/lib/classMaker/classMaker';
 import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
+import { AppText } from 'shared/ui/AppText/AppText';
 
 
 export const LoginForm: React.FC = () => {
@@ -80,10 +81,10 @@ export const LoginForm: React.FC = () => {
 
    return (
       <AppBlock container className={classMaker(styles.loginForm, [], {})}>
-         <VStack max maxHeight align='center' justify='center' gap='20' className={styles.content}>
+         <VStack max maxHeight align='center' justify='center' gap='40' className={styles.content}>
             <VStack gap='10' align='center'>
-               <h1 className={styles.title}>Войти</h1>
-               <p className={errors?.others && styles.errorSubtitle}>{errors?.others ? errors.others : 'Введите e-mail и пароль'}</p>
+               <AppText Tag='h1' className={styles.title}>Войти</AppText>
+               <AppText Tag='p' className={errors?.others && styles.errorSubtitle}>{errors?.others ? errors.others : 'Введите e-mail и пароль'}</AppText>
             </VStack>
             <form className={styles.form}>
                <VStack align='center' gap='20'>
@@ -128,8 +129,8 @@ export const LoginForm: React.FC = () => {
                   </AppButton>
                </VStack>
             </form>
-            <HStack className={styles.account}>
-               <span className={styles.text}>Нет аккаунта?</span>
+            <HStack gap='10'>
+               <AppText Tag='span'>Нет аккаунта?</AppText>
                <AppLink to={RoutePath.registration} variant={AppLinkVariant.UNDERLINE}>Создать</AppLink>
             </HStack>
             {isLoading && <Modal><Loader /></Modal>}

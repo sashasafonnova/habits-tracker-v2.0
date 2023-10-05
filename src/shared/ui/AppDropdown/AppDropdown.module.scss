@@ -5,7 +5,6 @@
 
 .popup {
    position: absolute;
-   width: 100%;
    padding: 4px;
    top: 50px;
    border-radius: var(--appdropdown-popup-border-radius);
@@ -27,4 +26,9 @@
 .short {
    max-height: 170px;
    overflow-y: scroll;
+}
+
+.max {
+   width: 100%;
+
 }

@@ -1,51 +1,54 @@
 import { classMaker } from 'shared/lib/classMaker/classMaker';
 import styles from './AppText.module.scss';
-import { memo } from 'react';
 
+export type AppTextColors = 'main' | 'inverted' | 'error' | 'primary' | 'done';
 
-export enum AppTextColors {
-   MAIN = 'main',
-   ERROR = 'error',
-   PRIMARY = 'primary',
-   DONE = 'done',
-}
-
-export enum AppTextSizes {
-   XS ='xs',
-   S = 's',
-   M = 'm',
-}
-
-export enum AppTextMods {
-   EXTRABOLD = 'extraBold',
-}
-
-interface AppTextProps {
-   className?: string;
+export interface AppTextProps {
+   className?: string,
+   size?: 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
    color?: AppTextColors;
-   textSize?: AppTextSizes;
-   children: string;
-   marginBottom?: string;
-   mods?: Record<AppTextMods, boolean>
+   align?: 'left' | 'center' | 'right';
+   weight?: 'light' | 'medium' | 'bold' ;
+   Tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span';
+   noWrap?: boolean;
+   dots?: boolean;
+   children: string | number;
+   inlineStyles?: React.CSSProperties,
 }
 
-export const AppText: React.FC<AppTextProps> = memo(function AppText(props: AppTextProps){
-   const { color = AppTextColors.MAIN, children, marginBottom, textSize, mods, className } = props;
+export const AppText: React.FC<AppTextProps> = (props:AppTextProps) => {
+   const {
+      className = '',
+      size = 'm',
+      Tag = 'p',
+      weight = 'light',
+      children,
+      inlineStyles,
+      noWrap = false,
+      align = 'left',
+      dots = false,
+      color = 'main',
+   } = props;
 
    const additional = [
       className,
+      styles[size],
       styles[color],
-      styles[textSize],
-      `marginBottom${marginBottom}`
+      styles[weight],
+      styles[align],
    ];
 
-   const stylesMods = {
-      [styles[AppTextMods.EXTRABOLD]]: mods?.extraBold,
+   const Mods = {
+      [styles.noWrap]: noWrap,
+      [styles.dots]: dots,
    };
 
    return (
-      <p className={classMaker(styles.dropdown, additional, stylesMods)}>
+      <Tag
+         className={classMaker(styles.title, additional, Mods)}
+         style={inlineStyles}
+      >
          {children}
-      </p>
+      </Tag>
    );
-});
+};

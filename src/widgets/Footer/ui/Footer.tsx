@@ -3,7 +3,7 @@ import styles from './Footer.module.scss';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 import { HStack, VStack } from 'shared/ui/AppStack';
-
+import { AppText } from 'shared/ui/AppText/AppText';
 
 export const Footer: React.FC = () =>{
    
@@ -12,7 +12,7 @@ export const Footer: React.FC = () =>{
          <VStack gap='10'>
             <ThemeSwitcher />
             <HStack justify='between' max>
-               <p className={styles.copyRight}>© HabitsTracker, 2023</p>
+               <AppText Tag='p' color='inverted'>© HabitsTracker, 2023</AppText>
                <AppButton>Сообщить о проблеме</AppButton>
             </HStack>
          </VStack>

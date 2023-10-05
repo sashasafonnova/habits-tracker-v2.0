@@ -2,6 +2,11 @@
    background: transparent;
    display: flex;
    align-items: center;
+   
+   &:disabled{
+      opacity: 50%;
+      pointer-events: none;
+   }
 }
 
 .background {
@@ -10,11 +15,6 @@
    background: var(--dark-primary-color);
    padding: 12px 24px;
    color: var(--white-color);
-
-   &:disabled{
-      opacity: 50%;
-      pointer-events: none;
-   }
 }
 
 .underline {

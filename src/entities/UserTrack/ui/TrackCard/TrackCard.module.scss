@@ -1,31 +1,5 @@
 .info {
-   padding: 40px;
+   padding: 30px;
    background-color: var(--card-color);
-   margin-bottom: 20px;
    border-radius: var(--border-radius-cards);
-}
-
-.start {
-   margin-bottom: 30px;
-}
-
-.start span {
-   font-weight: 600;
-}
-
-.lastCheck span {
-   font-weight: 600;
-}
-
-
-@media (max-width: 380px) {
-   .info {
-      padding: 40px 30px;
-   }
-}
-
-@media (max-width: 320px) {
-   .info {
-      padding: 40px 20px;
-   }
 }

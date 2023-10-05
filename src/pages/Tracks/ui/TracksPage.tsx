@@ -2,7 +2,6 @@ import { AppTitle, AppTitleColor, AppTitleVariant } from 'shared/ui/AppTitle/App
 import { useSelector } from 'react-redux';
 import { TrackList, tracksIsLoadingSelector, userTracksSelector } from 'entities/UserTrack';
 import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
-import styles from './TracksPage.module.scss';
 import { HStack } from 'shared/ui/AppStack';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'app/providers/routerProvider/config/router';

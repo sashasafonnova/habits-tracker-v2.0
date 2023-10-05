@@ -1,17 +1,17 @@
-import { AppTitle, AppTitleColor, AppTitleVariant } from 'shared/ui/AppTitle/AppTitle';
-import styles from './RemoveFetching.module.scss';
 import { memo } from 'react';
+import { VStack } from 'shared/ui/AppStack';
+import { AppText } from 'shared/ui/AppText/AppText';
 import { Loader } from 'shared/ui/Loader/Loader';
 
 
 export const RemoveFetching: React.FC = memo(function RemoveForm() {
 
    return (
-      <div className={styles.removeFetching}>
+      <VStack max gap='20'>
          <Loader />
-         <AppTitle variant={AppTitleVariant.BIG} color={AppTitleColor.MAIN}>
+         <AppText size='l'>
             Идет удаление трека
-         </AppTitle>
-      </div>
+         </AppText>
+      </VStack>
    );
 });

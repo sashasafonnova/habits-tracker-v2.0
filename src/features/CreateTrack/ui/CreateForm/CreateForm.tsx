@@ -1,5 +1,4 @@
 import styles from './CreateForm.module.scss';
-import { AppTitle, AppTitleColor, AppTitleVariant } from 'shared/ui/AppTitle/AppTitle';
 import { AppButton } from 'shared/ui/AppButton/AppButton';
 import { useCallback } from 'react';
 import { TrackCategory } from 'entities/TrackCategory';
@@ -14,7 +13,6 @@ import { trackTitleSelector } from '../../model/selectors/trackTitleSelector/tra
 import { AppInput } from 'shared/ui/AppInput/AppInput';
 import { trackLengthSelector } from '../../model/selectors/trackLengthSelector/trackLengthSelector';
 import { CreateTrackData, CreateTrackStatuses, TrackLength } from '../../model/types/createTrack';
-import { AppText, AppTextColors, AppTextSizes } from 'shared/ui/AppText/AppText';
 import { dateCreator } from 'shared/lib/dateCreator/dateCreator';
 import { fetchCreateTrack } from '../../model/services/fetchCreateTrack';
 import { Modal } from 'shared/ui/Modal/Modal';
@@ -22,9 +20,9 @@ import { trackCreateStatusSelector } from '../../model/selectors/trackCreateStat
 import { Loader } from 'shared/ui/Loader/Loader';
 import { createTrackErrorsSelector } from '../../model/selectors/createTrackErrorsSelector/createTrackErrorsSelector';
 import { FetchLoader } from 'shared/ui/FetchLoader/FetchLoader';
-import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 import { VStack } from 'shared/ui/AppStack';
 import { CategoriesList } from '../CategotiesList/CategoriesList';
+import { AppText } from 'shared/ui/AppText/AppText';
 
 export const CreateForm: React.FC = () => {
 
@@ -78,13 +76,15 @@ export const CreateForm: React.FC = () => {
 
    return (
       <VStack max gap='30'>
-         <AppTitle variant={AppTitleVariant.BIG} color={AppTitleColor.PRIMARY}>Новый трек</AppTitle>
+         <AppText size='l' color='primary'>Новый трек</AppText>
          <form className={styles.form}>
             <VStack max gap='20'>
-               {errors?.others ? <AppText color={AppTextColors.ERROR}>{errors.others}</AppText> : ''}
+               {errors?.others ? <AppText color='error'>{errors.others}</AppText> : ''}
                <VStack className={styles.fieldWrapper} max>
-                  {errors?.category && <AppText className={styles.errorText} color={AppTextColors.ERROR} textSize={AppTextSizes.XS}>{errors.category}</AppText>}
+                  {errors?.category && <AppText className={styles.errorText} color='error' size='xs'>{errors.category}</AppText>}
                   <AppDropdown 
+                     focus
+                     max
                      button={category ? <TrackCategory category={category}/> : 'Выберите категорию'} 
                      short 
                      buttonProps={{variant: 'outline', max: true, round: false, className: styles.dropdownButton}}>
@@ -92,7 +92,7 @@ export const CreateForm: React.FC = () => {
                   </AppDropdown>  
                </VStack >
                <VStack className={styles.fieldWrapper} max>
-                  {errors?.title && <AppText className={styles.errorText} color={AppTextColors.ERROR} textSize={AppTextSizes.XS}>{errors.title}</AppText>}
+                  {errors?.title && <AppText className={styles.errorText} color='error' size='xs'>{errors.title}</AppText>}
                   <Textarea rows={3} 
                      variant={TextareaVariant.OUTLINE} 
                      placeholder={'Что будем делать?'} 
@@ -102,7 +102,7 @@ export const CreateForm: React.FC = () => {
                   />
                </VStack>
                <VStack gap='10'>
-                  <AppText textSize={AppTextSizes.M}>Количество дней:</AppText>
+                  <AppText>Количество дней:</AppText>
                   <ul className={styles.trackLength}>
                      <li className={styles.lengthItem}>
                         <label className={styles.label}>

@@ -1,7 +1,8 @@
 import { memo } from 'react';
-import styles from './TrackProgress.module.scss';
 import ProgressIcon from '../assets/icons/progress-icon.svg';
 import { progressCalc } from '../lib/progressCalc';
+import { HStack } from 'shared/ui/AppStack';
+import { AppText } from 'shared/ui/AppText/AppText';
 
 
 interface ProgressCalcProps {
@@ -15,9 +16,9 @@ export const TrackProgress: React.FC<ProgressCalcProps> = memo(function Progress
    const { progress, trackLength } = props;
 
    return (
-      <div className={styles.progress}>
-         <ProgressIcon className={styles.progressIcon} />
-         <span className={styles.progressText}>{`Прогресс: ${progress} из ${trackLength} (${progressCalc(trackLength, progress)})`}</span>
-      </div>
+      <HStack gap='10'>
+         <ProgressIcon/>
+         <AppText>{`Прогресс: ${progress} из ${trackLength} (${progressCalc(trackLength, progress)})`}</AppText>
+      </HStack>
    );
 });   
