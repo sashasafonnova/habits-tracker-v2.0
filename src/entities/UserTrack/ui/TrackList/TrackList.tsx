@@ -41,7 +41,7 @@ export const TrackList: React.FC = () => {
          <ul className={styles.trackList}>
             {tracks.length > 0 ? tracks.map(track => (
                <li key={track._id}>
-                  <TrackCard track={track} short={true} />
+                  <TrackCard track={track} />
                </li>))
                : 'У вас пока нет ни одного трека'}
          </ul>

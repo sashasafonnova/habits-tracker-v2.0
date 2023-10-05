@@ -28,6 +28,7 @@ export const TrackStatus: React.FC<TrackStatusProps> = memo(function TrackStatus
    return (
       <AppText 
          size='xs'
+         weight='bold'
          color={textColor} 
       >
          {status}

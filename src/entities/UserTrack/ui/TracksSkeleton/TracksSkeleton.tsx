@@ -1,11 +1,12 @@
 import React, { memo } from 'react';
 import styles from './TracksSkeleton.module.scss';
+import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 
 
 export const TracksSkeleton: React.FC = memo(function TracksSkeleton(){
 
    return (
-      <div className={styles.list}>
+      <AppBlock className={styles.list} padding>
          {[...new Array(6)].map((item, index) => {
             return (
                <div className={styles.item} key={index}>
@@ -21,6 +22,6 @@ export const TracksSkeleton: React.FC = memo(function TracksSkeleton(){
                </div>
             );
          })}
-      </div>         
+      </AppBlock>         
    );
 });

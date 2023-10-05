@@ -29,20 +29,11 @@ export default meta;
 type Story = StoryObj<typeof TrackCard>;
 
 
-export const Full: Story = {
+export const Card: Story = {
    render: () => <TrackCard track={trackData} />
 };
 
-export const FullDarkTheme: Story = {
+export const CardDarkTheme: Story = {
    render: () => <TrackCard track={trackData} />,
-   decorators: [ThemeDecorator(Theme.DARK)]
-};
-
-export const Short: Story = {
-   render: () => <TrackCard track={trackData} short={true} />
-};
-
-export const ShortDarkTheme: Story = {
-   render: () => <TrackCard track={trackData} short={true} />,
    decorators: [ThemeDecorator(Theme.DARK)]
 };

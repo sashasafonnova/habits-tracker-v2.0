@@ -7,11 +7,11 @@ import { useSelector } from 'react-redux';
 import { profileDataSelector } from '../../model/selectors/profileDataSelector/profileDataSelector';
 import { profileIsLoadingSelector } from '../../model/selectors/profileIsLoadingSelector/profileIsLoadingSelector';
 import { profileErrorSelector } from '../../model/selectors/profileErrorSelector/profileErrorSelector';
-import { TrackCard } from 'entities/UserTrack';
 import { FetchLoader } from 'shared/ui/FetchLoader/FetchLoader';
 import { trackProfileReducer } from '../../model/slice/trackProfileSlice';
 import { useStateCreator } from 'shared/lib/hooks/useStateCreator';
 import { profileExistStatusSelector } from '../../model/selectors/profileExistStatusSelector/profileExistStatusSelector';
+import { TrackProfileCard } from '../TrackProfileCard/TrackProfileCard';
 
 
 export const TrackProfile: React.FC = () => {
@@ -46,6 +46,6 @@ export const TrackProfile: React.FC = () => {
    }
 
    return (
-      <TrackCard track={profileData}/>
+      <TrackProfileCard track={profileData}/>
    );
 };
