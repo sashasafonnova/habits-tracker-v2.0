@@ -1,10 +1,10 @@
-import { AppTitle, AppTitleColor, AppTitleVariant } from 'shared/ui/AppTitle/AppTitle';
 import { useSelector } from 'react-redux';
 import { TrackList, tracksIsLoadingSelector, userTracksSelector } from 'entities/UserTrack';
 import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 import { HStack } from 'shared/ui/AppStack';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'app/providers/routerProvider/config/router';
+import { AppText } from 'shared/ui/AppText/AppText';
 
 const TracksPage: React.FC = () => {
 
@@ -15,7 +15,7 @@ const TracksPage: React.FC = () => {
    return (
       <AppBlock type='page' container padding>
          <HStack justify='between' align='center'>
-            <AppTitle variant={AppTitleVariant.BIG} color={AppTitleColor.PRIMARY}>{userTracksCount}</AppTitle>
+            <AppText size='l' color='primary' weight='bold'>{userTracksCount}</AppText>
             <AppLink to={RoutePath.create_track} variant={AppLinkVariant.BUTTON}>Создать</AppLink>
          </HStack>
          <TrackList />         
