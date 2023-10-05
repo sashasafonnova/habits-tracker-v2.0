@@ -1,14 +1,14 @@
 import styles from './CreateForm.module.scss';
 import { AppTitle, AppTitleColor, AppTitleVariant } from 'shared/ui/AppTitle/AppTitle';
-import { AppButton, AppButtonVariant } from 'shared/ui/AppButton/AppButton';
-import { useCallback, useState } from 'react';
-import { categories, CategoryNames, TrackCategory } from 'entities/TrackCategory';
+import { AppButton } from 'shared/ui/AppButton/AppButton';
+import { useCallback } from 'react';
+import { TrackCategory } from 'entities/TrackCategory';
 import { useSelector } from 'react-redux';
 import { trackCategorySelector } from 'features/CreateTrack/model/selectors/trackCategorySelector/trackCategorySelector';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { createTrackActions, createTrackReducer } from '../../model/slice/createTrackSlice';
 import { useStateCreator } from 'shared/lib/hooks/useStateCreator';
-import { Dropdown, DropdownVariant } from 'shared/ui/Dropdown/Dropdown';
+import { AppDropdown } from 'shared/ui/AppDropdown/AppDropdown';
 import { Textarea, TextareaVariant } from 'shared/ui/TextArea/Textarea';
 import { trackTitleSelector } from '../../model/selectors/trackTitleSelector/trackTitleSelector';
 import { AppInput } from 'shared/ui/AppInput/AppInput';
@@ -24,12 +24,12 @@ import { createTrackErrorsSelector } from '../../model/selectors/createTrackErro
 import { FetchLoader } from 'shared/ui/FetchLoader/FetchLoader';
 import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 import { VStack } from 'shared/ui/AppStack';
+import { CategoriesList } from '../CategotiesList/CategoriesList';
 
 export const CreateForm: React.FC = () => {
 
    useStateCreator({ createTrack: createTrackReducer }, true);
 
-   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
    const category = useSelector(trackCategorySelector);
    const title = useSelector(trackTitleSelector);
    const trackLength = useSelector(trackLengthSelector);
@@ -38,26 +38,13 @@ export const CreateForm: React.FC = () => {
 
    const dispatch = useAppDispatch();
 
-   const onChooseCategory = useCallback((value: CategoryNames) => {
-      setDropdownOpen(false);
-      dispatch(createTrackActions.setCategory(value));
-   }, [setDropdownOpen]);
-
-
    const onChangeName = useCallback((value: string) => {
       dispatch(createTrackActions.setName(value));
    }, [dispatch]);
 
-
    const onChangeLength = useCallback((value: TrackLength) => {
       dispatch(createTrackActions.setLength(value));
    }, [dispatch]);
-
-
-   const onToggleDropdown = useCallback(() => {
-      setDropdownOpen(prev => !prev);
-   }, [setDropdownOpen]);
-
 
    const onFocusField = useCallback((field: string) => {
       const errorField = field === 'category' ? { ...errors, category: '' } : { ...errors, title: '' };
@@ -90,26 +77,19 @@ export const CreateForm: React.FC = () => {
    }
 
    return (
-      <AppBlock>
-         <AppTitle variant={AppTitleVariant.BIG} color={AppTitleColor.PRIMARY} marginBottom={'30'}>Новый трек</AppTitle>
+      <VStack max gap='30'>
+         <AppTitle variant={AppTitleVariant.BIG} color={AppTitleColor.PRIMARY}>Новый трек</AppTitle>
          <form className={styles.form}>
             <VStack max gap='20'>
                {errors?.others ? <AppText color={AppTextColors.ERROR}>{errors.others}</AppText> : ''}
                <VStack className={styles.fieldWrapper} max>
                   {errors?.category && <AppText className={styles.errorText} color={AppTextColors.ERROR} textSize={AppTextSizes.XS}>{errors.category}</AppText>}
-                  <div className={styles.category}>
-                     <AppButton 
-                        variant='outline' 
-                        round={false}
-                        className={styles.buttonCategory}
-                        onClick={onToggleDropdown}
-                        focus={dropdownOpen} 
-                        max
-                        onFocus={() => onFocusField('category')}>
-                        {category ? <TrackCategory category={category} /> : 'Выберите категорию'}
-                     </AppButton>
-                     {dropdownOpen && <Dropdown className={styles.dropdownList} list={categories} onChoose={onChooseCategory} variant={DropdownVariant.BACKGROUND} mods={{short: true }} />}
-                  </div>
+                  <AppDropdown 
+                     button={category ? <TrackCategory category={category}/> : 'Выберите категорию'} 
+                     short 
+                     buttonProps={{variant: 'outline', max: true, round: false, className: styles.dropdownButton}}>
+                     <CategoriesList />
+                  </AppDropdown>  
                </VStack >
                <VStack className={styles.fieldWrapper} max>
                   {errors?.title && <AppText className={styles.errorText} color={AppTextColors.ERROR} textSize={AppTextSizes.XS}>{errors.title}</AppText>}
@@ -175,6 +155,6 @@ export const CreateForm: React.FC = () => {
             </VStack>
          </form>   
          {createStatus === CreateTrackStatuses.IS_CREATING && <Modal><Loader /></Modal>}
-      </AppBlock>
+      </VStack>
    );
 };

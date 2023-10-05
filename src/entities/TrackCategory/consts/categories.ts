@@ -11,7 +11,7 @@ import workIcon from '../assets/icons/work.svg';
 
 export interface Category {
    name: string,
-   icon: React.VFC<React.SVGProps<SVGSVGElement>>
+   icon: React.FC<React.SVGProps<SVGSVGElement>>
 }
 
 export enum CategoryNames {
@@ -25,6 +25,9 @@ export enum CategoryNames {
    WORK = 'Работа',
    OTHERS = 'Другое'
 }
+
+type CategoryNamesKeys = keyof typeof CategoryNames;
+export type CategoryNamesType = typeof CategoryNames[CategoryNamesKeys];
 
 export const categories: Category[] = [
    {

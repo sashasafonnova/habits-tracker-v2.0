@@ -1,0 +1,30 @@
+.appDropdown {
+   position: relative;
+   width: 100%;
+}
+
+.popup {
+   position: absolute;
+   width: 100%;
+   padding: 4px;
+   top: 50px;
+   border-radius: var(--appdropdown-popup-border-radius);
+   z-index: var(--z-index-appdropdown-popup);
+   display: inline-flex;
+   flex-direction: column;
+   background-color: var(--appdropdown-popup-color);
+   box-shadow: var(--appdropdown-popup-shadow);
+}
+
+.positionRight {
+   right: 0;
+}
+
+.positionLeft {
+   left: 0;
+}
+
+.short {
+   max-height: 170px;
+   overflow-y: scroll;
+}

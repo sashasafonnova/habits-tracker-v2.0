@@ -1,4 +1,5 @@
 .form {
+   width: 100%;
    max-width: 400px;
 }
 
@@ -7,19 +8,14 @@
    width: 100%;
 }
 
-.category {
-   position: relative;
-   width: 100%;
-}
-
-.dropdownList {
+.errorText {
    position: absolute;
-   top: 52px;
-   z-index: var(--z-index-1);
+   top: -20px;
+   color: var(--error-color);
 }
 
-.selectOptions {
-   padding: 20px;
+.dropdownButton {
+   border-radius: var(--border-radius-elems);
 }
 
 .trackLength {
@@ -41,15 +37,3 @@
       margin-right: 10px;
    }
 }
-
-
-.errorText {
-   position: absolute;
-   top: -20px;
-   color: var(--error-color);
-}
-
-.buttonCategory {
-   border-radius: var(--border-radius-elems);
-}
-

@@ -24,12 +24,12 @@ export const TrackCard: React.FC<TrackCardProps> = memo(function TrackCard(props
 
    return (
       <div className={styles.info}>
-         <TrackCategory category={track.category} marginBottom={'20'}/>
+         <TrackCategory category={track.category}/>
          <TrackStatus status={track.status}/>
-         {!short ? <AppTitle variant={AppTitleVariant.BIG} marginBottom={'20'}>
+         {!short ? <AppTitle variant={AppTitleVariant.BIG}>
             {track.title}
          </AppTitle> : <AppLink to={`/tracks/${track._id}`} variant={AppLinkVariant.CLEAR}>
-            <AppTitle variant={AppTitleVariant.BIG} marginBottom={'20'}>
+            <AppTitle variant={AppTitleVariant.BIG}>
                {track.title}
             </AppTitle>
          </AppLink>}

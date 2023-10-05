@@ -3,12 +3,11 @@ import { ButtonHTMLAttributes, ReactNode, memo } from 'react';
 import styles from './AppButton.module.scss';
 import { classMaker } from 'shared/lib/classMaker/classMaker';
 
-
 export type AppButtonVariant = 'background' | 'underline' | 'outline';
 
 type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>
 
-interface AppButtonProps extends ButtonProps {
+export interface AppButtonProps extends ButtonProps {
    className?: string;
    children: string | ReactNode,
    variant?: AppButtonVariant,

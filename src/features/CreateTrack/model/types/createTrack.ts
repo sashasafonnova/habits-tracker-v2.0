@@ -1,7 +1,7 @@
-import { CategoryNames } from 'entities/TrackCategory';
+import { CategoryNamesType } from 'entities/TrackCategory';
 
 export interface CreateTrackSchema {
-   category: CategoryNames | '',
+   category: CategoryNamesType | '',
    title: string | '',
    trackLength: TrackLength,
    createStatus: CreateTrackStatuses,
@@ -22,7 +22,7 @@ export enum CreateTrackStatuses {
 }
 
 export interface CreateTrackData {
-   category: CategoryNames | '',
+   category: CategoryNamesType | '',
    title: string,
    habitLength: number,
    dateCreated: string,
