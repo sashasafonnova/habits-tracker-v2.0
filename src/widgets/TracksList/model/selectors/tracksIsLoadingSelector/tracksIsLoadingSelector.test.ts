@@ -6,7 +6,7 @@ import { tracksIsLoadingSelector } from './tracksIsLoadingSelector';
 describe('tracksIsLoadingSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
-         userTrack: {
+         tracksList: {
             isLoading: true
          }
       };

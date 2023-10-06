@@ -4,7 +4,7 @@ import TracksPage from './TracksPage';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
-import { userTrackReducer } from 'entities/UserTrack';
+import { tracksListReducer } from 'widgets/TracksList';
 
 
 const meta: Meta<typeof TracksPage> = {
@@ -13,7 +13,7 @@ const meta: Meta<typeof TracksPage> = {
 };
 
 const asyncReducers = {
-   userTrack: userTrackReducer
+   tracksList: tracksListReducer
 };
 
 const trackData = {
@@ -28,8 +28,6 @@ const trackData = {
    status: 'new'
 };
 
-
-
 export default meta;
 type Story = StoryObj<typeof TracksPage>;
 
@@ -37,8 +35,8 @@ type Story = StoryObj<typeof TracksPage>;
 export const Main: Story = {
    render: () => <TracksPage />,
    decorators: [StoreDecorator({
-      userTrack: {
-         userTrackData: [trackData, trackData],
+      tracksList: {
+         tracksList: [trackData, trackData],
       }
    }, asyncReducers)],
 };
@@ -46,8 +44,8 @@ export const Main: Story = {
 export const DarkTheme: Story = {
    render: () => <TracksPage />,
    decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
-      userTrack: {
-         userTrackData: [trackData, trackData],
+      tracksList: {
+         tracksList: [trackData, trackData],
       }
    }, asyncReducers)]
 };

@@ -1,7 +1,6 @@
 import { classMaker } from 'shared/lib/classMaker/classMaker';
 import styles from './MenuList.module.scss';
 import { userActions } from 'entities/User';
-import { userTrackActions } from 'entities/UserTrack';
 import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localStorage';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
@@ -29,7 +28,6 @@ export const MenuList: React.FC<MenuListProps> = (props: MenuListProps) => {
 
    const onClickLogOut = () => {
       dispatch(userActions.logOut());
-      dispatch(userTrackActions.clearUserTrackData());
       localStorage.removeItem(USER_LOCALSTORAGE_KEY);
    };
 

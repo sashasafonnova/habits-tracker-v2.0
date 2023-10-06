@@ -1,24 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { TracksSkeleton } from './TracksSkeleton';
+import { TracksListSkeleton } from './TracksListSkeleton';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 
-const meta: Meta<typeof TracksSkeleton> = {
-   title: 'entities/TracksSkeleton',
-   component: TracksSkeleton,
+const meta: Meta<typeof TracksListSkeleton> = {
+   title: 'widgets/TracksListSkeleton',
+   component: TracksListSkeleton,
 };
 
 
 export default meta;
-type Story = StoryObj<typeof TracksSkeleton>;
+type Story = StoryObj<typeof TracksListSkeleton>;
 
 
 export const Main: Story = {
-   render: () => <TracksSkeleton />
+   render: () => <TracksListSkeleton />
 };
 
 export const DarkTheme: Story = {
-   render: () => <TracksSkeleton />,
+   render: () => <TracksListSkeleton />,
    decorators: [ThemeDecorator(Theme.DARK)]
 };

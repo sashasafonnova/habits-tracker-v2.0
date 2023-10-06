@@ -9,9 +9,3 @@ export interface UserTrack {
    lastUpdated?: string;
    status?: string;
 }
-
-export interface UserTrackSchema {
-   userTrackData?: UserTrack[];
-   isLoading: boolean;
-   error?: string
-}

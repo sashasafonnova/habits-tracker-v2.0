@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import { UserTrack, userTrackActions } from 'entities/UserTrack';
+import { UserTrack } from 'entities/UserTrack';
 
 
-export const fetchUserTracks = createAsyncThunk<UserTrack, undefined, ThunkConfig<string>>(
+export const fetchUserTracks = createAsyncThunk<UserTrack[], undefined, ThunkConfig<string>>(
    'userTrack/fetchUserTracks',
    async (_, thunkAPI) => {
       try {
@@ -12,8 +12,6 @@ export const fetchUserTracks = createAsyncThunk<UserTrack, undefined, ThunkConfi
          if (!response.data) {
             throw new Error();
          }
-
-         thunkAPI.dispatch(userTrackActions.setUserTrackData(response.data));
 
          return response.data;
       } catch (e) {

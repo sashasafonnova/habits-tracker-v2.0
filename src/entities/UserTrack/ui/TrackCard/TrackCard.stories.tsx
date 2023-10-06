@@ -4,6 +4,7 @@ import { TrackCard } from './TrackCard';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { UserTrack } from 'entities/UserTrack';
+import { AppButton } from 'shared/ui/AppButton/AppButton';
 
 
 const meta: Meta<typeof TrackCard> = {
@@ -30,10 +31,10 @@ type Story = StoryObj<typeof TrackCard>;
 
 
 export const Card: Story = {
-   render: () => <TrackCard track={trackData} />
+   render: () => <TrackCard track={trackData} action={<AppButton variant='outline'>Action</AppButton>}/>
 };
 
 export const CardDarkTheme: Story = {
-   render: () => <TrackCard track={trackData} />,
+   render: () => <TrackCard track={trackData} action={<AppButton variant='outline'>Action</AppButton>}/>,
    decorators: [ThemeDecorator(Theme.DARK)]
 };

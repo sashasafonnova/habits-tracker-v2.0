@@ -1,7 +1,6 @@
 import styles from './TrackCard.module.scss';
 import { UserTrack } from '../../model/types/userTrack';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { AppButton } from 'shared/ui/AppButton/AppButton';
 import { TrackProgress } from 'entities/TrackProgress';
 import { TrackCategory } from 'entities/TrackCategory';
 import { memo } from 'react';
@@ -11,12 +10,14 @@ import { AppText } from 'shared/ui/AppText/AppText';
 
 interface TrackCardProps {
    track: UserTrack;
+   action: JSX.Element;
 }
 
 export const TrackCard: React.FC<TrackCardProps> = memo(function TrackCard(props: TrackCardProps){
 
    const { 
       track,
+      action,
    } = props;
 
    return (
@@ -39,7 +40,7 @@ export const TrackCard: React.FC<TrackCardProps> = memo(function TrackCard(props
                <TrackProgress progress={track.progress} trackLength={track.habitLength} />
             </VStack>
          </VStack>
-         <AppButton variant='outline'>Сделать отметку</AppButton>
+         {action}
       </VStack>  
    );
 });
