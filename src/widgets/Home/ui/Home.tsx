@@ -1,4 +1,4 @@
-import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import styles from './Home.module.scss';
 import { RoutePath } from 'app/providers/routerProvider/config/router';
 import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
@@ -15,12 +15,12 @@ export const Home: React.FC = () => {
             </VStack>
             <AppLink 
                to={RoutePath.registration} 
-               variant={AppLinkVariant.BUTTON}> 
+               variant='button'> 
                   Присоединиться
             </AppLink>
             <HStack gap='10'>
                <AppText Tag='span'>Уже есть аккаунт?</AppText>
-               <AppLink to={RoutePath.login} variant={AppLinkVariant.UNDERLINE}>Войти</AppLink>
+               <AppLink to={RoutePath.login} variant='underline'>Войти</AppLink>
             </HStack>
          </VStack>
       </AppBlock>

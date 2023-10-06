@@ -1,12 +1,20 @@
 .appLink {
-   font-size: inherit;
    display: flex;
    align-items: center;
    justify-content: flex-start;
 }
 
 .clear {
-   color: var(--primary-color);
+   background: transparent;
+}
+
+.text {
+   color: var(--text-main-color);
+   background: transparent;
+
+   &:visited{
+      color: var(--text-main-color);
+      }
 }
 
 .underline {
@@ -16,7 +24,6 @@
 
 .button {
    display: inline-block;
-   font-size: var(--font-size-s);
    padding: 12px 24px;
    background-color: var(--dark-primary-color);
    border-radius: var(--appbutton-border-radius);
@@ -28,5 +35,67 @@
    
    &:visited{
    color: var(--white-color);
+   }
+}
+
+.xs {
+   font-size: var(--font-size-xs);
+
+   @media (width <= 480px){
+      font-size: var(--font-size-xxs);
+   }
+}
+
+.s {
+   font-size: var(--font-size-s);
+
+   @media (width <= 480px){
+      font-size: var(--font-size-xs);
+   }
+}
+
+.m {
+   font-size: var(--font-size-m);
+
+   @media (width <= 480px){
+      font-size: var(--font-size-s);
+   }
+}
+
+.l {
+   font-size: var(--font-size-l);
+
+   @media (width <= 480px){
+      font-size: var(--font-size-m);
+   }
+}
+
+.xl {
+   font-size: var(--font-size-xl);
+
+   @media (width <= 480px){
+      font-size: var(--font-size-l);
+   }
+}
+
+.xxl {
+   font-size: var(--font-size-xxl);
+
+   @media (width <= 480px){
+      font-size: var(--font-size-xl);
+   }
+}
+
+.xxxl {
+   font-size: var(--font-size-xxxl);
+
+   @media (width <= 480px){
+      font-size: var(--font-size-xxl);
+   }
+}
+
+.hover {
+   &:hover {
+      opacity: 50%;
    }
 }

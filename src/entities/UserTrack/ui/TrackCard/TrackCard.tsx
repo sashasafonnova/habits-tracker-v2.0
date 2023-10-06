@@ -1,6 +1,6 @@
 import styles from './TrackCard.module.scss';
 import { UserTrack } from '../../model/types/userTrack';
-import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { AppButton } from 'shared/ui/AppButton/AppButton';
 import { TrackProgress } from 'entities/TrackProgress';
 import { TrackCategory } from 'entities/TrackCategory';
@@ -26,7 +26,7 @@ export const TrackCard: React.FC<TrackCardProps> = memo(function TrackCard(props
             <VStack max gap='20'>
                <VStack max gap='10'>
                   <TrackStatus status={track.status}/>
-                  <AppLink to={`/tracks/${track._id}`} variant={AppLinkVariant.CLEAR}>
+                  <AppLink to={`/tracks/${track._id}`}>
                      <AppText size='l' weight='bold'>
                         {track.title}
                      </AppText>

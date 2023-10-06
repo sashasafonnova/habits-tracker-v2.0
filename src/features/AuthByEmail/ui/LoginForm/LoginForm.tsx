@@ -7,7 +7,6 @@ import { Modal } from 'shared/ui/Modal/Modal';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { AppButton } from 'shared/ui/AppButton/AppButton';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localStorage';
 import { AppInput, AppInputVariant } from 'shared/ui/AppInput/AppInput';
@@ -131,7 +130,7 @@ export const LoginForm: React.FC = () => {
             </form>
             <HStack gap='10'>
                <AppText Tag='span'>Нет аккаунта?</AppText>
-               <AppLink to={RoutePath.registration} variant={AppLinkVariant.UNDERLINE}>Создать</AppLink>
+               <AppLink to={RoutePath.registration} variant='underline'>Создать</AppLink>
             </HStack>
             {isLoading && <Modal><Loader /></Modal>}
          </VStack>

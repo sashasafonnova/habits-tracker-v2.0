@@ -1,7 +1,7 @@
 import styles from './Header.module.scss';
 import LogoLight from '../../assets/icons/logo-light.svg';
 import LogoDark from '../../assets/icons/logo-dark.svg';
-import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 import { HStack } from 'shared/ui/AppStack';
@@ -16,7 +16,7 @@ export const Header = () => {
    return (
       <AppBlock container className={styles.header} Tag='header'>
          <HStack max justify='between'>
-            <AppLink to={'/'} variant={AppLinkVariant.CLEAR}>
+            <AppLink to={'/'}>
                {theme === Theme.LIGHT ? <LogoLight /> : <LogoDark />}
             </AppLink>
             {authData && <Menu />}

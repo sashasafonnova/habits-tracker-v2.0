@@ -1,7 +1,6 @@
 import { AppButton } from 'shared/ui/AppButton/AppButton';
 import styles from './RegistrationForm.module.scss';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'app/providers/routerProvider/config/router';
 import { AppInput, AppInputVariant } from 'shared/ui/AppInput/AppInput';
 import { HStack, VStack } from 'shared/ui/AppStack';
@@ -45,7 +44,7 @@ export const RegistrationForm: React.FC = () => {
             </form>
             <HStack gap='10'>
                <AppText Tag='span' >Уже есть аккаунт?</AppText>
-               <AppLink to={RoutePath.login} variant={AppLinkVariant.UNDERLINE}>Войти</AppLink>
+               <AppLink to={RoutePath.login} variant='underline'>Войти</AppLink>
             </HStack>
          </VStack>
       </AppBlock>
