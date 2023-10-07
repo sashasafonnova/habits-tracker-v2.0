@@ -20,7 +20,7 @@ export const TrackProfileCard: React.FC<TrackProfileCardProps> = memo(function T
       <VStack className={styles.info} max gap='30'>
          <VStack max gap='20'>
             <TrackCategory category={track.category}/>
-            <VStack max gap='20'>
+            <VStack max gap='30'>
                <VStack max gap='10'>
                   <TrackStatus status={track.status}/>
                   <AppText size='l' Tag='h2' weight='bold'>

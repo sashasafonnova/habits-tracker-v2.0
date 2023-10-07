@@ -1,5 +1,4 @@
 import { Footer } from 'widgets/Footer';
-import { AppRouter } from './providers/routerProvider';
 import { Header } from 'widgets/Header';
 import { useTheme } from './providers/ThemeProvider';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -7,7 +6,7 @@ import { useEffect } from 'react';
 import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localStorage';
 import { userActions } from 'entities/User';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import { AppRouter } from './providers/routerProvider';
 
 const App = () => {
    const {theme} = useTheme();

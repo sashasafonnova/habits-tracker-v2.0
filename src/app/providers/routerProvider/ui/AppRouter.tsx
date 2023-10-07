@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { AppRoutes, AppRoutesProps } from '../config/router';
 import { Suspense, useCallback } from 'react';
-import { FetchLoader } from 'shared/ui/FetchLoader/FetchLoader';
 import { PublicRouteNavigator } from '../hoc/PublicRouteNavigator';
 import { PrivateRouteNavigator } from '../hoc/PrivateRouteNavigator';
+import { LoadingPage } from 'pages/Loading';
 
 
 export const AppRouter = () => {
@@ -11,7 +11,7 @@ export const AppRouter = () => {
    const renderWithWrapper = useCallback((route: AppRoutesProps) => {
       
       const element = (
-         <Suspense fallback={<FetchLoader loader={true} />}>
+         <Suspense fallback={<LoadingPage />}>
             {route.element}
          </Suspense>
       );
