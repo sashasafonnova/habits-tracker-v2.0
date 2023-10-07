@@ -7,16 +7,21 @@ import { AppIcon } from 'shared/ui/AppIcon/AppIcon';
 import { AppText } from 'shared/ui/AppText/AppText';
 import { HStack } from 'shared/ui/AppStack';
 
+interface ThemeSwitcherProps {
+   className?: string;
+}
 
-export const ThemeSwitcher: React.FC = memo(function ThemeSwitcher() {
+
+export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = memo(function ThemeSwitcher(props: ThemeSwitcherProps) {
+   const { className = '' } = props;
    const { toggleTheme } = useTheme();
 
    return (
-      <AppButton
+      <AppButton className={className}
          onClick={toggleTheme}>
          <HStack className={styles.btn} gap='10'>
             <AppIcon Svg={SwitcherImg} width={20} height={20} className={styles.icon}/>
-            <AppText Tag='span'>Сменить тему</AppText>
+            <AppText Tag='span' color='inverted' size='s'>Сменить тему</AppText>
          </HStack>
       </AppButton>
    );
