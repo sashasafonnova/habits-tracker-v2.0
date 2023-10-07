@@ -1,20 +1,20 @@
 import styles from './TrackProfileCard.module.scss';
-import { UserTrack } from '../../../UserTrack/model/types/userTrack';
-import { AppButton } from 'shared/ui/AppButton/AppButton';
+import { UserTrack } from '../../model/types/userTrack';
 import { TrackProgress } from 'entities/TrackProgress';
 import { TrackCategory } from 'entities/TrackCategory';
-import { ProgressIndicator } from '../../../UserTrack/ui/ProgressIndicator/ProgressIndicator';
+import { ProgressIndicator } from '../ProgressIndicator/ProgressIndicator';
 import { memo } from 'react';
-import { TrackStatus } from '../../../UserTrack/ui/TrackStatus/TrackStatus';
+import { TrackStatus } from '../TrackStatus/TrackStatus';
 import { HStack, VStack } from 'shared/ui/AppStack';
 import { AppText } from 'shared/ui/AppText/AppText';
 
 interface TrackProfileCardProps {
    track: UserTrack;
+   actions?: JSX.Element;
 }
 
 export const TrackProfileCard: React.FC<TrackProfileCardProps> = memo(function TrackProfileCard(props: TrackProfileCardProps){
-   const { track } = props;
+   const { track, actions } = props;
 
    return (
       <VStack className={styles.info} max gap='30'>
@@ -35,7 +35,7 @@ export const TrackProfileCard: React.FC<TrackProfileCardProps> = memo(function T
                <ProgressIndicator progress={track.progress} trackLength={track.habitLength} />
             </VStack>
          </VStack>
-         <AppButton variant='outline'>Сделать отметку</AppButton>
+         {actions}
          <VStack gap='4' max>
             <AppText Tag='span' weight='bold' size='s'>Последняя отметка:</AppText>
             <AppText Tag='span' size='s'>{track.lastUpdated}</AppText>

@@ -1,12 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { UserTrack } from 'entities/UserTrack';
+import { trackProfileActions } from 'widgets/TrackProfile';
 import { tracksListActions } from 'widgets/TracksList';
 
 interface ProgressUpdateProps {
    id: string;
    progress: number;
    status?: string;
+   lastUpdated: string;
 }
 
 export const fetchProgressUpdate = createAsyncThunk <UserTrack, ProgressUpdateProps, ThunkConfig<string>>(
@@ -21,6 +23,7 @@ export const fetchProgressUpdate = createAsyncThunk <UserTrack, ProgressUpdatePr
          }
 
          thunkAPI.dispatch(tracksListActions.updateTrack(response.data));
+         thunkAPI.dispatch(trackProfileActions.setProfileData(response.data));
 
          return response.data;
       } catch (e) {

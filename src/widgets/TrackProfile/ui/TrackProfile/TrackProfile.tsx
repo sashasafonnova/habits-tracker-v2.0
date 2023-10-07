@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchTrackProfile } from '../../model/services/fetchTrackProfile/fetchTrackProfile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { TrackProfileSkeleton } from '../TrackProfileSkeleton/TrackProfileSkeleton';
 import { useSelector } from 'react-redux';
 import { profileDataSelector } from '../../model/selectors/profileDataSelector/profileDataSelector';
 import { profileIsLoadingSelector } from '../../model/selectors/profileIsLoadingSelector/profileIsLoadingSelector';
@@ -11,7 +10,8 @@ import { FetchLoader } from 'shared/ui/FetchLoader/FetchLoader';
 import { trackProfileReducer } from '../../model/slice/trackProfileSlice';
 import { useStateCreator } from 'shared/lib/hooks/useStateCreator';
 import { profileExistStatusSelector } from '../../model/selectors/profileExistStatusSelector/profileExistStatusSelector';
-import { TrackProfileCard } from '../TrackProfileCard/TrackProfileCard';
+import { TrackProfileCard, TrackProfileSkeleton } from 'entities/UserTrack';
+import { ProgressUpdate } from 'features/ProgressUpdate';
 
 
 export const TrackProfile: React.FC = () => {
@@ -30,8 +30,7 @@ export const TrackProfile: React.FC = () => {
       if (__PROJECT__ !== 'storybook') {
          dispatch(fetchTrackProfile({ trackId: id }));
       }
-
-   }, []);
+   }, [dispatch, id]);
 
    if (isLoading) {
       return <TrackProfileSkeleton />;
@@ -46,6 +45,15 @@ export const TrackProfile: React.FC = () => {
    }
 
    return (
-      <TrackProfileCard track={profileData}/>
+      <TrackProfileCard 
+         track={profileData} 
+         actions={
+            <ProgressUpdate
+               id={id} 
+               type='all'
+               progress={profileData.progress} 
+               habitLength={profileData.habitLength} status={profileData.status} 
+            />
+         }/>
    );
 };

@@ -12,7 +12,7 @@ import { tracksIsLoadingSelector } from '../../model/selectors/tracksIsLoadingSe
 import { fetchErrorSelector } from '../../model/selectors/fetchErrorSelector/fetchErrorSelector';
 import { fetchUserTracks } from '../../model/services/fetchUserTracks';
 import { TracksListSkeleton } from '../TracksListSkeleton/TracksListSkeleton';
-import { ProgressUpdateButton } from 'features/ProgressUpdate';
+import { ProgressUpdate } from 'features/ProgressUpdate';
 
 export const TrackList: React.FC = () => {
 
@@ -47,7 +47,7 @@ export const TrackList: React.FC = () => {
                <li key={track._id}>
                   <TrackCard 
                      track={track} 
-                     action={<ProgressUpdateButton id={track._id} progress={track.progress} habitLength={track.habitLength} status={track.status} />}
+                     action={<ProgressUpdate type='update' id={track._id} progress={track.progress} habitLength={track.habitLength} status={track.status} />}
                   />
                </li>))
                : 'У вас пока нет ни одного трека'}

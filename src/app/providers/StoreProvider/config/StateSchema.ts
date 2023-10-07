@@ -1,11 +1,12 @@
 import { AxiosInstance } from 'axios';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByEmail';
-import { TrackProfileSchema } from 'entities/TrackProfile';
 import { RemoveTrackSchema } from 'features/RemoveTrack';
 import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { CreateTrackSchema } from 'features/CreateTrack';
 import { TracksListSchema } from 'widgets/TracksList';
+import { TrackProfileSchema } from 'widgets/TrackProfile';
+import { ProgressUpdateSchema } from 'features/ProgressUpdate';
 
 
 export interface StateSchema {
@@ -15,6 +16,7 @@ export interface StateSchema {
    trackProfile?: TrackProfileSchema,
    removeTrack?: RemoveTrackSchema,
    createTrack?: CreateTrackSchema,
+   progressUpdate?: ProgressUpdateSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

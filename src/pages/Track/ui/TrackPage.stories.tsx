@@ -4,8 +4,7 @@ import TrackPage from './TrackPage';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
-import { trackProfileReducer } from 'entities/TrackProfile';
-
+import { trackProfileReducer } from 'widgets/TrackProfile';
 
 const meta: Meta<typeof TrackPage> = {
    title: 'pages/TrackPage',

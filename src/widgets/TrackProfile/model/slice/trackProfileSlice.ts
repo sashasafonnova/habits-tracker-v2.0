@@ -3,7 +3,6 @@ import { TrackProfileSchema } from '../types/TrackProfileSchema';
 import { UserTrack } from 'entities/UserTrack';
 import { fetchTrackProfile } from '../services/fetchTrackProfile/fetchTrackProfile';
 
-
 const initialState: TrackProfileSchema = {
    isLoading: false,
    existStatus: 'exist'
@@ -33,8 +32,9 @@ export const trackProfileSlice = createSlice({
             state.error = undefined;
             state.isLoading = true;
          })
-         .addCase(fetchTrackProfile.fulfilled, (state) => {
+         .addCase(fetchTrackProfile.fulfilled, (state, action: PayloadAction<UserTrack>) => {
             state.isLoading = false;
+            state.profileData = action.payload;
          })
          .addCase(fetchTrackProfile.rejected, (state, action) => {
             state.isLoading = false;

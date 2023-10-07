@@ -4,7 +4,7 @@ import CreateTrackPage from './CreateTrackPage';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
-import { trackProfileReducer } from 'entities/TrackProfile';
+import { createTrackReducer } from 'features/CreateTrack';
 
 
 const meta: Meta<typeof CreateTrackPage> = {
@@ -13,7 +13,7 @@ const meta: Meta<typeof CreateTrackPage> = {
 };
 
 const asyncReducers = {
-   trackProfile: trackProfileReducer
+   createTrack: createTrackReducer
 };
 
 

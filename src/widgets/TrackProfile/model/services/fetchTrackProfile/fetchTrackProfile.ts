@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import { trackProfileActions } from 'entities/TrackProfile';
 import { UserTrack } from 'entities/UserTrack';
 
 interface fetchTrackProfileProps {
@@ -18,8 +17,6 @@ export const fetchTrackProfile = createAsyncThunk<UserTrack, fetchTrackProfilePr
          if (!response.data) {
             throw new Error();
          }
-
-         thunkAPI.dispatch(trackProfileActions.setProfileData(response.data));
 
          return response.data;
       } catch (e) {

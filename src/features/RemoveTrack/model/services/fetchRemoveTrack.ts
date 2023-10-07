@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import { trackProfileActions } from 'entities/TrackProfile';
+import { trackProfileActions } from 'widgets/TrackProfile';
 
 interface fetchTrackProfileProps {
    trackId: string
