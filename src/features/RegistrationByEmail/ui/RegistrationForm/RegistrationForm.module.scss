@@ -1,8 +1,5 @@
-.title {
-   font-size: var(--font-size-xl);
-   line-height: var(--font-line-xl);
-   font-weight: var(--text-weight-extrabold);
-   color: var(--primary-color);
+.content {
+   min-height: 90vh;
 }
 
 .form {
@@ -10,6 +7,15 @@
    max-width: 320px;
 }
 
-.content {
-   min-height: 90vh;
+.inputWrapper {
+   position: relative;
+}
+
+.errorSubtitle {
+   color: red;
+}
+
+.errorInput {
+   position: absolute;
+   top: -21px;
 }

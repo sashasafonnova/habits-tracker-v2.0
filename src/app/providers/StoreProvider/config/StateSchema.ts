@@ -7,10 +7,12 @@ import { CreateTrackSchema } from 'features/CreateTrack';
 import { TracksListSchema } from 'widgets/TracksList';
 import { TrackProfileSchema } from 'widgets/TrackProfile';
 import { ProgressUpdateSchema } from 'features/ProgressUpdate';
+import { RegistrationSchema } from 'features/RegistrationByEmail';
 
 
 export interface StateSchema {
    login?: LoginSchema,
+   registration?: RegistrationSchema;
    user: UserSchema,
    tracksList?: TracksListSchema,
    trackProfile?: TrackProfileSchema,

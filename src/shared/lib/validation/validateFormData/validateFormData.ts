@@ -1,12 +1,13 @@
 import { FormData, FormValidateErrors } from 'shared/types/validation';
 import { checkEmail } from '../checkEmail/checkEmail';
 import { checkPassword } from '../checkPassword/checkPassword';
+import { checkNames } from '../checkNames/checkNames';
 
-export type Fields = 'all' | 'email' | 'password';
+export type Fields = 'all' | 'email' | 'password' | 'firstName';
 
 export const validateFormData = (data: FormData, field: Fields) => {
    const {
-      email = undefined, password = undefined
+      email = undefined, password = undefined, firstName = undefined,
    } = data;
 
    const errors: FormValidateErrors = {};
@@ -15,6 +16,10 @@ export const validateFormData = (data: FormData, field: Fields) => {
    case 'all':
       errors.email = checkEmail(email);
       errors.password = checkPassword(password);
+      errors.firstName = checkNames(firstName);
+      break;
+   case 'firstName':
+      errors.firstName = checkNames(firstName);
       break;
    case 'email':
       errors.email = checkEmail(email);

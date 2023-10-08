@@ -1,4 +1,5 @@
 export interface FormData {
+   firstName?: string;
    email?: string,
    password?: string;
 }
@@ -14,10 +15,17 @@ export enum ValidatePasswordErrors {
 }
 
 export enum ValidateOtherErrors {
-   SERVER_ERROR = 'Неверный логин или пароль'
+   SERVER_ERROR = 'Неверный логин или пароль',
+   REGISTRATION_ERROR = 'Не удалось зарегистрироваться'
+}
+
+export enum ValidateNamesErrors {
+   NAME_EMPTY = '* обязательное поле',
+   NAME_INCORRECT = '* введите корректные данные',
 }
 
 export interface FormValidateErrors {
+   firstName?: ValidateNamesErrors;
    email?: ValidateEmailErrors,
    password?: ValidatePasswordErrors,
 }
