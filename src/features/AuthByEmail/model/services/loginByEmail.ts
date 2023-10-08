@@ -1,21 +1,22 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { User, userActions } from 'entities/User';
-import { validateLoginData } from './validation/validateLoginData/validateLoginData';
-import { LoginValidateErrors, ValidateOtherErrors } from '../types/login';
+import { LoginValidateErrors } from '../types/login';
 import { loginActions } from '../slice/loginSlice';
 import { ThunkConfig } from 'app/providers/StoreProvider';
+import { validateFormData } from 'shared/lib/validation/validateFormData/validateFormData';
+import { loginEmailSelector } from '../selectors/loginEmailSelector/loginEmailSelector';
+import { loginPasswordSelector } from '../selectors/loginPasswordSelector/loginPasswordSelector';
+import { ValidateOtherErrors } from 'shared/types/validation';
 
-interface LoginByEmailProps {
-   email: string;
-   password: string;
-}
-
-
-export const loginByEmail = createAsyncThunk < User, LoginByEmailProps, ThunkConfig<LoginValidateErrors | ValidateOtherErrors>>(
+export const loginByEmail = createAsyncThunk <User, void, ThunkConfig<LoginValidateErrors | ValidateOtherErrors>>(
    'auth/loginByEmail',
-   async (authData, thunkAPI) => {
+   async (_, thunkAPI) => {
 
-      const errors = validateLoginData(authData, 'all');
+      const email = loginEmailSelector(thunkAPI.getState());
+      const password = loginPasswordSelector(thunkAPI.getState());
+      const authData = { email, password };
+
+      const errors = validateFormData(authData, 'all');
       const errorsValues = Object.values(errors).find(el => Boolean(el));
 
       if (errorsValues) {

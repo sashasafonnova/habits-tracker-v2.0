@@ -1,7 +1,6 @@
 import styles from './LoginForm.module.scss';
-import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { RoutePath } from 'app/providers/routerProvider/config/router';
 import { Modal } from 'shared/ui/Modal/Modal';
 import { Loader } from 'shared/ui/Loader/Loader';
@@ -16,34 +15,23 @@ import { loginErrorsSelector } from '../../model/selectors/loginErrorsSelector/l
 import { loginIsLoadingSelector } from '../../model/selectors/loginIsLoadingSelector/loginIsLoadingSelector';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByEmail } from '../../model/services/loginByEmail';
-import { authDataSelector } from 'entities/User';
 import { useStateCreator } from 'shared/lib/hooks/useStateCreator';
-import { Fields, validateLoginData } from '../../model/services/validation/validateLoginData/validateLoginData';
-import { checkInputValue } from 'features/AuthByEmail/model/services/validation/checkInputValue/checkInputValue';
 import { HStack, VStack } from 'shared/ui/AppStack';
 import { classMaker } from 'shared/lib/classMaker/classMaker';
 import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 import { AppText } from 'shared/ui/AppText/AppText';
-
+import { checkInputValue } from 'shared/lib/validation/checkInputValue/checkInputValue';
+import { Fields, validateFormData } from 'shared/lib/validation/validateFormData/validateFormData';
 
 export const LoginForm: React.FC = () => {
 
    useStateCreator({ login: loginReducer }, true);
    
    const dispatch = useAppDispatch();
-   const authData = useSelector(authDataSelector);
    const isLoading = useSelector(loginIsLoadingSelector);
    const errors = useSelector(loginErrorsSelector);
-   const emailValue = useSelector(loginEmailSelector);
-   const passwordValue = useSelector(loginPasswordSelector);
-   const navigate = useNavigate();
-
-   useEffect(() => {
-      if (authData) {
-         return navigate('/account');
-      }
-   }, [authData]);
-
+   const email = useSelector(loginEmailSelector);
+   const password = useSelector(loginPasswordSelector);
 
    const onChangeEmail = useCallback((value:string) => {
       const checkedValue = checkInputValue(value);
@@ -60,22 +48,22 @@ export const LoginForm: React.FC = () => {
    const onFocus = useCallback((field: string) => {
       const errorField = field === 'email' ? { ...errors, email: '' } : { ...errors, password: '' };
       dispatch(loginActions.setValidateErrors(errorField));
-   }, [errors]);
+   }, [dispatch, errors]);
 
 
    const onBlur = useCallback((field: Fields) => {
-      const validateErrors = validateLoginData({ email: emailValue, password: passwordValue }, field);
+      const validateErrors = validateFormData({ email, password }, field);
       dispatch(loginActions.setValidateErrors({...errors, ...validateErrors }));
-   }, [errors, emailValue, passwordValue]);
+   }, [email, password, dispatch, errors]);
 
 
    const onCLickLogin = useCallback(async () => {
-      const res = await dispatch(loginByEmail({email: emailValue, password: passwordValue}));
+      const res = await dispatch(loginByEmail());
 
       if (loginByEmail.fulfilled.match(res)){
          localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(res.payload));
       }
-   }, [dispatch, emailValue, passwordValue]);
+   }, [dispatch]);
    
 
    return (
@@ -87,13 +75,13 @@ export const LoginForm: React.FC = () => {
             </VStack>
             <form className={styles.form}>
                <VStack align='center' gap='20'>
-                  <HStack className={styles.inputWrapper} max>
+                  <VStack className={styles.inputWrapper} max>
                      {errors?.email && (
-                        <div className={styles.errorInput}>{errors?.email}</div>
+                        <AppText Tag='span' size='xs' color='error' className={styles.errorInput}>{errors?.email}</AppText>
                      )}
                      <label className='dsp-none'>Логин</label>
                      <AppInput
-                        value={emailValue}
+                        value={email}
                         onChange={onChangeEmail}
                         onFocus={() => onFocus('email')}
                         onBlur={() => onBlur('email')}
@@ -102,14 +90,14 @@ export const LoginForm: React.FC = () => {
                         variant={AppInputVariant.BACKGROUND}
                         inputSize={'standart'}
                      />
-                  </HStack>
-                  <HStack className={styles.inputWrapper} max>
+                  </VStack>
+                  <VStack className={styles.inputWrapper} max>
                      {errors?.password && (
-                        <div className={styles.errorInput}>{errors.password}</div>
+                        <AppText Tag='span' size='xs' color='error' className={styles.errorInput}>{errors.password}</AppText>
                      )}
                      <label className='dsp-none'>Пароль</label>
                      <AppInput
-                        value={passwordValue}
+                        value={password}
                         onChange={onChangePassword}
                         onFocus={() => onFocus('password')}
                         onBlur={() => onBlur('password')}
@@ -118,7 +106,7 @@ export const LoginForm: React.FC = () => {
                         variant={AppInputVariant.BACKGROUND}
                         inputSize={'standart'}
                      />
-                  </HStack> 
+                  </VStack> 
                   <AppButton
                      contentPosition='positionCenter'
                      max

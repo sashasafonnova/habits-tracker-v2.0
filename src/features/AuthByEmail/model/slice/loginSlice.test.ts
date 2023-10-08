@@ -1,6 +1,7 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 import { loginActions, loginReducer } from './loginSlice';
-import { LoginSchema, ValidateEmailErrors, ValidateOtherErrors } from '../types/login';
+import { LoginSchema } from '../types/login';
+import { ValidateEmailErrors, ValidateOtherErrors } from 'shared/types/validation';
 
 
 describe('loginSlice.test', () => {
