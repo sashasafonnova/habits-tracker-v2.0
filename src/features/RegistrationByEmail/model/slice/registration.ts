@@ -8,6 +8,7 @@ const initialState: RegistrationSchema = {
    email: '',
    password: '',
    isLoading: false,
+   validateErrors: {}
 };
 
 export const registrationSlice = createSlice({

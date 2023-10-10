@@ -10,7 +10,12 @@ export interface ThemeContextProps {
    setTheme: (theme: Theme) => void
 }
 
-export const ThemeContext = createContext<ThemeContextProps>(null);
+const inintial = {
+   theme: Theme.LIGHT,
+   setTheme: (theme: Theme) => {return theme;},
+};
+
+export const ThemeContext = createContext<ThemeContextProps>(inintial);
 
 export const LOCAL_STORAGE_THEME_KEY = 'theme';
 

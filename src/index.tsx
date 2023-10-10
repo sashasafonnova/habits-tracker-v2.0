@@ -6,22 +6,26 @@ import { StoreProvider } from 'app/providers/StoreProvider';
 import { ThemeProvider } from 'app/providers/ThemeProvider';
 import { ErrorBoundary } from 'app/providers/ErrorBoundary';
 
-
 const container = document.getElementById('root');
-const root = createRoot(container);
 
 
-root.render (
-   <ErrorBoundary>
-      <BrowserRouter>
-         <StoreProvider>
-            <ThemeProvider>
-               <App />
-            </ThemeProvider>
-         </StoreProvider>
-      </BrowserRouter>
-   </ErrorBoundary>   
-);
+if (container) {
+   const root = createRoot(container);
+
+   root.render (
+      <ErrorBoundary>
+         <BrowserRouter>
+            <StoreProvider>
+               <ThemeProvider>
+                  <App />
+               </ThemeProvider>
+            </StoreProvider>
+         </BrowserRouter>
+      </ErrorBoundary>   
+   );
+}
+
+
 
 
 

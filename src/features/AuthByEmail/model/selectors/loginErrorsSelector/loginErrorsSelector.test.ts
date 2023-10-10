@@ -12,7 +12,13 @@ describe('loginErrorSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
          login: {
-            validateErrors
+            email: '',
+            password: '',
+            isLoading: false,
+            validateErrors: {
+               email: ValidateEmailErrors.EMAIL_EMPTY,
+               password: ValidatePasswordErrors.PASSWORD_INCORRECT
+            }
          }
       };
       expect(loginErrorsSelector(state as StateSchema)).toEqual(validateErrors);
@@ -20,6 +26,6 @@ describe('loginErrorSelector', () => {
 
    test('with empty state', () => {
       const state: DeepPartial<StateSchema> = {};
-      expect(loginErrorsSelector(state as StateSchema)).toBe(null);
+      expect(loginErrorsSelector(state as StateSchema)).toEqual({});
    });
 });

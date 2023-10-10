@@ -36,6 +36,7 @@ export const Main: Story = {
    render: () => <TracksPage />,
    decorators: [StoreDecorator({
       tracksList: {
+         isLoading: false,
          tracksList: [trackData, trackData],
       }
    }, asyncReducers)],
@@ -45,6 +46,7 @@ export const DarkTheme: Story = {
    render: () => <TracksPage />,
    decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
       tracksList: {
+         isLoading: false,
          tracksList: [trackData, trackData],
       }
    }, asyncReducers)]

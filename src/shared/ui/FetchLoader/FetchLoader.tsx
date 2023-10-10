@@ -1,5 +1,5 @@
 import styles from './FetchLoader.module.scss';
-import { Loader } from 'shared/ui/Loader/Loader';
+import { AppLoader } from 'shared/ui/AppLoader/AppLoader';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { AppText } from '../AppText/AppText';
 import { VStack } from '../AppStack';
@@ -17,7 +17,7 @@ export const FetchLoader: React.FC<FetchLoaderProps> = (props: FetchLoaderProps)
 
    return (
       <VStack className={styles.fetchLoader} gap='20' max maxHeight justify='center' align='center'>
-         {loader && <Loader />}
+         {loader && <AppLoader />}
          {title && <AppText size='l'>{title}</AppText>}
          {link && <AppLink to={link} variant='underline'>{action}</AppLink>}
       </VStack>

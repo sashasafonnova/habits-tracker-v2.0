@@ -24,10 +24,11 @@ export function AppDropdown (props: AppDropdownProps) {
       button,
       buttonProps,
       focus,
-      max,
+      max = false,
       popupPosition = 'positionLeft',
    } = props;
    const [isOpen, setIsOpen] = useState(false);
+
    const popupMods = {
       [styles.short]: short,
       [styles.max]: max,

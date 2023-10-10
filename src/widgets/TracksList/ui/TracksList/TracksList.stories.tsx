@@ -37,6 +37,7 @@ export const IsLoading: Story = {
    render: () => <TrackList/>,
    decorators: [StoreDecorator({
       tracksList: {
+         tracksList: null,
          isLoading: true
       }
    }, asyncReducers)]
@@ -46,6 +47,7 @@ export const IsLoadingDarkTheme: Story = {
    render: () => <TrackList/>,
    decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
       tracksList: {
+         tracksList: null,
          isLoading: true
       }
    }, asyncReducers)]
@@ -55,6 +57,7 @@ export const Error: Story = {
    render: () => <TrackList />,
    decorators: [StoreDecorator({
       tracksList: {
+         tracksList: null,
          isLoading: false,
          fetchError: 'Не удалось получить треки'
       }
@@ -65,6 +68,7 @@ export const ErrorDarkTheme: Story = {
    render: () => <TrackList />,
    decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
       tracksList: {
+         tracksList: null,
          isLoading: false,
          fetchError: 'Не удалось получить треки'
       }

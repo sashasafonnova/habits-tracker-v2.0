@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes, ReactNode, memo } from 'react';
 import styles from './AppButton.module.scss';
 import { classMaker } from 'shared/lib/classMaker/classMaker';
 
-export type AppButtonVariant = 'background' | 'underline' | 'outline';
+export type AppButtonVariant = 'clear' | 'background' | 'underline' | 'outline';
 
 type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>
 
@@ -21,7 +21,17 @@ export interface AppButtonProps extends ButtonProps {
 }
 
 export const AppButton: React.FC<AppButtonProps> = memo(function AppButton(props: AppButtonProps) {
-   const { className, children, variant, onClick, focus, max, hover=true, contentPosition, round=true, ...otherProps } = props;
+   const { 
+      className = '',
+      children,
+      variant = 'clear',
+      onClick,
+      focus = false,
+      max = false,
+      hover=true,
+      contentPosition = 'positionLeft',
+      round=true, 
+      ...otherProps } = props;
 
    const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
       onClick?.(e.currentTarget.value);

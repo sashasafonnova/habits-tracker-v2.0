@@ -20,7 +20,7 @@ import { Fields, validateFormData } from 'shared/lib/validation/validateFormData
 import { registrationByEmail } from '../../model/services/registrationByEmail';
 import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localStorage';
 import { Modal } from 'shared/ui/Modal/Modal';
-import { Loader } from 'shared/ui/Loader/Loader';
+import { AppLoader } from 'shared/ui/AppLoader/AppLoader';
 import { registrationFirstNameSelector } from '../../model/selectors/registrationFirstNameSelector/registrationFirstNameSelector';
 import { registrationEmailSelector } from '../../model/selectors/registrationEmailSelector/registrationEmailSelector';
 
@@ -52,7 +52,7 @@ export const RegistrationForm: React.FC = () => {
    
 
    const onFocus = useCallback((field: string) => {
-      let errorField;
+      let errorField = {};
       
       switch (field) {
       case 'firstName':
@@ -153,7 +153,7 @@ export const RegistrationForm: React.FC = () => {
                <AppLink to={RoutePath.login} variant='underline'>Войти</AppLink>
             </HStack>
          </VStack>
-         {isLoading && <Modal><Loader /></Modal>}
+         {isLoading && <Modal><AppLoader /></Modal>}
       </AppBlock>
    );
 };

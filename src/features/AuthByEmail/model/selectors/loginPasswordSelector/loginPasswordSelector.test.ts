@@ -6,7 +6,10 @@ describe('loginPasswordSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
          login: {
-            password: '123123'
+            email: '',
+            password: '123123',
+            isLoading: false,
+            validateErrors: {}
          }
       };
       expect(loginPasswordSelector(state as StateSchema)).toBe('123123');

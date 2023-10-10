@@ -7,6 +7,7 @@ describe('tracksIsLoadingSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
          tracksList: {
+            tracksList: null,
             isLoading: true
          }
       };

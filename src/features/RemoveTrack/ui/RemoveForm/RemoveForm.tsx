@@ -20,7 +20,9 @@ export const RemoveForm: React.FC<RemoveFormProps> = memo(function RemoveForm(pr
    const { id } = useParams();
    
    const onCLickRemove = () => {
-      dispatch(fetchRemoveTrack({trackId: id}));
+      if (id) {
+         dispatch(fetchRemoveTrack({trackId: id}));
+      }
    };
 
    const onClickCancel = () => {

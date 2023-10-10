@@ -7,7 +7,9 @@ describe('profileIsLoadingSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
          trackProfile: {
-            isLoading: true
+            profileData: null,
+            isLoading: true,
+            existStatus: 'exist'
          }
       };
       expect(profileIsLoadingSelector(state as StateSchema)).toBe(true);

@@ -12,12 +12,12 @@ import { Textarea, TextareaVariant } from 'shared/ui/TextArea/Textarea';
 import { trackTitleSelector } from '../../model/selectors/trackTitleSelector/trackTitleSelector';
 import { AppInput } from 'shared/ui/AppInput/AppInput';
 import { trackLengthSelector } from '../../model/selectors/trackLengthSelector/trackLengthSelector';
-import { CreateTrackData, CreateTrackStatuses, TrackLength } from '../../model/types/createTrack';
+import { CreateTrackData, CreateTrackStatuses, TrackLength, ValidateCreateTrackErrors } from '../../model/types/createTrack';
 import { dateCreator } from 'shared/lib/dateCreator/dateCreator';
 import { fetchCreateTrack } from '../../model/services/fetchCreateTrack';
 import { Modal } from 'shared/ui/Modal/Modal';
 import { trackCreateStatusSelector } from '../../model/selectors/trackCreateStatusSelector/trackCreateStatusSelector';
-import { Loader } from 'shared/ui/Loader/Loader';
+import { AppLoader } from 'shared/ui/AppLoader/AppLoader';
 import { createTrackErrorsSelector } from '../../model/selectors/createTrackErrorsSelector/createTrackErrorsSelector';
 import { FetchLoader } from 'shared/ui/FetchLoader/FetchLoader';
 import { VStack } from 'shared/ui/AppStack';
@@ -40,14 +40,21 @@ export const CreateForm: React.FC = () => {
       dispatch(createTrackActions.setName(value));
    }, [dispatch]);
 
-   const onChangeLength = useCallback((value: TrackLength) => {
-      dispatch(createTrackActions.setLength(value));
+   const onChangeLength = useCallback((value: string) => {
+      dispatch(createTrackActions.setLength(value as TrackLength));
    }, [dispatch]);
 
    const onFocusField = useCallback((field: string) => {
-      const errorField = field === 'category' ? { ...errors, category: '' } : { ...errors, title: '' };
+      let errorField: ValidateCreateTrackErrors;
+
+      if (field === 'category') {
+         errorField = { ...errors, category: '' };
+      } else {
+         errorField = { ...errors, title: '' };
+      }
+
       dispatch(createTrackActions.setValidateErrors(errorField));
-   }, [errors]);
+   }, [dispatch, errors]);
 
    const onClickCreate = useCallback(() => {
       const dateCreated = dateCreator().slice(0, -3);
@@ -59,7 +66,7 @@ export const CreateForm: React.FC = () => {
          lastUpdated: dateCreated
       };
       dispatch(fetchCreateTrack(trackData));
-   }, [category, title, trackLength]);
+   }, [category, dispatch, title, trackLength]);
 
 
    if (createStatus === CreateTrackStatuses.CREATED){
@@ -154,7 +161,7 @@ export const CreateForm: React.FC = () => {
                <AppButton variant='background' onClick={onClickCreate}>Создать</AppButton>
             </VStack>
          </form>   
-         {createStatus === CreateTrackStatuses.IS_CREATING && <Modal><Loader /></Modal>}
+         {createStatus === CreateTrackStatuses.IS_CREATING && <Modal><AppLoader /></Modal>}
       </VStack>
    );
 };

@@ -17,9 +17,9 @@ const App = () => {
 
 
    useEffect(() => {
-      const authData = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY));
-
-      if (authData){
+      const localData = localStorage.getItem(USER_LOCALSTORAGE_KEY);
+      if (localData){
+         const authData = JSON.parse(localData);
          dispatch(userActions.setAuthData(authData));
          navigate(location);
       }

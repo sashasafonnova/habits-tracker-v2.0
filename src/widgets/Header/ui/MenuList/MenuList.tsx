@@ -38,7 +38,7 @@ export const MenuList: React.FC<MenuListProps> = (props: MenuListProps) => {
                <AppLink 
                   to={item.link}
                   variant='text'
-                  onClick={item.name === 'Выйти' && onClickLogOut} 
+                  onClick={item.name === 'Выйти' ? onClickLogOut : undefined} 
                   className={styles.listLink}>{item.name}
                </AppLink>
             </li>

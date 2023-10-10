@@ -21,7 +21,7 @@ interface TextareaProps extends TextareaType {
 }
 
 export const Textarea: React.FC<TextareaProps> = memo(function Textarea(props: TextareaProps){
-   const { onChange, variant, cols, rows, marginBottom, placeholder, value } = props;
+   const { onChange, variant = TextareaVariant.OUTLINE, cols, rows, marginBottom, placeholder, value } = props;
 
    const additional = [
       styles[variant],

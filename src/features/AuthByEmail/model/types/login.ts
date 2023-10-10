@@ -4,7 +4,7 @@ export interface LoginSchema {
    email: string,
    password: string,
    isLoading: boolean,
-   validateErrors?: LoginValidateErrors | null
+   validateErrors: LoginValidateErrors
 }
 
 export interface LoginValidateErrors {

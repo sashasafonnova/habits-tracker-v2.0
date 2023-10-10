@@ -5,7 +5,7 @@ export interface CreateTrackSchema {
    title: string | '',
    trackLength: TrackLength,
    createStatus: CreateTrackStatuses,
-   validateErrors?: ValidateCreateTrackErrors | null;
+   validateErrors: ValidateCreateTrackErrors;
 }
 
 export interface ValidateCreateTrackErrors {
@@ -28,7 +28,6 @@ export interface CreateTrackData {
    dateCreated: string,
    lastUpdated: string
 }
-
 
 export type TrackLength = '10' | '20' | '30' | '60';
 

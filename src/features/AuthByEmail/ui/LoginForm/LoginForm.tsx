@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { RoutePath } from 'app/providers/routerProvider/config/router';
 import { Modal } from 'shared/ui/Modal/Modal';
-import { Loader } from 'shared/ui/Loader/Loader';
+import { AppLoader } from 'shared/ui/AppLoader/AppLoader';
 import { AppButton } from 'shared/ui/AppButton/AppButton';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -22,6 +22,9 @@ import { AppBlock } from 'shared/ui/AppBlock/AppBlock';
 import { AppText } from 'shared/ui/AppText/AppText';
 import { checkInputValue } from 'shared/lib/validation/checkInputValue/checkInputValue';
 import { Fields, validateFormData } from 'shared/lib/validation/validateFormData/validateFormData';
+import { LoginValidateErrors } from '../../model/types/login';
+import { useTogglePasswordVisible } from 'shared/lib/forms/useTogglePasswordVisible';
+import { AppIcon } from 'shared/ui/AppIcon/AppIcon';
 
 export const LoginForm: React.FC = () => {
 
@@ -32,6 +35,7 @@ export const LoginForm: React.FC = () => {
    const errors = useSelector(loginErrorsSelector);
    const email = useSelector(loginEmailSelector);
    const password = useSelector(loginPasswordSelector);
+   const { isVisible, onToggleVisible, openEyeIcon, closeEyeIcon } = useTogglePasswordVisible();
 
    const onChangeEmail = useCallback((value:string) => {
       const checkedValue = checkInputValue(value);
@@ -46,7 +50,14 @@ export const LoginForm: React.FC = () => {
    
 
    const onFocus = useCallback((field: string) => {
-      const errorField = field === 'email' ? { ...errors, email: '' } : { ...errors, password: '' };
+      let errorField: LoginValidateErrors;
+
+      if (field === 'email'){
+         errorField = { ...errors, email: '' };
+      } else {
+         errorField = { ...errors, password: '' };
+      }
+
       dispatch(loginActions.setValidateErrors(errorField));
    }, [dispatch, errors]);
 
@@ -101,11 +112,16 @@ export const LoginForm: React.FC = () => {
                         onChange={onChangePassword}
                         onFocus={() => onFocus('password')}
                         onBlur={() => onBlur('password')}
-                        type={'password'}
+                        type={isVisible ? 'text' : 'password'}
                         placeholder={'пароль'}
                         variant={AppInputVariant.BACKGROUND}
                         inputSize={'standart'}
+                        padding={false}
+                        className={styles.inputPassword}
                      />
+                     <AppButton onClick={onToggleVisible}>
+                        <AppIcon Svg={isVisible ? openEyeIcon : closeEyeIcon} width={20} height={20} className={styles.eyeIcon} />
+                     </AppButton>
                   </VStack> 
                   <AppButton
                      contentPosition='positionCenter'
@@ -120,7 +136,7 @@ export const LoginForm: React.FC = () => {
                <AppText Tag='span'>Нет аккаунта?</AppText>
                <AppLink to={RoutePath.registration} variant='underline'>Создать</AppLink>
             </HStack>
-            {isLoading && <Modal><Loader /></Modal>}
+            {isLoading && <Modal><AppLoader /></Modal>}
          </VStack>
       </AppBlock>
    );

@@ -5,7 +5,6 @@
 
 .standart {
    height: var(--input-size-m);
-   padding: var(--font-size-s);
    &::placeholder {
          font-size: var(--font-size-s);
       }
@@ -27,5 +26,9 @@
    &:focus {
       border: 1px solid var(--line-color);
    }
+}
+
+.padding {
+   padding: 14px;
 }
 

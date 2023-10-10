@@ -23,6 +23,9 @@ export const TrackStatus: React.FC<TrackStatusProps> = memo(function TrackStatus
       textColor = 'error';
       break;
    }    
+   default: {
+      textColor = 'primary';
+   }
    }
 
    return (

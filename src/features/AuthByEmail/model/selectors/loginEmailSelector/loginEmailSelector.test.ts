@@ -7,7 +7,10 @@ describe('loginEmailSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
          login: {
-            email: 'test@test.com'
+            email: 'test@test.com',
+            password: '',
+            isLoading: false,
+            validateErrors: {}
          }
       };
       expect(loginEmailSelector(state as StateSchema)).toEqual('test@test.com');

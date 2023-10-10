@@ -51,7 +51,7 @@ export interface FlexProps extends DivProps {
     gap?: FlexGap;
     max?: boolean;
     maxHeight?: boolean;
-    wrap?: 'wrap' | 'wrapReverse';
+    wrap?: 'wrap' | 'wrapReverse' | 'none';
 }
 
 export const Flex = (props: FlexProps) => {
@@ -62,9 +62,9 @@ export const Flex = (props: FlexProps) => {
       align = 'center',
       direction = 'row',
       gap = '0',
-      max,
-      maxHeight,
-      wrap,
+      max = false,
+      maxHeight = false,
+      wrap = 'none',
       ...otherProps
    } = props;
 

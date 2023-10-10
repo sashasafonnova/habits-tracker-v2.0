@@ -4,6 +4,7 @@ import { UserTrack } from 'entities/UserTrack';
 import { fetchTrackProfile } from '../services/fetchTrackProfile/fetchTrackProfile';
 
 const initialState: TrackProfileSchema = {
+   profileData: null,
    isLoading: false,
    existStatus: 'exist'
 };
@@ -16,11 +17,11 @@ export const trackProfileSlice = createSlice({
          state.profileData = action.payload;
       },
       clearProfileData: (state) => {
-         state.profileData = undefined;
+         state.profileData = null;
       },
       changeExistStatus: (state, action) => {
          if (action.payload === 'deleted') {
-            state.profileData = undefined;
+            state.profileData = null;
             state.existStatus = action.payload;
          }
       },

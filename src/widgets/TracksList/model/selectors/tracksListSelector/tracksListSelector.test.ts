@@ -23,7 +23,8 @@ describe('userTracksSelector', () => {
             tracksList: [
                testTrack,
                testTrack
-            ]
+            ],
+            isLoading: false,
          }
       };
       expect(tracksListSelector(state as StateSchema)).toEqual([
@@ -34,6 +35,6 @@ describe('userTracksSelector', () => {
 
    test('with empty state', () => {
       const state: DeepPartial<StateSchema> = {};
-      expect(tracksListSelector(state as StateSchema)).toEqual([]);
+      expect(tracksListSelector(state as StateSchema)).toEqual(null);
    });
 });

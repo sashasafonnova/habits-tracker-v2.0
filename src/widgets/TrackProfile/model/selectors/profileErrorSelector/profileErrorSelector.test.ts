@@ -7,7 +7,10 @@ describe('profileErrorSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
          trackProfile: {
-            error: 'Не удалось получить трек'
+            profileData: null,
+            error: 'Не удалось получить трек',
+            existStatus: 'exist',
+            isLoading: false,
          }
       };
       expect(profileErrorSelector(state as StateSchema)).toBe('Не удалось получить трек');

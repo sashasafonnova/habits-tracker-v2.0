@@ -1,6 +1,5 @@
 import { classMaker } from 'shared/lib/classMaker/classMaker';
 import userIcon from '../../assets/icons/user-icon.svg';
-// import styles from './MenuButton.module.scss';
 import { HStack } from 'shared/ui/AppStack';
 import { useAuth } from 'shared/lib/hooks/useAuth';
 import { AppIcon } from 'shared/ui/AppIcon/AppIcon';
@@ -14,6 +13,9 @@ export const MenuButton: React.FC<MenuButtonProps> = (props: MenuButtonProps) =>
    const { className = '' } = props;
    const { authData } = useAuth();
 
+   if (!authData) {
+      return null;
+   }
 
    return (
       <HStack className={classMaker('', [className], {})} gap='10'>

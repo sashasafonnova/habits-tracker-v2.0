@@ -13,7 +13,6 @@ import { profileExistStatusSelector } from '../../model/selectors/profileExistSt
 import { TrackProfileCard, TrackProfileSkeleton } from 'entities/UserTrack';
 import { ProgressUpdate } from 'features/ProgressUpdate';
 
-
 export const TrackProfile: React.FC = () => {
 
    useStateCreator({ trackProfile: trackProfileReducer }, true);
@@ -25,9 +24,8 @@ export const TrackProfile: React.FC = () => {
    const error = useSelector(profileErrorSelector);
    const existStatus = useSelector(profileExistStatusSelector);
 
-
    useEffect(() => {
-      if (__PROJECT__ !== 'storybook') {
+      if (__PROJECT__ !== 'storybook' && id) {
          dispatch(fetchTrackProfile({ trackId: id }));
       }
    }, [dispatch, id]);
@@ -44,6 +42,10 @@ export const TrackProfile: React.FC = () => {
       return <FetchLoader title={'Трек успешно удален'} action={'Вернуться к списку'} link={'/tracks'} />;
    }
 
+   if (!profileData) {
+      return null;
+   }
+
    return (
       <TrackProfileCard 
          track={profileData} 
@@ -51,8 +53,8 @@ export const TrackProfile: React.FC = () => {
             <ProgressUpdate
                id={id} 
                type='all'
-               progress={profileData.progress} 
-               habitLength={profileData.habitLength} status={profileData.status} 
+               progress={profileData?.progress || 0} 
+               habitLength={profileData?.habitLength} status={profileData?.status} 
             />
          }/>
    );

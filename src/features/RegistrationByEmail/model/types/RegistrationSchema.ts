@@ -5,7 +5,7 @@ export interface RegistrationSchema {
    email: string,
    password: string,
    isLoading: boolean,
-   validateErrors?: RegistrationValidateErrors | null
+   validateErrors: RegistrationValidateErrors
 }
 
 export interface RegistrationValidateErrors {

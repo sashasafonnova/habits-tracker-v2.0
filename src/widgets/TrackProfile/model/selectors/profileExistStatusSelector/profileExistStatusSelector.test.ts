@@ -7,6 +7,8 @@ describe('profileExistStatusSelector', () => {
    test('return value', () => {
       const state: DeepPartial<StateSchema> = {
          trackProfile: {
+            profileData: null,
+            isLoading: false,
             existStatus: 'deleted'
          }
       };

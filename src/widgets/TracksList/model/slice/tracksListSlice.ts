@@ -3,7 +3,6 @@ import { fetchUserTracks } from '../services/fetchUserTracks';
 import { TracksListSchema } from '../types/TracksListSchema';
 import { UserTrack } from 'entities/UserTrack';
 
-
 const initialState: TracksListSchema = {
    tracksList: null,
    isLoading: false
@@ -14,8 +13,10 @@ export const tracksListSlice = createSlice({
    initialState,
    reducers: {
       updateTrack: (state, action: PayloadAction<UserTrack>) => {
-         const index = state.tracksList.findIndex((item) => item._id === action.payload._id);
-         state.tracksList.splice(index, 1, action.payload);
+         if (state.tracksList) {
+            const index = state.tracksList.findIndex((item) => item._id === action.payload._id);
+            state.tracksList.splice(index, 1, action.payload);
+         }
       },
    },
    extraReducers: (builder) => {

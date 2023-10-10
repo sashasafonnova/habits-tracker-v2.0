@@ -21,8 +21,8 @@ export const CategoriesList: React.FC<CategoriesListProps> = (props: CategoriesL
    const category = useSelector(trackCategorySelector);
    const dispatch = useAppDispatch();
 
-   const onChangeCategory = useCallback((value: CategoryNamesType) => {
-      dispatch(createTrackActions.setCategory(value));
+   const onChangeCategory = useCallback((value: string) => {
+      dispatch(createTrackActions.setCategory(value as CategoryNamesType));
    }, []);
 
    return (

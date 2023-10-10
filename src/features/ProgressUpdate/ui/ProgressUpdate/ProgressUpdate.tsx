@@ -12,10 +12,10 @@ import { fetchIDUpdateSelector } from '../../model/selectors/fetchIDUpdateSelect
 interface ProgressUpdateProps {
    className?: string;
    type: 'all' | 'reset' | 'update';
-   id: string;
-   progress: number;
-   habitLength: number;
-   status: string;
+   id?: string;
+   progress?: number;
+   habitLength?: number;
+   status?: string;
 }
 
 export const ProgressUpdate: React.FC<ProgressUpdateProps> = (props: ProgressUpdateProps) => {
@@ -28,9 +28,9 @@ export const ProgressUpdate: React.FC<ProgressUpdateProps> = (props: ProgressUpd
    if (type === 'all'){
       return (
          <HStack className={classMaker('', [className], {})} gap='10'>
-            <ProgressUpdateButton id={id} progress={progress} habitLength={habitLength} status={status} />
-            <ProgressResetButton id={id} status={status}/>
-            {isFetching && fetchID === id && <AppLoader />}
+            <ProgressUpdateButton id={id || ''} progress={progress || 0} habitLength={habitLength || 0} status={status || ''} />
+            <ProgressResetButton id={id || ''} status={status || ''}/>
+            {isFetching && fetchID === id && <AppLoader width={30} height={40}/>}
          </HStack>
       );
    }
@@ -38,16 +38,16 @@ export const ProgressUpdate: React.FC<ProgressUpdateProps> = (props: ProgressUpd
    if (type === 'update'){
       return (
          <HStack className={classMaker('', [className], {})} gap='10'>
-            <ProgressUpdateButton id={id} progress={progress} habitLength={habitLength} status={status} />
-            {isFetching && fetchID === id &&  <AppLoader />}
+            <ProgressUpdateButton id={id || ''} progress={progress || 0} habitLength={habitLength || 0} status={status || ''} />
+            {isFetching && fetchID === id &&  <AppLoader width={40} height={40} />}
          </HStack>
       );
    }
 
    return (
       <HStack className={classMaker('', [className], {})} gap='10'>
-         <ProgressResetButton id={id} status={status}/>
-         {isFetching && fetchID === id && <AppLoader />}
+         <ProgressResetButton id={id || ''} status={status || ''}/>
+         {isFetching && fetchID === id && <AppLoader width={40} height={40} />}
       </HStack>
    );
 };

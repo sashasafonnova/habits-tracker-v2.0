@@ -1,5 +1,5 @@
 
-import { ReducersMapObject, configureStore } from '@reduxjs/toolkit';
+import { CombinedState, Reducer, ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 import { ThunkExtraArg, StateSchema } from './StateSchema';
 import { $api } from 'shared/api/api';
 import { userReducer } from 'entities/User';
@@ -22,7 +22,7 @@ export const createReduxStore = (initialState?: StateSchema, asyncReducers?: Red
 
 
    const store = configureStore({
-      reducer: reducerManager.reduce,
+      reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
       devTools: __IS_DEV__,
       preloadedState: initialState,
       middleware: (getDefaultMiddleware) => getDefaultMiddleware({

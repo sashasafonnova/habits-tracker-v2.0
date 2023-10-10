@@ -8,7 +8,8 @@ const initialState: CreateTrackSchema = {
    category: '',
    title: '',
    trackLength: '10',
-   createStatus: CreateTrackStatuses.AWAIT
+   createStatus: CreateTrackStatuses.AWAIT,
+   validateErrors: {},
 };
 
 export const createTrackSlice = createSlice({

@@ -12,7 +12,7 @@ interface ModalProps {
 export const Modal: React.FC<ModalProps> = (props: ModalProps) => {
    const {theme} = useTheme();
    const { 
-      variant, 
+      variant = '', 
       children 
    } = props;
 

@@ -15,11 +15,11 @@ interface TrackProfileCardProps {
 
 export const TrackProfileCard: React.FC<TrackProfileCardProps> = memo(function TrackProfileCard(props: TrackProfileCardProps){
    const { track, actions } = props;
-
+   
    return (
       <VStack className={styles.info} max gap='30'>
          <VStack max gap='20'>
-            <TrackCategory category={track.category}/>
+            <TrackCategory category={track?.category}/>
             <VStack max gap='30'>
                <VStack max gap='10'>
                   <TrackStatus status={track.status}/>

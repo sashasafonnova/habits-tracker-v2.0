@@ -38,7 +38,9 @@ export const IsLoading: Story = {
    render: () => <TrackProfile/>,
    decorators: [StoreDecorator({
       trackProfile: {
-         isLoading: true
+         profileData: null,
+         isLoading: true,
+         existStatus: 'exist'
       }
    }, asyncReducers)]
 };
@@ -47,7 +49,9 @@ export const IsLoadingDarkTheme: Story = {
    render: () => <TrackProfile/>,
    decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
       trackProfile: {
+         profileData: null,
          isLoading: true,
+         existStatus: 'exist'
       }
    }, asyncReducers)]
 };
@@ -56,8 +60,10 @@ export const Error: Story = {
    render: () => <TrackProfile />,
    decorators: [StoreDecorator({
       trackProfile: {
+         profileData: null,
          isLoading: false,
-         error: 'Не удалось получить данные'
+         error: 'Не удалось получить данные',
+         existStatus: 'exist'
       }
    }, asyncReducers)]
 };
@@ -66,8 +72,10 @@ export const ErrorDarkTheme: Story = {
    render: () => <TrackProfile />,
    decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
       trackProfile: {
+         profileData: null,
          isLoading: false,
-         error: 'Не удалось получить данные'
+         error: 'Не удалось получить данные',
+         existStatus: 'exist'
       }
    }, asyncReducers)]
 };
@@ -76,7 +84,9 @@ export const ProfileCard: Story = {
    render: () => <TrackProfile />,
    decorators: [StoreDecorator({
       trackProfile: {
-         profileData
+         profileData,
+         isLoading: false,
+         existStatus: 'exist'
       }
    }, asyncReducers)]
 };
@@ -85,6 +95,8 @@ export const ProfileCardDarkTheme: Story = {
    render: () => <TrackProfile />,
    decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
       trackProfile: {
+         isLoading: false,
+         existStatus: 'exist',
          profileData
       }
    }, asyncReducers)]
@@ -94,6 +106,8 @@ export const Deleted: Story = {
    render: () => <TrackProfile />,
    decorators: [StoreDecorator({
       trackProfile: {
+         profileData: null,
+         isLoading: false,
          existStatus: 'deleted'
       }
    }, asyncReducers)]
@@ -103,6 +117,8 @@ export const DeletedDarkTheme: Story = {
    render: () => <TrackProfile />,
    decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
       trackProfile: {
+         profileData: null,
+         isLoading: false,
          existStatus: 'deleted'
       }
    }, asyncReducers)]
